@@ -98,7 +98,7 @@
   al nom d'una funció. Proveu-ho.
   CorrectAnswer: ?c
   AnswerTests: omnitest(correctExpr='?c')
-  Hint: Type ?c and press Enter. This will bring up the help file for the c() function."
+  Hint: Type ?c and press Enter. This will bring up the help file for the c() function.
 
 - Class: cmd_question
   Output: Entreu z per veure els seus continguts. Noteu que no hi ha comes separant el valors
