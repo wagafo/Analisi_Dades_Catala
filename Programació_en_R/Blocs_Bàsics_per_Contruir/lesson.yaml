@@ -95,10 +95,10 @@
   Output: "Sempre que tingueu preguntes sobre una funció en particular, podeu accedir 
   els fitxers integrats d'ajuda de l'R mitjançant l'ordre «?». Per exemple, si voleu més
   informació sobre la funció c(), entreu ?c sense els parèntesis que segueixen normalment
-  al nom d'una funció. Proveu-ho.
+  al nom d'una funció. Proveu-ho."
   CorrectAnswer: ?c
   AnswerTests: omnitest(correctExpr='?c')
-  Hint: Type ?c and press Enter. This will bring up the help file for the c() function."
+  Hint: Type ?c and press Enter. This will bring up the help file for the c() function.
 
 - Class: cmd_question
   Output: Type z to view its contents. Notice that there are no commas separating
