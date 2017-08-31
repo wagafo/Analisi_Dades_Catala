@@ -27,9 +27,9 @@
     language and often the reason we use a programming language as opposed to a calculator
     is to automate some process or avoid unnecessary repetition.
 
-  Output: L''R simplement imprimeix el resultat de 12 per defecte. Tanmateix, l'R és un llenguatge
+  Output: "L''R simplement imprimeix el resultat de 12 per defecte. Tanmateix, l'R és un llenguatge
   de programació i sovint la raó que fem servir un llenguatge de programació en comptes de una calculadora
-  és per automatitzar processos o evitar repeticions innecessàries.
+  és per automatitzar processos o evitar repeticions innecessàries."
 
 - Class: text
   Output: En aquest cas, podem usar el nostre resultat de dalt a un segon càlcul. En comptes
