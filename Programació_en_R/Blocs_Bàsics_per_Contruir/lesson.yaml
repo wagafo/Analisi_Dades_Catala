@@ -7,102 +7,98 @@
   Version: 2.2.0
 
 - Class: text
-  Output: En aquesta lliçó, explorarem alguns blocs bàsics per construir programes al llenguatge de programació R
+  Output: "En aquesta lliçó, explorarem alguns blocs bàsics per construir programes al llenguatge de programació R"
 
 - Class: text
-  Output: Si en qualsevol punt voleu més informació sobre un tema particular relacionat
+  Output: "Si en qualsevol punt voleu més informació sobre un tema particular relacionat
     amb R, podeu entrar help.start() a la línia d'ordres, cosa que obrirà un menú de recursos
     (o bé dins de RStudio o al vostre navegador web per defecte, depenent de la vostra
     configuració). Alternativament, una cerca simple a Internet sovint us dóna la resposta
-    que esteu buscant.
+    que esteu buscant."
 
 - Class: cmd_question
-  Output: En la seva forma més simple, l'R es pot usar com una calculadora interactiva. Entreu 5 + 7 i premeu Intro.
+  Output: "En la seva forma més simple, l'R es pot usar com una calculadora interactiva. Entreu 5 + 7 i premeu Intro."
   CorrectAnswer: 5 + 7
   AnswerTests: omnitest(correctExpr='5 + 7')
   Hint: Entreu 5 + 7 i premeu Intro.  
 
 - Class: text
-  Output: R simply prints the result of 12 by default. However, R is a programming
-    language and often the reason we use a programming language as opposed to a calculator
-    is to automate some process or avoid unnecessary repetition.
-
-  Output: "L''R simplement imprimeix el resultat de 12 per defecte. Tanmateix, l'R és un llenguatge
+  Output: "L'R simplement imprimeix el resultat de 12 per defecte. Tanmateix, l'R és un llenguatge
   de programació i sovint la raó que fem servir un llenguatge de programació en comptes de una calculadora
   és per automatitzar processos o evitar repeticions innecessàries."
 
 - Class: text
-  Output: En aquest cas, podem usar el nostre resultat de dalt a un segon càlcul. En comptes
+  Output: "En aquest cas, podem usar el nostre resultat de dalt a un segon càlcul. En comptes
   de tornar a escriure 5 + 7 cada cop que ens cal, simplement podem crear una nova variable
-  que emmagatzema el resultat.
+  que emmagatzema el resultat."
 
 - Class: text
-  Output: 'La manera que assigneu un valor a una variable a l'R és usant el operador d'assignació,
+  Output: "La manera que assigneu un valor a una variable a l'R és usant el operador d'assignació,
   que és simplement un símbol «menys que» seguit de un signe «menys». Es veu de la manera
-  seguent: <-'
+  seguent: <-"
 
 - Class: text
-  Output: Penseu l'operació d'assignació com una fletxa. Esteu assignant el valor de
-  la part dreta al nom de la variable a la part esquerra de la fletxa.
+  Output: "Penseu l'operació d'assignació com una fletxa. Esteu assignant el valor de
+  la part dreta al nom de la variable a la part esquerra de la fletxa."
 
 - Class: cmd_question
-  Output: Per assignar el resultat de 5 + 7 a una nova variable anomenada x, escriviu
-  x <- 5 + 7. Això es pot llegir com «x obté 5 més 7». Proveu-ho ara.
+  Output: "Per assignar el resultat de 5 + 7 a una nova variable anomenada x, escriviu
+  x <- 5 + 7. Això es pot llegir com «x obté 5 més 7». Proveu-ho ara."
   CorrectAnswer: x <- 5 + 7
   AnswerTests: any_of_exprs('x <- 5 + 7', 'x <- 7 + 5')
-  Hint: Escriviu x <- 5 + 7. És important incloure un espai simple a cada costat de 
-  l'operador d'assignació, però NO poseu un espai entre «<» i «-», els símbos  que 
-  formen la fletxa.
+  Hint: "Escriviu x <- 5 + 7. És important incloure un espai simple a cada costat de 
+  l'operador d'assignació, però NO poseu un espai entre «<» i «-», els símbols  que 
+  formen la fletxa."
 
 - Class: text
-  Output: Haureu notat que l'R no ha imprès el resultat de 12 aquest cop. Quan useu
+  Output: "Haureu notat que l'R no ha imprès el resultat de 12 aquest cop. Quan useu
   el operador d'assignació, l'R suposa que que no voleu veure el resultat immediatament,
-  sinó que intenteu usar el resultat per alguna altra cosa més tard.
+  sinó que intenteu usar el resultat per alguna altra cosa més tard."
 
 - Class: cmd_question
-  Output: Per veure els continguts de la variable x, simplement entreu x i premeu Intro. 
+  Output: "Per veure els continguts de la variable x, simplement entreu x i premeu Intro."
   Proveu-ho ara.
   CorrectAnswer: x
   AnswerTests: omnitest(correctExpr='x')
-  Hint: Entreu x i premeu Intro. Això imprimirà automàticament el valor de x.
+  Hint: "Entreu x i premeu Intro. Això imprimirà automàticament el valor de x."
 
 - Class: cmd_question
-  Output: Ara emmagatzemeu el resultat de x - 3 en una nova variable anomenada y.
+  Output: "Ara emmagatzemeu el resultat de x - 3 en una nova variable anomenada y."
   CorrectAnswer: y <- x - 3
   AnswerTests: omnitest(correctExpr='y <- x - 3')
-  Hint: entreu y <- x - 3 i premeu Intro. Usar x - e o x-3 és preferència personal, però
-  és un bon hàbit incloure un espai als costats de l'operador d'assignació.
+  Hint: "Entreu y <- x - 3 i premeu Intro. Usar x - e o x-3 és preferència personal, però
+  és un bon hàbit incloure un espai als costats de l'operador d'assignació."
 
 - Class: cmd_question
-  Output: Quin és el valor de y? Entreu y i esbrineu-ho.
+  Output: "Quin és el valor de y? Entreu y i esbrineu-ho."
   CorrectAnswer: 'y'
   AnswerTests: omnitest(correctExpr='y')
-  Hint: Entreu y i premeu Intro.
+  Hint: "Entreu y i premeu Intro."
 
 - Class: text
-  Output: Crearem ara una col·lecció petita de números anomenada un vector. Qualsevol 
+  Output: "Crearem ara una col·lecció petita de números anomenada un vector. Qualsevol 
   objecte que contingui dades s'anomena una estructura de dades i els vectors numèrics 
   són el tipus més simple d'estructura de dades a l'R. De fet, fins i tot un número únic
-  es considera un vector de longitud igual a u.
+  es considera un vector de longitud igual a u."
 
 - Class: cmd_question
-  Output: La forma més senzilla de crear un vector és amb la función c(), que vol dir
+  Output: "La forma més senzilla de crear un vector és amb la función c(), que vol dir
   «concatena» o «combina». Per crear un vector que contingui els números 1, 9 i 3.14
-  entreu c(1.1, 9, 3.14). Proveu-ho ara i emmagatzemeu el resultat a una variable z. 
+  entreu c(1.1, 9, 3.14). Proveu-ho ara i emmagatzemeu el resultat a una variable z. "
   CorrectAnswer: z <- c(1.1, 9, 3.14)
   AnswerTests: omnitest(correctExpr='z <- c(1.1, 9, 3.14)')
-  Hint: Si s'entra z <- c(1.1, 9, 3.14) s'assignarà el vector (1.1, 9 , 3.14) a una nova
+  Hint: "Si s'entra z <- c(1.1, 9, 3.14) s'assignarà el vector (1.1, 9 , 3.14) a una nova
   variable anomenada z. No es requereix incloure espais senzills després de les comes 
-  al vector, però ajuda a fer el vostre codi menys atapeït i més llegible.
+  al vector, però ajuda a fer el vostre codi menys atapeït i més llegible."
 
 - Class: cmd_question
-  Output: Sempre que tingueu preguntes sobre una funció en particular, podeu accedir 
+  Output: "Sempre que tingueu preguntes sobre una funció en particular, podeu accedir 
   els fitxers integrats d'ajuda de l'R mitjançant l'ordre «?». Per exemple, si voleu més
   informació sobre la funció c(), entreu ?c sense els parèntesis que segueixen normalment
   al nom d'una funció. Proveu-ho.
   CorrectAnswer: ?c
   AnswerTests: omnitest(correctExpr='?c')
-  Hint: Type ?c and press Enter. This will bring up the help file for the c() function.
+  Hint: Type ?c and press Enter. This will bring up the help file for the c() function."
 
 - Class: cmd_question
   Output: Type z to view its contents. Notice that there are no commas separating
