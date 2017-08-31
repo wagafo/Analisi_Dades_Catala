@@ -101,27 +101,26 @@
   Hint: Type ?c and press Enter. This will bring up the help file for the c() function."
 
 - Class: cmd_question
-  Output: Type z to view its contents. Notice that there are no commas separating
-    the values in the output.
+  Output: Entreu z per veure els seus continguts. Noteu que no hi ha comes separant el valors
+  a la sortida.
   CorrectAnswer: z
   AnswerTests: omnitest(correctExpr='z')
-  Hint: Type z and press Enter to view its contents.
+  Hint: Entreu z i premeu intro per veure els seus continguts.
 
 - Class: cmd_question
-  Output: You can combine vectors to make a new vector. Create a new vector that contains
-    z, 555, then z again in that order. Don't assign this vector to a new variable,
-    so that we can just see the result immediately.
+  Output: Podeu combinar vectors per fer un nou vector. Creeu un nou vector que contigui
+  z, 55, i z un altre cop, en aquest ordre. No assigneu aquest vector a una variable nova,
+  per poder veure el resultat immediatament.
   CorrectAnswer: c(z, 555, z)
   AnswerTests: omnitest(correctExpr='c(z, 555, z)')
-  Hint: Type c(z, 555, z). Don't create a new variable. We just want to view the result.
+  Hint: Entreu c(z, 555, z). No creeu una variable nova. Simplement volem veure el resultat.
 
 - Class: cmd_question
-  Output: 'Numeric vectors can be used in arithmetic expressions. Type the following
-    to see what happens: z * 2 + 100.'
+  Output: 'Es poden usar vectors numèrics en expressions aritmètics. Entre el següent per veure què passa: z * 2 + 100.'
   CorrectAnswer: z * 2 + 100
   AnswerTests: omnitest(correctExpr='z * 2 + 100')
-  Hint: Enter z * 2 + 100, without assigning the result to a variable. The `*` symbol
-    is used for multiplication and shares a key with the number 8 on many keyboards.
+  Hint: Entreu z + 2 + 100, sense assignar el reultat a una variable. El símbol «*» s'usa
+  per multiplicar.
 
 - Class: text
   Output: First, R multiplied each of the three elements in z by 2. Then it added
