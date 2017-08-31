@@ -119,8 +119,8 @@
   Output: 'Es poden usar vectors numèrics en expressions aritmètics. Entre el següent per veure què passa: z * 2 + 100.'
   CorrectAnswer: z * 2 + 100
   AnswerTests: omnitest(correctExpr='z * 2 + 100')
-  Hint: Entreu z + 2 + 100, sense assignar el reultat a una variable. El símbol «*» s'usa
-  per multiplicar.
+  Hint: "Entreu z + 2 + 100, sense assignar el resultat a una variable. El símbol «*» s'usa
+  per multiplicar."
 
 - Class: text
   Output: First, R multiplied each of the three elements in z by 2. Then it added
