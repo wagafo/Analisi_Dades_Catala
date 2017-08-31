@@ -56,8 +56,8 @@
   sinó que intenteu usar el resultat per alguna altra cosa més tard."
 
 - Class: cmd_question
-  Output: "Per veure els continguts de la variable x, simplement entreu x i premeu Intro."
-  Proveu-ho ara.
+  Output: "Per veure els continguts de la variable x, simplement entreu x i premeu Intro.
+  Proveu-ho ara."
   CorrectAnswer: x
   AnswerTests: omnitest(correctExpr='x')
   Hint: "Entreu x i premeu Intro. Això imprimirà automàticament el valor de x."
