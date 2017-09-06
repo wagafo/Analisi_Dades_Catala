@@ -1,6 +1,6 @@
 - Class: meta
-  Course: R Programming
-  Lesson: Sequences of Numbers
+  Course: Programació en R
+  Lesson: Seqüències de Números
   Author: Nick Carchedi, Walter Garcia-Fontes
   Type: Standard
   Organization: JHU Biostat
@@ -112,7 +112,7 @@
 
 - Class: cmd_question
   Output: 'Hi ha diverses maneres que podríem fer això. Una possibilitat és
-    combinar l'operador `:` i la funció length() d'aquesta manera
+    combinar l''operador «:» i la funció length() d''aquesta manera
     1:length(my_seq). Proveu-ho.'
   CorrectAnswer: 1:length(my_seq)
   AnswerTests: omnitest(correctExpr='1:length(my_seq)')
