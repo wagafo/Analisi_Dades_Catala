@@ -1,41 +1,43 @@
-# Let's explore how to "unpack" arguments from an ellipses when you use the
-# ellipses as an argument in a function. Below I have an example function that
-# is supposed to add two explicitly named arguments called alpha and beta.
-# 
-# add_alpha_and_beta <- function(...){
-#   # First we must capture the ellipsis inside of a list
-#   # and then assign the list to a variable. Let's name this
-#   # variable `args`.
+# Anem a explorar com «desempaquetar» arguments des d'una el·lipse (...),
+# quan useu el·lipsis com a argument a una funció. A sota veureu un
+# funció d'exemple que afegeix dos arguments anomenats explícitament que
+# es diuen alpha i beta.
 #
-#   args <- list(...)
+#  add_alpha_and_beta <- function(...){
+#    # Primer hem de capturar l'el·lipse a dins de la llista
+#    # i després assignar la llista a una variable. Anomenarem
+#    # «args» a aquesta variable
 #
-#   # We're now going to assume that there are two named arguments within args
-#   # with the names `alpha` and `beta.` We can extract named arguments from
-#   # the args list by used the name of the argument and double brackets. The
-#   # `args` variable is just a regular list after all!
-#   
-#   alpha <- args[["alpha"]]
-#   beta  <- args[["beta"]]
 #
-#   # Then we return the sum of alpha and beta.
+#    args <- list(...)
 #
-#   alpha + beta 
-# }
+#    # Suposarem que hi ha dos arguments amb nom dins d'args amb els
+#    # de «alpha» i «beta». Podem extraure arguments amb nom de la
+#    # llista args usan el nom de l'argument i parèntesis dobles. La
+#    # variable «args» no és més que una llista regular.
 #
-# Have you ever played Mad Libs before? The function below will construct a
-# sentence from parts of speech that you provide as arguments. We'll write most
-# of the function, but you'll need to unpack the appropriate arguments from the
-# ellipses.
+#    alpha <- args[["alpha"]]
+#    beta  <- args[["beta"]]
+#
+#    # A continuació retornem la suma de alpha i beta.
+#
+#
+#    alpha + beta
+#  }
+#
+# Heu jugat algun cop a Mad Libs? La funció a sota construirà una
+# oració a partir de parts d'una frase parlada que proveïu com a
+# arguments. Escriurem la major part de la funció, però haureu de
+# desempaquetar els arguments apropiats de les el·lipses.
 
 mad_libs <- function(...){
-  # Do your argument unpacking here!
+  # Desempaqueteu els vostres arguments aquí!
   args <- list(...)
-  place <- args[["place"]]
-  adjective <- args[["adjective"]]
-  noun <- args[["noun"]]
-  
-  # Don't modify any code below this comment.
-  # Notice the variables you'll need to create in order for the code below to
-  # be functional!
-  paste("News from", place, "today where", adjective, "students took to the streets in protest of the new", noun, "being installed on campus.")
+  lloc <- args[["lloc"]]
+  adjectiu <- args[["adjectiu"]]
+  substantiu <- args[["substantiu"]]
+  # No modifiqueu cap codi a sota d'aquest comentari.
+  # Noteu les variables que heu de crear perquè el codi de sota sigui
+  # funcional.
+  paste("Avui les notícies de", lloc, "van ser que estudiants", adjectiu, "van sortir al carrer en protesta pel nou", substantiu, "que s'està instal·lant al campus.")
 }

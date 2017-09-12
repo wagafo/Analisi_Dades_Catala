@@ -1,35 +1,40 @@
-# The ellipses can be used to pass on arguments to other functions that are
-# used within the function you're writing. Usually a function that has the
-# ellipses as an argument has the ellipses as the last argument. The usage of
-# such a function would look like:
+# Les el·lipses es poden usar per passar arguments a altres funcions que
+# es fan servir dins de la funció que esteu escrivint. En general, una
+# funció que té les el·lipses les posa com a últim argument. L'ús d'una
+# funció d'aquest tipus es veuria de la manera següent:
 #
-# ellipses_func(arg1, arg2 = TRUE, ...)
+#  ellipses_func(arg1, arg2 = TRUE, ...)
 #
-# In the above example arg1 has no default value, so a value must be provided
-# for arg1. arg2 has a default value, and other arguments can come after arg2
-# depending on how they're defined in the ellipses_func() documentation.
-# Interestingly the usage for the paste function is as follows:
+# A l'exemple de daslt, arg1 no té cap valor predeterminat,
+# consegüentment se li ha d'assignar un valor quan s'usa la
+# funció. L'argument arg2 té un valor predeterminat, i poden venir
+# altres arguments després d'arg2 depenent de com estan definits a la
+# documentació de la funció ellipses_func(). És interessant veure que
+# l'ús per a la funció paste() està definit de la manera següent:
 #
-# paste (..., sep = " ", collapse = NULL)
+#  paste (..., sep = " ", collapse = NULL)
 #
-# Notice that the ellipses is the first argument, and all other arguments after
-# the ellipses have default values. This is a strict rule in R programming: all
-# arguments after an ellipses must have default values. Take a look at the
-# simon_says function below:
+# Noteu que l'el·lipse és el primer argument, i tots els altres
+# arguments després de l'el·lipse tenen valors predeterminats. Això és
+# una regla estricta a la programació en R: tots els arguments després
+# d'una el·lipse han de tenir valors predeterminats. Feu una ullada a la
+# funció simon_diu() a sota:
 #
-# simon_says <- function(...){
-#   paste("Simon says:", ...)
-# }
+#  simon_diu <- function(...){
+#    paste("Simon diu:", ...)
+#  }
 #
-# The simon_says function works just like the paste function, except the
-# begining of every string is prepended by the string "Simon says:"
+# La funció simon_diu() funciona exactament com la funció paste(),
+# excepte que a l'inici de cada cadena de caràcters s'afegeix «Simon
+# diu:»
 #
-# Telegrams used to be peppered with the words START and STOP in order to
-# demarcate the beginning and end of sentences. Write a function below called 
-# telegram that formats sentences for telegrams.
-# For example the expression `telegram("Good", "morning")` should evaluate to:
-# "START Good morning STOP"
+# Els telegrames solien iniciar-se amb INICI i acabar-se amb STOP per
+# demarcar l'inici i final de les frases. Escriviu una funció a sota
+# anomenada telegrama que doni format a les oracions per a telegrames.
+#  Per exemple, l'expressió «telegrama("Bon", "dia")` hauria d'avaluar
+#  a:
+#  "INICI Bon dia STOP"
 
-telegram <- function(...){
-  paste("START", ..., "STOP")
+telegrama <- function(...){
+  paste("INICI", ..., "STOP")
 }

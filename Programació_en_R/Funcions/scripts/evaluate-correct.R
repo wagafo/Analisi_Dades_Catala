@@ -1,36 +1,39 @@
-# You can pass functions as arguments to other functions just like you can pass
-# data to functions. Let's say you define the following functions:
+# Podeu passar funcions com arguments per a d'altres funcions, de la
+# mateixa manera que passeu dades a funcions. Suposem que definiu les
+# funcions
 #
-# add_two_numbers <- function(num1, num2){
+# suma_dos_nombres <- function(num1, num2){
 #    num1 + num2
 # }
 #
-# multiply_two_numbers <- function(num1, num2){
-#	num1 * num2
+# multiplica_dos_nombres <- function(num1, num2){
+# num1 * num2
 # }
 #
-# some_function <- function(func){
+# una_funció <- function(func){
 #    func(2, 4)
 # }
 #
-# As you can see we use the argument name "func" like a function inside of 
-# "some_function()." By passing functions as arguments 
-# some_function(add_two_numbers) will evaluate to 6, while
-# some_function(multiply_two_numbers) will evaluate to 8.
-# 
-# Finish the function definition below so that if a function is passed into the
-# "func" argument and some data (like a vector) is passed into the dat argument
-# the evaluate() function will return the result of dat being passed as an
-# argument to func.
+# Com podeu veure usem l'argument «func» com una funció dins de
+# «una_funció()». En passar funcions com arguments
+# una_funció(suma_dos_nombres) avaluarà a 6, mentre que
+# una_funció(multiplica_dos_nombres) avaluarà a 8.
 #
-# Hints: This exercise is a little tricky so I'll provide a few example of how
-# evaluate() should act:
-#    1. evaluate(sum, c(2, 4, 6)) should evaluate to 12
-#    2. evaluate(median, c(7, 40, 9)) should evaluate to 9
-#    3. evaluate(floor, 11.1) should evaluate to 11
+# Acabeu la definició de la funció a sota de manera que si es passa una
+# funció a l'argument «func» i es passa algunes dades (com un vector) a
+# l'argument dat, la funció evaluate() retornarà el resultat de dat
+# passat com un argument a func.
+#
+# Pistes: Aquest exercici és una mica complicat, de manera que proveirem
+# alguns exemples sobre com hauria de funcionar evaluate():
+#
+#    1. evaluate(sum, c(2, 4, 6)) hauria d'avaluar a 12
+#    2. evaluate(median, c(7, 40, 9)) hauria d'avaluar a 9
+#    3. evaluate(floor, 11.1) hauria d'avaluar a 11
+#
 
 evaluate <- function(func, dat){
-  # Write your code here!
-  # Remember: the last expression evaluated will be returned! 
+  # Escriviu aquí el vostre codi
+  # Recordeu: l'última expressió avaluada serà la que es retornarà
   func(dat)
 }

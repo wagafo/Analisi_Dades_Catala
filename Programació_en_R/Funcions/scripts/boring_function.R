@@ -1,23 +1,24 @@
-# You're about to write your first function! Just like you would assign a value 
-# to a variable with the assignment operator, you assign functions in the following
-# way:
+# Esteu a punt d'escriure la vostra primera funció! De la mateixa manera
+# que assignaríeu un valor a una variable amb l'operador d'assignació,
+# assigneu funcions de la següent manera:
 #
-# function_name <- function(arg1, arg2){
-#	# Manipulate arguments in some way
-#	# Return a value
+# nom_funció <- function(arg1, arg2){
+#         # Manipuleu els arguments d'alguna manera
+# 	# Retorneu un valor
 # }
 #
-# The "variable name" you assign will become the name of your function. arg1 and
-# arg2 represent the arguments of your function. You can manipulate the arguments
-# you specify within the function. After sourcing the function, you can use the 
-# function by typing:
-# 
-# function_name(value1, value2)
+# El «nom_funció» que assigneu esdevindrà el nom de la vostra funció,
+# arg1 i arg2 representen els arguments de la vostra funció. Podeu
+# manipular els argument que especifiqueu dins de la funció. Després
+# d'enregistrar la funció (amb submit() ), podeu usar la funció entrant:
 #
-# Below we will create a function called boring_function. This function takes
-# the argument `x` as input, and returns the value of x without modifying it.
-# Delete the pound sign in front of the x to make the function work! Be sure to 
-# save this script and type submit() in the console after you make your changes.
+# nom_funció(valor1, valor2)
+#
+# A sota crearem una funció anomenada boring_function. Aquesta funció
+# pren l'argument «x» com entrada, i retorna el valor x sense
+# modificar-lo. Esborreu el símbol coixinet # endavant la x perquè 
+# funcioni la funció. Assegureu-vos de desar aquest script i entrar
+# submit() després que heu fet els canvis.
 
 boring_function <- function(x) {
   #x
