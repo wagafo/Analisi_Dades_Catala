@@ -36,7 +36,7 @@
     les funcions generalment s'anomenen arguments. La provisió d'arguments
     a una funció generalment s'anomena «passar» arguments a la funció.
     Els arguments que voleu passar a una funció es posen a dins dels
-    parèntesis de la funsió. Proveu de passar l'argument c(2, 4, 5) a la
+    parèntesis de la funció. Proveu de passar l'argument c(2, 4, 5) a la
     funció mean().
   CorrectAnswer: mean(c(2, 4, 5))
   AnswerTests: omnitest(correctExpr='mean(c(2, 4, 5))')
@@ -46,11 +46,11 @@
   Output: Les funcions en general prenen argument que són variables sobre
     les quals opera la funció. Per exemple, la funció mean() agafa un
     vector com a argument, com en el cas de mean(c(2, 6, 8)). La funció
-    mean() aleshores suma totes els elements (nombres) del vector i els
+    mean() aleshores suma tots els elements (nombres) del vector i els
     divideix per la longitud del vector.
 
 - Class: text
-  Output: A la pregunt següent se us demanarà modificar un script que
+  Output: A la pregunta següent se us demanarà modificar un script que
     apareixerà de seguida que passeu a la següent pregunta. Quan haveu
     acabat de modificar l'script, deseu els vostres canvis a l'script i
     entreu submit() i s'avaluarà l'script. Hi haurà alguns comentaris
@@ -59,17 +59,17 @@
 - Class: script
   Output: L'última expressió de R a avaluar a una funció serà el valor
     que la funció retornarà. Volem que aquesta funció tingui un argument,
-    x, i que retorni x sense modificar-lo. Elimineu el símbol de libra
+    x, i que retorni x sense modificar-lo. Elimineu el símbol coixinet #
     perquè x es retorni sense modificació. Assegureu-vos de desar el vostre
     script abans de entrar submit().
   AnswerTests: test_func1()
-  Hint: Assegureu-vos d'eliminar el símbol de libra perquè l'última expressió
+  Hint: Assegureu-vos d'eliminar el símbol coixinet # perquè l'última expressió
     a la funció sigui sols x.
   Script: boring_function.R
 
 - Class: cmd_question
   Output: "Ara que heu creat la vostra primera funció, anem a provar-la!
-    Entreu boring_function('La meva primera funció'!). Si la vostra funció
+    Entreu boring_function('La meva primera funció!'). Si la vostra funció
     funciona, hauria de retornar la cadena: 'La meva primera funció!'."
   CorrectAnswer: "boring_function('La meva primera funció!')"
   AnswerTests: omnitest(correctExpr="boring_function('La meva primera funció!')")
@@ -105,7 +105,7 @@
   Hint: Useu la funció sum() per trobar al suma de tots els element del vector.
      Useu la funció length() per trobar la mida del vector.
   Script: my_mean.R
-  
+
 - Class: cmd_question
   Output: Provem ara la funció my_mean() trobant la mitjana del vector
     c(4, 5, 10).
@@ -220,7 +220,7 @@
 - Class: text
   Output: Potser us sorprèn saber que podeu passar una funció com un
     argument sense primer definir la funció passada. Les funcions que no
-    estan definides es coneixen apropiadament com funcions anònimes 
+    estan definides es coneixen apropiadament com funcions anònimes
 
 - Class: text
   Output: Usem la funció evaluate per explorar com funcionen les funcions
@@ -273,9 +273,9 @@
 - Class: text
   Output: Com podeu veure el primer argument de paste() és «...» cosa
     que refereix a un nombre indefinit d'arguments que es poden passar a
-    aquesta funció. En el cas de paste() es pot passar qualsevol nombre
-    de cadenes com a arguments i paste() retornarà totes aquestes cadenes
-    convertides en una única cadena.
+    aquesta funció. A això l'anomenarem una «el·lipse». En el cas de
+    paste() es pot passar qualsevol nombre de cadenes com a arguments
+    i paste() retornarà totes aquestes cadenes convertides en una única cadena.
 
 - Class: cmd_question
   Output: 'Simplement per veure com funciona paste(), entreu
@@ -287,10 +287,10 @@
 - Class: text
   Output: "Ara és el moment d'escriure la vostra pròpia versió de paste()."
 
-- Class: script 
+- Class: script
   Output: Assegureu-vos de desar el vostre script abans que entreu submit().
   AnswerTests: test_func5()
-  Hint: "Recordeu que els arguments poden venir després de ..."
+  Hint: "Recordeu que els arguments poden venir després de l'el·lipse ..."
   Script: telegram.R
 
 - Class: cmd_question
@@ -304,7 +304,7 @@
   Output: Assegureu-vos de desar el vostre script abans d'entrar submit().
   AnswerTests: test_func6()
   Hint: "La vostra funció hauria de tenir tres seccions: capturar l'argument
-    genèric a list(), desempaquetar els arguments de l'argument genèric i
+    genèric a list(), desempaquetar els arguments de l'el·lipse i
     assignar-los a variables, i al final passar aquestes variables a paste()."
   Script: mad_libs.R
 
@@ -325,7 +325,7 @@
   Output: Coneixeu com sumar, restar, multiplicar i dividir nombres a l'R.
     Per fer això useu els símbols +, - , *, i /. Aquests símbols es diuen
     operadors binaris perquè prenen sols dos entrades, una entrada per
-    l'esquerra i una altra per la dreta, els operands. 
+    l'esquerra i una altra per la dreta, els operands.
 
 - Class: text
   Output: A l'R podeu definir els vostre propis operadors binaris. Al
