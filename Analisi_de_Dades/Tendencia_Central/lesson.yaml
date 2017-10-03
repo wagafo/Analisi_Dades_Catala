@@ -38,6 +38,19 @@
     alçades. La nostra esperança és que aquesta mostra de 10 persones és
     REPRESENTATIVA de tota la població de Catalunya.
 
+- Class: mult_question
+  Output: 'Anem a comprovar ràpidament la vostra comprensió del
+    terme REPRESENTATIVA. Si tinguéssiu interès d''estudiar la
+    salut dels homes del tram d''edat 18-25 a Catalunya, quina
+    mostra seria més representativa de la població objectiu:
+    una mostra d''homes d''una llar d''avis o una mostra d''homes
+    entre 18-25 anys escollits a l''atzar a tot Catalunya?
+  AnswerChoices: Homes de la llar; Homes 18-25 a tot Catalunya
+  CorrectAnswer: Homes 18-25 a tot Catalunya
+  AnswerTests: omnitest(correctVal='Homes 18-25 a tot Catalunya')
+  Hint: Atès que la vostra població objectiu és homes entre 18 i 25,
+    heu d'escollir una mostra semblant.
+    
 - Class: video
   Output: Us agradaria veure un vídeo sobre aquests conceptes?
   VideoLink: https://youtu.be/S73EPLZrDgs
@@ -79,7 +92,7 @@
   AnswerChoices: mediana, moda, rang; estadística, població, moda;
     població, mostra, representativa; moda, mediana, mitjana
   CorrectAnswer: moda, mediana, mitjana
-  AnswerTests: word= moda, mediana, mitjana
+  AnswerTests: omnitest(correctval='moda, mediana, mitjana')
   Hint: Aquests són els tres mètodes diferents proposats a dalt que s'usen
     per descriure el centre d'una conjunt de dades.
 
