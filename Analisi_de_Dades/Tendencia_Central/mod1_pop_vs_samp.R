@@ -1,0 +1,5 @@
+plot(0,xlim=c(-10,10),ylim=c(-10,10),type="n",xlab="",ylab="",bty="n",xaxt="n",yaxt="n", main="Població vs. Mostra")
+draw.circle(0,0,7,border="black",col="yellow")
+draw.circle(3,0,3,border="black",col="red")
+text(-3.5,0,"Població", font=2)
+text(3,0,"Mostra", font=2)

@@ -1,0 +1,223 @@
+
+- Class: meta
+  Course: Analisi de Dades
+  Lesson: Tendencia Central
+  Author: Nick Carchedi, Walter García Fontes
+  Type: Standard
+  Organization: JHU Biostatistics
+  Version: 1.0.0
+
+- Class: text
+  Output: Avui, aprendrem els elements bàsica de l'anàlisi de dades.
+    Probablement té sentit començar per definir la paraula DADES.
+
+- Class: text
+  Output: D'acord amb la Wikipedia, «Dades són valors de variable
+    qualitatives o quantitatives, que pertanyen a un conjunt d'elments.»
+
+- Class: text
+  Output: Sovint, el «conjunt d'elements» en els quals estem interessats
+    es refereixen com la POBLACIÓ. L'anàlisi de dades en general implica
+    l'estudi d'un subconjunt, o MOSTRA, d'una població sencera.
+
+- Class: figure
+  Output: Aquí podeu trobar un diagrama que mostra la relació entre
+    una població i una mostra.
+  Figure: mod1_pop_vs_samp.R
+  FigureType: new
+
+- Class: text
+  Output: L'anàlisi de dades hauria de començar sempre amb una pregunta
+    específica d'interès. Per exemple, ens podríem preguntar «Quin
+    percentatge de la població de Catalunya té una alçada de més de
+    1.80 metres?»
+
+- Class: text
+  Output: Aquí, la nostra població d'interès és tothom qui viu a Catalunya.
+    Atès que no és pràctic mesurar l'alçada de més de 8 milions de persones,
+    podríem en canvi escollir 100 persones a l'atzar i mesurar les seves
+    alçades. La nostra esperança és que aquesta mostra de 10 persones és
+    REPRESENTATIVA de tota la població de Catalunya.
+
+- Class: mult_question
+  Output: "Intentem comprovar ràpidament la vostra comprensió del terme
+    REPRESENTATIVA. Si us interessés estudiar la salut dels homes vivint
+    a Catalunya, en el tram d'edat 18-25, quina seria una mostra
+    representativa de la població objectiu: una mostra de 50 homes
+    vivint en una llar d'avis de Barcelona, o una mostra de 50 homes
+    que entrevistats a l''atzar a diferents indrets de Catalunya?"
+  AnswerChoices: Homes de la llar; Homes a diferents indrets
+  CorrectAnswer: Homes a diferents indrets
+  AnswerTests: word= Homes a diferents indrets
+  Hint: Atès que la vostra població objectiu són tots els homes al tram d'edat
+    18-25 que viuen a Catalunya, quina d'aquestes dues mostres de la població
+    s'ajusten millor a la població d'interès?
+
+- Class: video
+  Output: Us agradaria veure un vídeo sobre aquests conceptes?
+  VideoLink: https://youtu.be/S73EPLZrDgs
+
+- Class: text
+  Output: L'objectiu d'analitzar una  mostra és extraure conclusions sobre
+    la població de la qual la mostra ha estat extreta. Això s'anomena
+    INFERÈNCIA i és l'objectiu principal de l'ESTADÍSTICA INFERENCIAL.
+
+- Class: text
+  Output: Per fer inferències sobre la població, primer hem de descriure
+    la mostra. Aquest és l'objectiu principal de l'ESTADíSTICA DESCRIPTIVA.
+
+- Class: text
+  Output: Si volem descriure la nostra mostra usant sols un número, quina
+    seria la millor manera de fer-ho? Un bon inici és trobar el centre,
+    la meitat, o l'element més comú de les nostres dades. A l'estadística
+    això l'anomenem la TENDÈNCIA CENTRAL.
+
+- Class: text
+  Output: Hi ha tres mètodes diferents per trobar un valor així i
+    l'aplicabilitat de cada mètode depèn de la situació. Aquests tres mètodes
+    s'anomenen la MITJANA, la MEDIANA, i la MODA.
+
+- Class: video
+  Output: Us agradaria veure un vídeo breu sobre mitjana, mediana i moda?
+  VideoLink: https://youtu.be/WpYlo_SSJT0
+
+- Class: mult_question
+  Output: La mitjana, la mediana i la moda són mesures de ____________.
+  AnswerChoices: variació; significança; desviació; tendència central
+  CorrectAnswer: tendència central
+  AnswerTests: word=tendència central
+  Hint: Aquest és un terme elegant per al «mig» d'un conjunt de dades.
+
+- Class: mult_question
+  Output: Quin dels termes següents són de la màxima importància quan
+    s'està descrivint la tendència central d'un conjunt de dades?
+  AnswerChoices: mediana, moda, rang; estadística, població, moda;
+    població, mostra, representativa; moda, mediana, mitjana
+  CorrectAnswer: moda, mediana, mitjana
+  AnswerTests: word= moda, mediana, mitjana
+  Hint: Aquests són els tres mètodes diferents proposats a dalt que s'usen
+    per descriure el centre d'una conjunt de dades.
+
+- Class: cmd_question
+  Output: Per il·lustrar aquests conceptes, ara mirarem a un conjunt de
+    dades reals del paquet «openintro» de R, que ja us hem carregat. Escriviu
+    «cars» a la línia d'ordres i premeu Intro per veure el conjunt de dades
+    amb el qual treballarem.
+  CorrectAnswer: cars
+  AnswerTests: equivalent=cars
+  Hint: Entreu «cars» i premeu Intro. No useu les cometes, espais o lletres
+    majúscules.
+
+- Class: text
+  Output: 'Haureu notat que les files estan numerades de l''1 al 34, cadascuna
+    representant exactament un cotxe (car) al conjunt de dades. Per a cada
+    cotxe, les següents VARIABLES, o característiques, es reporten:
+    «type» (small, midize, large), és a dir el tipus, que pot ser petit,
+    mitjà o gran, «preu» en dòlars americans, «mpgCity» que és quantes milles
+    per galó de combustible pot fer a la ciutat, «driveTrain» (4WD, front,
+    rear) que és la tracció que pot ser de les quatres rodes (4WD), frontal
+    (front) o posterior (rear), «passengers» que és la capacitat de passatgers
+    que té i «weight», el pes en lliures.'
+
+- Class: text
+  Output: Ens enfocarem a la variable «mpgCity» en aquesta lliçó. Per
+    simplicitat, anem a extraure-la del nostre conjunt de dades i
+    emmagatzemar-la en una nova variable.
+
+- Class: cmd_question
+  Output: Accediu la variable «mpgCity» del conjunt de dades «cars» usant
+    «conjunt_de_dades$variable»
+  CorrectAnswer: cars$mpgCity
+  AnswerTests: equivalent=cars$mpgCity
+  Hint: Useu la notació 'conjunt_de_dades$variable'. Recordeu que el nom del
+    conjunt de dades és «cars», i la variable «mptCity».
+
+- Class: cmd_question
+  Output: Emmagatzemeu ara els continguts de «cars$mpgCity» en una nova
+    variable anomenada «myMPG».
+  CorrectAnswer: myMPG <- cars$mpgCity
+  AnswerTests: newcmd=myMPG <- cars$mpgCity
+  Hint: Useu l'operador d'assignació per assignar «cars$mpgCity» a una nova
+    variable anomenada «myMPG».
+
+- Class: text
+  Output: La MITJANA ARITMÈTICA, o simplement la MITJANA, és la mesura més
+    comuna utilitzada per descriure la tendència central. Per calcular la
+    mitjana d'un conjunt de dades, primer heu de sumar tots els valors
+    i després dividir aquesta suma pel nombre total de valors al conjunt
+    de dades.
+
+- Class: text
+  Output: Tanmateix, quan hi ha molts valors d'interès, esdevé tediós fer
+    aquest càlcul a mà. Afortunadament, l'R té una funció incorporada
+    per calcular la mitjana. La sintaxi d'aquesta funció és
+    «mean(variable)».
+
+- Class: cmd_question
+  Output: Calculeu ara la mitjana de la variable «myMPG».
+  CorrectAnswer: mean(myMPG)
+  AnswerTests: newcmd=mean(myMPG)
+  Hint: Useu la funció «mean» entrant «mean» seguit del nom de la vostra
+    variable entre parèntesis. No useu espais.
+
+- Class: text
+  Output: Els valors extrems del nostre conjunt de dades poden tenir una
+    influència significativa en la mitjana. Per exemple, si hi hagués  un
+    cotxe en el nostre conjunt de dades que fa 200 miles per galó, això
+    inflaria la mitjana cap a dalt. Això distorsionaria la interpretació,
+    atès que cap dels altres cotxes s'apropen ni una mica a aquest rendiment.
+
+- Class: text
+  Output: Una alternativa a la mitjana, que no es veu influencia en absolut
+    pels valors extrems, és la MEDIANA. La mediana es calcula ordenant tots
+    els valors de més petit a més gran i seleccionant després el valor central.
+    Si hi ha un nombre parell de valors, aleshores hi ha en realitat 2 valors
+    centrals. En aquest cas, la MEDIANA és igual a la MITJANA dels 2 valors
+    centrals. No us amoïneu si això és una mica confús. Es farà més clar amb
+    la pràctica.
+
+- Class: cmd_question
+  Output: L'R també té una funció per calcular la mediana d'un conjunt de
+    de ades, i això es fa escrivint «median(variable)». Trobeu ara el valor
+    de la mediana per a la variable «myMPG.
+  CorrectAnswer: median(myMPG)
+  AnswerTests: newcmd=median(myMPG)
+  Hint: Useu la funció «median» tot escrivint «median» (sense cometes) tot
+    seguit pel nom de la vostra variable envoltat en parèntesis. No useu
+    espais.
+
+- Class: text
+  Output: Finalment, podríem estar interessats principalment a trobar el
+    valor que apareix més cops en el nostre conjunt de dades. En altres
+    paraules, quin és el valor més comú del nostre conjunt de dades? Això
+    s'anomena la MODA i es troba comptant el nombre de cops que apareix
+    cada valor en el conjunt de dades i seleccionant el valor més freqüent.
+
+- Class: cmd_question
+  Output: Useu la funció «table» per veure quants cops apareix cada valor
+    per a la nostra variable «myMPG». La sintaxi per a aquesta funció és la
+    mateixa que per a les altres que heu vist.
+  CorrectAnswer: table(myMPG)
+  AnswerTests: newcmd=table(myMPG)
+  Hint: Useu la funció «table» tot escrivint «table» (sense cometes) tot
+    seguit pel nom de la vostra variable envoltat en parèntesis. No useu
+    espais.
+
+- Class: exact_question
+  Output: Mireu a la taula per a la variable «myMPG» que heu creat a dalt.
+    La primera fila us dóna el valor de la vostra variable i la segona
+    fila us dóna el nombre de cops que apareix al vostre conjunt de dades.
+    Atès que la moda és el valor de la vostra variable que apareix més cops
+    en el vostre conjunt de dades, quina és la moda de la vostra variable
+    «myMPG»?
+  CorrectAnswer: '19'
+  AnswerTests: exact=19
+  Hint: Teniu en compte que la moda és el valor de la variable que és més
+    comú, NO el nombre de copa qua apareix.
+
+- Class: text
+  Output: 'Enhorabona! Heu arribat al final d''aquesta lliçó. Hem introduït
+    conceptes bàsics relacionats amb les dades i l''anàlisi de dades.
+    Específicament, heu après tres mesures importants de la tendència
+    central: la mitjana, la mediana i la moda. També sabeu ara com
+    calcular-les amb l''R.'
