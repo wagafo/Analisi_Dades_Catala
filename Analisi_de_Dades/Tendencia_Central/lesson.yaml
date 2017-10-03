@@ -92,7 +92,7 @@
   AnswerChoices: mediana, moda, rang; estadística, població, moda;
     població, mostra, representativa; moda, mediana, mitjana
   CorrectAnswer: moda, mediana, mitjana
-  AnswerTests: omnitest(correctval='moda, mediana, mitjana')
+  AnswerTests: omnitest(correctVal='moda, mediana, mitjana')
   Hint: Aquests són els tres mètodes diferents proposats a dalt que s'usen
     per descriure el centre d'una conjunt de dades.
 
