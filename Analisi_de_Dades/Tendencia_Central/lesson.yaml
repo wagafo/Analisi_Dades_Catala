@@ -44,7 +44,7 @@
     salut dels homes del tram d''edat 18-25 a Catalunya, quina
     mostra seria més representativa de la població objectiu:
     una mostra d''homes d''una llar d''avis o una mostra d''homes
-    entre 18-25 anys escollits a l''atzar a tot Catalunya?
+    entre 18-25 anys escollits a l''atzar a tot Catalunya?'
   AnswerChoices: Homes de la llar; Homes 18-25 a tot Catalunya
   CorrectAnswer: Homes 18-25 a tot Catalunya
   AnswerTests: omnitest(correctVal='Homes 18-25 a tot Catalunya')
