@@ -40,18 +40,16 @@
     REPRESENTATIVA de tota la població de Catalunya.
 
 - Class: mult_question
-  Output: "Intentem comprovar ràpidament la vostra comprensió del terme
-    REPRESENTATIVA. Si us interessés estudiar la salut dels homes vivint
-    a Catalunya, en el tram d'edat 18-25, quina seria una mostra
-    representativa de la població objectiu: una mostra de 50 homes
-    vivint en una llar d'avis de Barcelona, o una mostra de 50 homes
-    que entrevistats a l'atzar a diferents indrets de Catalunya?"
-  AnswerChoices: Llar; Tot arreu
-  CorrectAnswer: Tot arreu
-  AnswerTests: word= Tot arreu
-  Hint: Atès que la vostra població objectiu són tots els homes al tram d'edat
-    18-25 que viuen a Catalunya, quina d'aquestes dues mostres de la població
-    s'ajusten millor a la població d'interès?
+  Output: 'Let''s quickly test your understanding of the term REPRESENTATIVE. If you
+    were interested in studying the health of men living in the US, ages 18-25, which
+    sample would be more representative of the target population: a sample of 50 men
+    who live in a nearby retirement home, or a sample of 50 men who are students at
+    a local university?'
+  AnswerChoices: Men living at the retirement home; College students
+  CorrectAnswer: College students
+  AnswerTests: word= College students
+  Hint: Since your target population is all men ages 18-25 living in the US, which
+    of these 2 sample populations more closely matches the population of interest?
 
 - Class: video
   Output: Us agradaria veure un vídeo sobre aquests conceptes?
