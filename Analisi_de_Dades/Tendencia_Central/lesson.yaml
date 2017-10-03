@@ -33,23 +33,11 @@
     1.80 metres?»
 
 - Class: text
-  Output: Aquí, la nostra població d'interès és tothom qui viu a Catalunya.
+  Output: Aquí, la nostra població d'interès és tothom que viu a Catalunya. 
     Atès que no és pràctic mesurar l'alçada de més de 8 milions de persones,
     podríem en canvi escollir 100 persones a l'atzar i mesurar les seves
     alçades. La nostra esperança és que aquesta mostra de 10 persones és
     REPRESENTATIVA de tota la població de Catalunya.
-
-- Class: mult_question
-  Output: 'Let''s quickly test your understanding of the term REPRESENTATIVE. If you
-    were interested in studying the health of men living in the US, ages 18-25, which
-    sample would be more representative of the target population: a sample of 50 men
-    who live in a nearby retirement home, or a sample of 50 men who are students at
-    a local university?'
-  AnswerChoices: Men living at the retirement home; College students
-  CorrectAnswer: College students
-  AnswerTests: word= College students
-  Hint: Since your target population is all men ages 18-25 living in the US, which
-    of these 2 sample populations more closely matches the population of interest?
 
 - Class: video
   Output: Us agradaria veure un vídeo sobre aquests conceptes?
