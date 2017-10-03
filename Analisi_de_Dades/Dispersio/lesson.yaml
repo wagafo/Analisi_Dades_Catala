@@ -1,226 +1,248 @@
 
 - Class: meta
-  Course: Data Analysis
-  Lesson: Dispersion
-  Author: Nick Carchedi
+  Course: Analisi de Dades
+  Lesson: Dispersio
+  Author: Nick Carchedi, Walter Garcia-Fontes
   Type: Standard
   Organization: JHU Biostatistics
   Version: 1.0.0
 
 - Class: text
-  Output: 'Welcome to Lesson 2! In this lesson, we will learn what DISPERSION is and
-    what statistical values are needed in order to best describe the spread of data.
-    Further, you will learn all about a box-and-whisker plot which is  a plot commonly
-    used by statisticians when determining variability. '
+  Output: Us donem la benvinguda! A aquest lliçó aprendrem que és la
+    DISPERSIÓ i quins valors estadístics calen per descriure de la millor
+    manera possible la dispersió de les dades. A més a més, aprendreu
+    tot el que cal sobre els diagrames de caixa, que és un diagrama que
+    els estadístics utilitzen per descriure la dispersió entre d'altres
+    coses.
 
 - Class: text
-  Output: 'While measures of central tendency are used to estimate the middle values
-    of a dataset, measures of dispersion are important for describing the spread of
-    the data. '
+  Output: Mentre que les mesures de tendència central s'usen per estimar
+    els valors del mig de la distribució, les mesures de dispersió són
+    importants per descriure la variació al voltant del mig de les dades.
 
 - Class: text
-  Output: The term dispersion refers to degree to which the data values are scattered
-    around an average value. Dispersion is synonymous with other words such as variability
-    and spread.
+  Output: El terme dispersió refereix al grau amb el qual els valors de
+    les dades estan dispersos al voltant dels valors centrals. La dispersió
+    es sinònim d'altres paraules como variabilitat i volatilitat.
 
 - Class: text
-  Output: 'Why is it important to analyze the spread of a particular set of data?
-    Two different samples may have the same mean or median, but different levels of
-    variability or vice versa. '
+  Output: Perquè és important analitzar la dispersió d'un conjunt particular
+    de dades? Potser que dos conjunts de dades tinguin la mateixa mitjana
+    o mediana, però diferents valors de la dispersió, o a l'inrevés.
 
 - Class: mult_question
-  Output: 'Therefore, it is important to describe both the __________ and _________
-    of a data set. '
-  AnswerChoices: median, variability; central tendency, dispersion; middle, mean;
-    spread, variability
-  CorrectAnswer: central tendency, dispersion
-  AnswerTests: word= central tendency, dispersion
-  Hint: The first term refers to the middle of a dataset. The second term refers to
-    the spread of a dataset.
+  Output: En conseqüència, és important descriure tant la ____________
+    com la ___________ d'un conjunt de dades.
+  AnswerChoices: mediana, variabilitat; tendència central, dispersió;
+    mig, mitjana; dispersió, variabilitat.
+  CorrectAnswer: tendència central, dispersió
+  AnswerTests:  omnitest(correctVal='tendència central, dispersió')
+  Hint: El primer terme refereix al centre del conjunt de dades. El segon
+    refereix a la dispersió del conjunt de dades.
 
 - Class: text
-  Output: 'In this lesson, we will discuss the three statistical values most commonly
-    used to describe the dispersion or variability of a data set. Variability is a
-    fancy term used to classify how variable or spread out the data is. '
+  Output: En aquesta lliçó, discutirem els tres valors estadístics usats
+    més sovint per descriure la dispersió o variabilitat d'un conjunt de dades.
+    Variabilitat és un terme elegant per classificar com de variable o
+    disperses són les dades.
 
 - Class: text
-  Output: 'The first descriptive statistic that can describe the variability of a
-    data set is known as the RANGE. The range is the difference between the maximum
-    and minimum values of the data set. '
+  Output:  El primer estadístic descriptiu que pot descriure la variabilitat
+    d'un conjunt de dades és coneix com a RANG. El rang és la diferència
+    entre els valor màxim i el mínim d'un conjunt de dades.
 
 - Class: text
-  Output: 'To demonstrate how you can use R to determine the range of a data set we
-    will refer back to the cars data set from the previous lesson. '
+  Output: Per demostrar com podeu usar R per determinar el rang d'un conjunt
+    de dades tornarem a referir-nos al conjunt de dades de cotxes, car,
+    de la lliçó anterior.
 
 - Class: cmd_question
-  Output: 'Type in the R-command ''range(cars$price)'' to determine the exact values
-    for the minimum and maximum prices of cars in the data set. '
+  Output: Escriviu l'ordre de R «range(cars$price)» per determinar els
+    valors mínim i màxim dels preus dels cotxes al conjunt de dades.
   CorrectAnswer: range(cars$price)
   AnswerTests: swirl1cmd=range(cars$price)
-  Hint: 'Type in ''range(cars$price)'' without quotations and press enter to see the
-    minimum and maximum prices. '
+  Hint: Escrivieu «range(cars$price)» sense les cometes i premeu Intro per
+    veure els preus mínim i màxim.
 
 - Class: exact_question
-  Output: 'Now that you have the minimum and maximum ''price'' values, calculate the
-    range of the ''price'' data. '
+  Output: Ara que teniu els valors mínim i màxim de «price», calculeu el
+    rang de variació d'aquesta variable.
   CorrectAnswer: '54.5'
   AnswerTests: exact=54.5
-  Hint: Subtract the minimum price value from the maximum price value.
+  Hint: Resteu el preu mínim del màxim.
 
 - Class: text
-  Output: The second important measure of variability is known as VARIANCE. Mathematically,
-    VARIANCE is the average of the squared differences from the mean. More simply,
-    variance represents the total distance of the data from the mean.
+  Output: La segona mesura important de variabilitat es coneix com a
+    VARIÀNCIA. Matemàticament, la variància és la mitjana de les
+    diferències al quadrat de cada cas respecte a la mitjana. Més
+    simplement, la variància representa la distància total de les dades
+    respecte a la mitjana.
 
 - Class: cmd_question
-  Output: 'In R, you can use the command ''var(data)'' to easily calculate the variance
-    of a particular set of data. Try calculating the variance for the data ''cars$price''. '
+  Output: A l'R, podeu usar l'ordre «var(data)» per calcular fàcilment la
+    variància d'un conjunt particular de dades. Proveu de calcular la
+    variància de la variable «cars$price».
   CorrectAnswer: var(cars$price)
   AnswerTests: swirl1cmd=var(cars$price)
-  Hint: Type in 'var(cars$price)' without quotations and press enter to see the variance
-    of the prices of cars.
+  Hint: Escriviu «var(cars$price)» sense cometes i premeu Intro per veure la
+    variància.
 
 - Class: text
-  Output: 'The values for variance and standard deviation are very closely related.
-    The standard deviation can be calculated by taking the square root of the variance
-    where as the variance can be calculated by squaring the standard deviation. '
+  Output: Els valors de la variància i la desviació estàndard estan
+    relacionats molt estretament. La desviació estàndard es pot calcular
+    agafant l'arrel quadrada de la variància, mentre que la variància es
+    pot calcular elevant al quadrat a la desviació estàndard.
 
 - Class: text
-  Output: To statisticians, the standard deviation is a more conventional measure
-    of variability because it is expressed in the same units as the original data
-    values.
+  Output: Per als estadístics, la desviació estàndard és una mesura més
+    convencional de la variabilitat, perquè està expressada en la mateixa
+    unitat de mesura que les dades originals.
 
 - Class: cmd_question
-  Output: Similar to variance, you can use the R-command 'sd(data)' to calculate the
-    standard deviation of a particular set of data. Try calculating the standard deviation
-    for the data 'cars$price'.
+  Output: De manera semblant a la variància, podeu usar l'ordre de R
+    «sd(data)» per calcular la desviació estàndard d'un conjunt particular
+    de dades. Proveu de calcular la desviació estàndard per a la variable
+    «cars$price».
   CorrectAnswer: sd(cars$price)
   AnswerTests: swirl1cmd=sd(cars$price)
-  Hint: Type in 'sd(cars$price)' without quotations and press enter to see the standard
-    deviation of the prices of cars.
+  Hint: Escriviu «sd(cars$price)» sense cometes i premeu Intro per veure
+    la desviació estàndard dels preus dels cotxes.
 
 - Class: text
-  Output: The standard deviation is very important when analyzing our data set. A
-    small standard deviation indicates that the data points tend to be located near
-    the mean value, while a large standard deviation indicates that the data points
-    are spread further from the mean.
+  Output: La desviació estàndard és molt important quan s'analitza un conjunt
+    de dades. Una desviació estàndard petita indica que els valors dels
+    diferents casos de les dades estan localitzats a prop del valor mitjà,
+    mentre que una desviació estàndard gran indica que estan disperses al
+    voltant de la mitjana.
 
 - Class: video
-  Output: 'Would you like to watch a short video that goes deeper into how variance
-    and standard deviation are calculated? '
-  VideoLink: http://youtu.be/E4HAYd0QnRc
+  Output: Us agradaria veure un vídeo curt que aprofundeix sobre el
+    càlcul de la variància i la desviació estàndard?
+  VideoLink: https://youtu.be/YC9158GWkpY
 
 - Class: mult_question
-  Output: 'Three important measures of variability are which of the following: '
-  AnswerChoices: mean, median, range; spread, mean, central tendency; variance, dispersion,
-    spread; range, variance, standard deviation
-  CorrectAnswer: range, variance, standard deviation
-  AnswerTests: word= range, variance, standard deviation
-  Hint: 'Look for the three specific terms that we focused on calculating. '
+  Output: 'Quines són tres mesures importants de la variabilitat?: '
+  AnswerChoices: mitjana, mediana, rang; dispersió, mitjana, tendència central;
+    variància, dispersió, variació; rang, variància, desviació estàndard
+  CorrectAnswer: rang, variància, desviació estàndard
+  AnswerTests: omnitest(correctVal='rang, variància, desviació estàndard')
+  Hint: Mireu els tres termes que hem presentat abans.
 
 - Class: text
-  Output: A BOX PLOT, also called a BOX-AND-WHISKER PLOT, is used to summarize the
-    main descriptive statistics of a particular data set and this type of plot helps
-    illustrate the concept of variability. A box plot is used to visually represent
-    the MINIMUM, FIRST QUARTILE (Q1), MEDIAN, THIRD QUARTILE (Q3), and MAXIMUM of
-    a data set.
+  Output: S'usa un DIAGRAMA DE CAIXA per resumir els principals estadístics
+    descriptius d'un conjunt particular de dades i aquest tipus de gràfica
+    serveix per il·lustrar el concepte de variabilitat. Un diagrama de caixa
+    representa visualment el Mínim, Primer quartil (Q1), Mediana, Tercer
+    quartil (Q3) i Màxim d'un conjunt de dades.
 
 - Class: video
-  Output: Would you like to watch a brief YouTube video on box-and-whisker plots?
-  VideoLink: http://youtu.be/BXq5TFLvsVw
+  Output: Voleu veure un vídeo breu de YouTube sobre el diagrama de caixa?
+  VideoLink: https://youtu.be/vdvO6SJyVmA
 
 - Class: figure
-  Output: 'Here I have created a box plot to represent the price data for each of
-    the three car types: large, midsize, and small. You''ll notice that each of the
-    3 figures is composed of a closed 4-sided "box" with "whiskers" on the top and
-    bottom, hence the name box-and-whisker plot.'
+  Output: "Aquí hem creat un diagrama de caixa per representar les dades
+    del preu per a cadascú dels tres tipus de cotxes: gran, mitjà i petit.
+    Podeu notar que cadascuna de les tres figures es compon d'una «caixa»
+    tancada de quatre cantons amb «bigotis» a la part superior i inferior,
+    d'aquí el nom de «diagrama de caixa» o també «diagrama de caixa i bigotis»."
   Figure: mod1_boxplot.R
   FigureType: new
 
 - Class: text
-  Output: The height of each box is referred to as the INTERQUARTILE RANGE (IQR).
-    The more variability within the data, the larger the IQR. On the other hand, less
-    variability within the data means a smaller IQR. The bottom of the box in the
-    box plot corresponds to the value of the first quartile (Q1), and the top of the
-    box corresponds to the value of the third quartile (Q3). To calculate the value
-    of the IQR, simply subtract the value of Q1 from that of Q3.
+
+  Output: L'alçada de cada caixa es coneix com el RANG INTERQUARTÍLIC (RIQ).
+    Quanta més variabilitat dins de les dades, més gran el rang interquartílic.
+    Per una altra part, una variabilitat menor dins de les dades implica un
+    RIQ més reduït. La part inferior de la caixa al diagrama de caixa
+    correspon amb el valor del primer quartil (Q1), i la part superior
+    correspon amb el valor del tercer quartil (Q3). Per calcular el valor
+    d'IQR, simplement resteu el valor de Q1 del valor de Q3.
 
 - Class: text
-  Output: The whiskers, or lines, that extend above and below each box represent roughly
-    the upper 25% and lower 25% of data points, respectively. The only exception is
-    when there are outliers, which I'll explain shortly.
+  Output: Els bigotis, o línies, que s'estenen a sobre i a sota de cada caixa
+    representen aproximadament el 25% superior i el 25% inferior del total
+    de casos, respectivament. L'única excepció és quan hi ha valors atípics,
+    que explicarem més endavant.
 
-- Class: range_question
-  Output: Looking at the box plot, what is the approximate interquartile range for
-    the midsize vehicles?
-  CorrectAnswer: 16; 22
-  AnswerTests: range=16-22
-  Hint: Subtract the Q1 value from the Q3 value. The Q1 value is the minimum value
-    contained in the box and the Q3 value is the maximum value contained in the box.
+- Class: exact_question
+  Output: Mirant al diagrame de caixa, quin és el rang interquartílic aproximat
+    per als vehicles de tamany mitjà (midsize)?
+  CorrectAnswer: '6'
+  AnswerTests: exact=6
+  Hint: Resteu el valor Q1 del valor Q3. El valor Q1 és el valor mínim
+    contingut en la caixa, mentre que el valor Q3 és el valor màxim.
 
 - Class: text
-  Output: Let's take a closer look at how quartiles are calculated. We start by sorting
-    the data from least to greatest, just like when calculating the median. The first
-    quartile (Q1), also known as the 25th PERCENTILE (since 25% of the data points
-    fall at or below this value), is simply the median of the first half of the sorted
-    data. Likewise, the third quartile (Q3), also known as the 75th percentile, is
-    the median of the second half of the sorted data.
+  Output: Mirem amb una mica més de detall com es calculen els quartils.
+    Comencem ordenant les dades de més petita a més gran, igual que com
+    calculem la mediana. El primer quartil (Q1), també conegut com el
+    percentil 25è (atès que 25% dels casos son iguals o més petits que
+    aquest valor), és simplement la mediana de la primera meitat de les
+    dades ordenades. De manera semblant, el tercer quartil (Q3), també
+    conegut com el percentil 75è, és la mediana de la segona meitat de les
+    dades ordenades.
 
 - Class: figure
-  Output: As shown in this plot, the blue horizontal line illustrates how to find
-    the value for the first quartile. The green horizontal line illustrates how to
-    find the value for the third quartile. The interquartile range is the range of
-    data values that is contained in between these two lines.
+  Output: Com es mostra a aquesta gràfica, la línia blava horitzontal
+    il·lustra com trobar el valor del primer quartil. La línia verda
+    horitzontal il·lustra com trobar el valor del tercer quartil.
+    El rang interquartílic és el rang dels valors dels casos continguts
+    entre aquestes dues línies.
   Figure: mod1_boxplot_add.R
   FigureType: addition
 
 - Class: figure
-  Output: 'Look again at our box plot of price vs. car type. You may be thinking to
-    yourself, ''What is that circle above the box plots for the midsize cars, and
-    why is there no circle above the box plot for the large cars?'' Those circles
-    represent OUTLIERS in the data set. '
+  Output: Mireu un altre cop el nostre diagrama de caixa de preus contra
+    tipus de cotxe. Podeu estar pensant «Què és aquest cercle sobre els
+    diagrames de caixa per als cotxes mitjans (midsize), i perquè no hi
+    ha cap cercle sobre el cotxes grans (large)?». Aquests cercles
+    representen VALORS ATÍPIC del nostre conjunt de dades.
   Figure: mod1_boxplot.R
   FigureType: new
 
 - Class: figure
-  Output: An OUTLIER is an observation that is unusual or extreme relative to the
-    other values in the data set. Outliers are useful in identifying a heavy skew
-    in a distribution, and may signify a data collection or data entry error to a
-    scientist. There are many different conventions for identifying outliers within
-    a data set.
+  Output: Un VALOR ATÍPIC és una observació que és inusual o extrema en
+    relació als altres casos del conjunt de dades. Els valors atípics
+    són útils per identificar una asimetria important a la distribució,
+    i pot significar un error en la recollida o entrada de les dades per
+    a un científic. Hi ha moltes convencions diferents per identificar
+    valors atípics dins d'un conjunt de dades.
   Figure: mod1_boxplot.R
   FigureType: new
 
 - Class: mult_question
-  Output: When looking at the box plot, which car types appear to have outliers?
+  Output: Quan mirem al diagrama de caixa, quins tipus de cotxe sembla
+    que mostren valors atípics?
   AnswerChoices: small, midsize; midsize, large; small, large; small, midsize, large
   CorrectAnswer: small, midsize
-  AnswerTests: word=small, midsize
-  Hint: Look for the types of cars that correspond to the box plots with circles above
-    or below them.
+  AnswerTests: omnitest(correctVal='small, midsize')
+  Hint: Mireu pels tipus de cotxes que corresponen als diagrames de caxia
+    amb cercles a sobre o a sota d'ells.
 
 - Class: figure
-  Output: As you can see in the box plot, the data for prices of 'midsize' cars vary
-    from around 15 to 62, encompassing a range of approximately 50. This is a great
-    deal larger than the variation for 'small' cars which range from around 5 to 15,
-    encompassing a range of approximately 10. Therefore, since the range is much greater
-    for 'midsize' cars, prices of 'midsize' cars have much higher variability in comparison
-    to the prices of 'small' cars.
+  Output: Com podeu veure al diagrama de caixa, les dades de preus
+    de cotxes «midsize» varien entre 15 i 62, comprenent un rang
+    aproximadament de 50. Això és força més gran que la variació dels
+    cotxes «small» que tenen un rang aproximadament entre 5 i 15, amb
+    un rang aproximat de variació de 10. Consegüentment, atès que el
+    rang és força més gran per a cotxes «midsize», els preus de cotxes
+    «midsize» tenen una variabilitat molt més gran en comparació als
+    preus de cotxers «small».
   Figure: mod1_boxplot.R
   FigureType: new
 
 - Class: mult_question
-  Output: Now it is your turn! Is the variability of prices of cars of type 'large'
-    higher or lower than that of cars of type 'small'?
-  AnswerChoices: higher; lower; the same
-  CorrectAnswer: higher
-  AnswerTests: word=higher
-  Hint: Look to see if the range of cars of type 'large' is greater or less than that
-    of cars of type 'small'.
+  Output: Ara és el vostre torn. La variabilitat dels preus dels cotxes
+    de tipus «large» és més gran o més petita que la variabilitat del
+    cotxers de tipus «small»?
+  AnswerChoices: més gran; més petita; igual
+  CorrectAnswer: més gran
+  AnswerTests: omnitest(correctVal='més gran')
+  Hint: Mireu per veure si el rang dels cotxes de tipus «large» és més
+    gran que la variabilitat dels cotxes de tipus «small».
 
 - Class: text
-  Output: 'You have officially mastered the concept of dispersion and have fully learned
-    how to read and interpret a box-and-whisker plot. These are two very valuable
-    tools used everyday in descriptive statistics. Congratulations! In the next lesson,
-    you will learn about data visualization. '
-
+  Output: Heu comprés oficialment el concepte de dispersió i heu après
+    completament com llegir i interpretar un diagrama de caixa. Aquestes
+    són dues eines molt útils en el dia a dia de l'estadística descriptiva.
+    Enhorabona! Ara podeu treballar la visualització de les dades.
