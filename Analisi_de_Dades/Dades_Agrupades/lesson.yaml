@@ -1,0 +1,174 @@
+
+- Class: meta
+  Course: Analisi de Dades
+  Lesson: Dades Agrupades
+  Author: Walter Garcia-Fontes
+  Type: Standard
+  Organization: Universitat Pompeu Fabra
+  Version: 1.0.0
+
+- Class: text
+  Output: En aquesta lliçó mostrarem algunes eines a l'R per analitzar
+    dades que tenim a una taula de freqüències.
+
+- Class: cmd_question
+  Output: Un paquet que és útil per analitzar dades agrupades és el
+    paquet «actuar». Ja el teniu instal·lat, però recordeu que si voleu
+    usar-lo a la vostra anàlisi heu d'instal·lar-lo amb
+    «install.packages("actuar")» i després habiliteu-lo amb
+    «library("actuar")». Entreu ara aquesta última ordre per
+    recordar com fer-ho.
+  CorrectAnswer: library("actuar")
+  AnswerTests: swirl1cmd=library("actuar")
+  Hint: Heu d'entrar «library("actuar")» per habilitar el paquet «actuar».
+
+- Class: text
+  Output: Una taula de freqüències és una manera compacte de presentar
+    informació sobre una variable numèrica. També l'anomenem «dades agrupades»
+    atès que agrupem els diferents casos del conjunt de dades en classes o
+    intervals.
+
+- Class: cmd_question
+  Output: El paquet «actuar» inclou un conjunt de dades sobre pagament d'una
+    assegurança dental, que es presenta com nombre de pagaments per quantitat
+    de pagament. Aquest és un objecte «dades agrupades» creat pel paquet
+    actuar. Un objecte de dades agrupades és una taula, on la primera
+    columna conté les classes o intervals de la taula de freqüències,
+    la segona columna conté la freqüència i cada fila un interval o classe
+    diferent. Entre «gdental» per veure l'aspecte de l'objecte.
+  CorrectAnswer: gdental
+  AnswerTests: swirl1cmd=gdental
+  Hint: Heu d'entrar «gdental» de manera que l'R us mostri l'aspecte de
+    l'objecte.
+
+- Class: cmd_question
+  Output: Aquest és un conjunt de dades molt gran que s'ha resumit en una
+    taula de freqüències. Per comprovar quants casos hi ha al conjunt de
+    dades complet, simplement sumeu les freqüències. Per fer això, podeu
+    sumar la variable «nj» a l'objecte dades agrupades «gdental». Podeu
+    fer la suma usant la funció sum(). Entreu l'ordre apropiada per obtenir
+    el nombre total de casos par al conjunt de dades de pagaments de
+    l'assegurança dental.
+  CorrectAnswer: sum(gdental$nj)
+  AnswerTests: swirl1cmd=sum(gdental$nj)
+  Hint: Heu d'entrar «sum(gdental$nj)» per obtenir el nombre total de casos
+    al conjunt de dades de pagaments de l'assegurança dental.
+
+- Class: text
+  Output: Tot i que no tenim els detalls complets del conjunt de dades
+    dades de pagaments de l'assegurança dental, és a dir el valor exacte
+    de cada pagament per a cada cas, podem calcular els resums numèrics
+    bàsics directament des de la taula de freqüències, i també representar
+    un histograma i un diagrama de caixa.
+
+- Class: cmd_question
+  Output: Per representar un histograma de les dades, usem la funció
+    «hist()» proveïda pel paquet «actuar». El primer argument d'aquesta
+    funció és l'objecte de dades agrupades. Dibuixeu un histograma
+    per a l'objecte de dades agrupades «gdental».
+  CorrectAnswer: hist(gdental)
+  AnswerTests: swirl1cmd=hist(gdental)
+  Hint: Heu d'entrar "hist(gdental)" per obtenir l'histograma.
+
+- Class: cmd_question
+  Output: També podem representar un diagrama de caixa. Per fer això
+    ens calen els 5 números resum per a la distribució. Podem obtenir
+    els cinc números resum usant la funció «quantile()», i un altre
+    cop el primer argument d'aquesta funció és l'objecte dades agrupades.
+    Obteniu els cinc números resum per a la taula de freqüències dels
+    pagaments de l'assegurança dental.
+  CorrectAnswer: quantile(gdental)
+  AnswerTests: swirl1cmd=quantile(gdental)
+  Hint: Entreu «quantile(gdental)» per obtenir els cinc números resum.
+
+- Class: cmd_question
+  Output: L'R ens mostra el mínim (0%), el primer quartil (25%),
+    la mediana (50%), el tercer quartil (75%) i el màxim (100%).
+    També podem representar un diagrama de caixa amb aquests cinc
+    números resum. Per fer això, hem de proveir el resultat de la
+    funció quantile() a la funció boxplot(), i l'ordre és
+    «boxplot(quantile(gdental))». Entreu ara aquesta ordre per
+    obtenir un diagrama de caixa de l'objecte dades agrupades gdental.
+  CorrectAnswer: boxplot(quantile(gdental))
+  AnswerTests: swirl1cmd=boxplot(quantile(gdental))
+  Hint: Heu d'entrar «boxplot(quantile(gdental))».
+
+- Class: cmd_question
+  Output: A part dels cinc números resum, podem obtenir la mitjana i
+    la desviació estàndard per a la variable de la taula de freqüències.
+    Per obtenir la mitjana del valor dels pagament a la taula de
+    freqüèncis, l'ordre és «emm(gdental, order=1)». Entre l'ordre ara
+    per obtenir la mitjana d'aquest conjunt de dades.
+  CorrectAnswer: emm(gdental,order=1)
+  AnswerTests: swirl1cmd=emm(gdental,order=1)
+  Hint: Heu d'entrar «emm(gdental,order=1)» per obtenir la mitjana per
+    als pagaments de l'assegurança dental
+
+- Class: cmd_question
+  Output: Per a la desviació estàndard és més complicat, atèx que el
+    paquet actuar no té una funció directa per calcular-la. L'ordre és
+    «sqrt(emm(gdental,order=2) - emm(gdental,order=1)^2)". Entreu
+    ara aquesta ordre per calcular la desviació estàndard del valor
+    dels pagaments, o sigui una mesura de la variació al voltant de la
+    mitjana.
+  CorrectAnswer: sqrt(emm(gdental,order=2) - emm(gdental,order=1)^2)
+  AnswerTests: swirl1cmd=sqrt(emm(gdental,order=2)-emm(gdental,order=1)^2)
+  Hint: Heu d'entrar «sqrt(emm(gdental,order=2) - emm(gdental,order=1)^2)» per
+    calcular la desviació estàndard dels pagaments.
+
+- Class: cmd_question
+  Output: Ara veurem com entrar la nostra pròpia taula de freqüències i
+    obtenir els resums gràfics i numèrics. Suposeu que tenim una taula
+    de freqüències per a les notes d'un examen a una classe amb 55
+    estudiants. Entre «frequency_table» per veure la taula de freqüències
+    que us hem creat.
+  CorrectAnswer: frequency_table
+  AnswerTests: swirl1cmd=frequency_table
+  Hint: Heu d'entrar «frequency_table» per veure la taula de freqüències
+    de les notes.
+
+- Class: cmd_question
+  Output: Hem d'entrar els límits dels intervals i les freqüències. Per
+    als límits dels interval, hem d'entrar també el límit inferior. Podem
+    entrar aquests límits amb «cj <- c(0,20,40,60,80,100)». Proveu-ho ara.
+  CorrectAnswer: cj <- c(0,20,40,60,80,100)
+  AnswerTests: swirl1cmd=cj <- c(0,20,40,60,80,100)
+  Hint: Heu d'entrar «cj <- c(0,20,40,60,80,100)». Noteu que també s'entra
+    el límit inferior del primer interval, en aquest cas «0».
+
+- Class: cmd_question
+  Output: Ara hem d'entrar les freqüències. Podem fer això amb
+    «nj <- c(5,10,25,10,5)». Entreu ara les freqüències.
+  CorrectAnswer: nj <- c(5,10,25,10,5)
+  AnswerTests: swirl1cmd=nj <- c(5,10,25,10,5)
+  Hint: Heu d'entrar «nj <- c(5,10,25,10,5)» per introduir les freqüències
+    de la taula de freqüències.
+
+- Class: cmd_question
+  Output: Finalment heu de crear un objecte dades agrupades de manera  d'usar
+    les funcions del paquet actuar per obtenir els resums gràfics i numèrics
+    per a la vostra taula de freqüències. Si voleu anomenar el vostre
+    objecte «x», el podeu crear amb
+    «x <- grouped.data(Group=cj, Frequency=nj)". Proveu-ho ara.
+  CorrectAnswer: x <- grouped.data(Group=cj, Frequency=nj)
+  AnswerTests: swirl1cmd=x <- grouped.data(Group=cj, Frequency=nj)
+  Hint: Heu d'entrar «x <- grouped.data(Group=cj, Frequency=nj)» per crear
+    un objecte dades agrupades per obtenir els resums gràfics i numèrics.
+
+- Class: cmd_question
+  Output: Ara que teniu les vostres dades, podeu usar totes les funcions
+    que hem presentat abans per obtenir els resums gràfics i numèrics
+    per a la vostra taula de freqüències de notes. Proveu d'obtenir ara
+    l'histograma basat en aquesta taula de freqüències, recordeu que
+    l'ordre és «hist(objecte_dades_agrupades)», on «objecte_dades_agrupades»
+    és el nom del objecte dades agrupades que acabeu de crear.
+  CorrectAnswer: hist(x)
+  AnswerTests: swirl1cmd=hist(x)
+  Hint: Heu d'entrar «hist(x)» per crear un histograma basat en la taula
+    de freqüències de les notes a l'examen.
+
+- Class: text
+  Output: Usant les altres funcions que us hem presentat a aquesta lliçó,
+    podeu obtenir els resums numèrics (mitjana, desviació estàndard,
+    cinc números resum) o també el diagrama de caixa en base a les dades
+    de la vostra taula de freqüències. Aquí termina aquesta lliçó.
