@@ -1,0 +1,268 @@
+
+- Class: meta
+  Course: Analisi de Dades
+  Lesson: Transformacio de Dades
+  Author: Walter Garcia-Fontes
+  Type: Standard
+  Organization: Universitat Pompeu Fabra
+  Version: 1.0.0
+
+- Class: text
+  Output: Les unitats de mesura són un tema molt important a qualsevol
+    conjunt de dades usat en la pràctica. Per a les variables numèriques,
+    és important saber com estan mesurades les variables, i quin és
+    el significat dels nombres que veiem. A aquesta lliçó tractarem
+    amb la qüestió de les unitats de mesura i la seva implicació quan
+    les canviem.
+
+- Class: cmd_question
+  Output: A aquesta unitat treballarem amb un conjunt de dades exemple
+    (un marc de dades, com l'anomenem a l'R). El marc de dades sols té
+    una variable numèrica, i es diu «euros», i és la quantitat d'efectiu
+    en euros (mesurat fins als cèntims) que 20 estudiants francesos van
+    preparar per portar a un viatge a Londres. El marc de dades és diu
+    «viatge». Doneu-li una ullada usant la funció head(), que us mostra
+    els primers casos de un conjunt de dades.
+  CorrectAnswer: head(viatge)
+  AnswerTests: swirl1cmd=head(viatge)
+  Hint: Heu d'entrar  «head(viatge)» per veure  els primers casos del marc
+    de dades «viatge».
+
+- Class: cmd_question
+  Output: Us hem carregat l'excel·lent paquet psych que té la funció
+    describe(), que us dóna els resums numèrics per a variables numèriques.
+    Obteniu ara els resums numèrics per a la variable «euros». Un cop que
+    els teniu, preneu nota escrivint-los en algun altre lloc dels valors
+    de la mitjana, la mediana, la desviació estàndard, el coeficient
+    d'asimetria i la curtosis.
+  CorrectAnswer: describe(viatge$euros)
+  AnswerTests: swirl1cmd=describe(viatge$euros)
+  Hint: Heu d'entrar «describe(viatge$euros)» per obtenir els resums numèrics
+    del conjunt de dades viatge.
+
+- Class: text
+  Output: Una transformació lineal és una transformació que apliquem a una
+    variable x, per obtenir una nova variable y, definida com y = (x - a)/b,
+    on a i b són constant (i b>0). La constant «a» l'anomenem un canvi d'origen,
+    i la constant «b» un canvi d'escala.
+
+- Class: mult_question
+  Output: Suposeu que cada estudiant al viatge ha de pagar 50 euros abans
+    d'agafar el seu vol en concepte d'assegurança. Penseu això com un
+    canvi d'origen de la variable «euros». Quin seria el valor de «a» en
+    aquest cas?
+  AnswerChoices: 50; -50; 0; 1
+  CorrectAnswer: 50
+  AnswerTests: word= 50
+  Hint: Havíem definit un canvi d'origin com «x - a». Aquí cada estudiant
+    paga 50 per l'assegurança, de manera que si tenien x euros, ara tenen
+    50 menys. Quin és el valor de «a»?
+
+- Class: mult_question
+  Output: Al moment del viatge, el tipus de canvi de l'Euro amb respecte
+    a la Lliura Esterlina era de 1 Euro = 0.89 Lliures. Suposeu que
+    els estudiants calculen (abans de pagar l'assegurança), quantes lliures
+    els donarien quan canviïn els seus euros a lliures. Penseu això com
+    un canvi d'escala de la variable «euros». Quin seria el valor de «b»
+    (arrodonit a dos punts decimals) en aquest canvi d'escala?
+  AnswerChoices: 0.89; 1.12; 1
+  CorrectAnswer: 1.12
+  AnswerTests: word= 1.12
+  Hint: Havíem definit un canvi d'escala com «x/b». Si teniu 1 euro, i
+    el canvieu a lliures (1/b), obteniu 0,89 lliures. Quin és el valor
+    de «b» (arrodonit a dos decimals)?
+
+- Class: mult_question
+  Output: Ara considerem les dues transformacions a l'hora. És a dir,
+    abans d'agafar el vol els estudiants francesos paguen 50 com a
+    assegurança, i quan arriben a Londres canvien l'efectiu en euros
+    que els queda a lliures. Com escriuríeu aquesta transformació
+    lineal?
+  AnswerChoices: (x - 50)/1.12; (x/1.12 - 50); (x - 50)/0.89
+  CorrectAnswer: (x - 50)/1.12
+  AnswerTests: word=(x - 50)/1.12
+  Hint: Penseu que primer paguen 50 euros (x-50) i després converteixen
+    la quantitat restant a lliures, i per això han de dividir el que els
+    queda en euros per 1.12.
+
+- Class: cmd_question
+  Output: Anem a obtenir ara un nou conjunt de dades (un nou marc de dades)
+    després que els estudiants han pagat l'assegurança de 50 euros i
+    han canviat el que els queda a lliures (és a dir, han aplicat una
+    transformació lineal). Entreu una ordre per convertir la variable
+    «euros» i anomeneu la nova variable «lliures»
+  CorrectAnswer: lliures <- (trip$euros - 50)/1.12
+  AnswerTests: swirl1cmd= lliures <- (trip$euros - 50)/1.12
+  Hint: Heu d'entrar «lliures <- (trip$euros - 50)/1.12», això aplicarà
+    la nostra transformació lineal a la variable «euros».
+
+- Class: cmd_question
+  Output: Ara crearem un nou marc de dades amb la variable transformada
+    a partir de «euros», és a dir amb la variable «lliures». Useu per
+    a això la funció data.frame(). Anomeneu el nou marc de dades
+    «viatge_nou».
+  CorrectAnswer: viatge_nou <- data.frame(lliures)
+  AnswerTests: swirl1cmd=viatge_nou <- data.frame(lliures)
+  Hint: Heu d'entrar «viatge_nou <- data.frame(lliures)» per crear el
+    nou marc de dades.
+
+- Class: cmd_question
+  Output: Anem a comprovar ara els primers casos del marc de dades
+    «viatge_nou» que acabeu de crear. Entreu l'ordre apropiada.
+  CorrectAnswer: head(viatge_nou)
+  AnswerTests: swirl1cmd= head(viatge_nou)
+  Hint: Heu d'entrar «head(viatge_nou)» per comprovar els primers casos
+    del marc de dades que heu creat.
+
+- Class: cmd_question
+  Output: Com podeu veure, els valors de «lliures» mostres fins a 4
+    posicions decimals. Ens agradaria reduir-ho a dos posicions decimals,
+    atès que estem treballant amb lliures mesurades fins als penics. Per
+    això, podem usar la funció «round()», que pren dos arguments. El
+    primer és un objecte R que es pot arrodonir, per exemple un vector
+    numèric, i el segon és el nombre de posicions decimals que volem.
+    Entreu ara l'ordre per arrodonir la variable «lliures» a dos posicions
+    decimals, i assigneu el resultat a la mateixa variable i el mateix
+    marc de dades. «viatge_nou$lliures».
+  CorrectAnswer: viatge_nou$lliures <- round(lliures,2)
+  AnswerTests: swirl1cmd= viatge_nou$lliures <- round(lliures,2)
+  Hint: Heu d'entrar «viatge_nou$lliures <- round(lliures,2)» per
+    arrodonir les dades de lliures a dos punts decimals, i per desar
+    els resultats al mateix marc de dades amb el mateix nom de variable.
+
+- Class: cmd_question
+  Output: Useu ara la funció head() un altre cop per comprovar que les
+    dades efectivament han estat arrodonides a dos punts decimals.
+  CorrectAnswer: head(viatge_nou)
+  AnswerTests: swirl1cmd=head(viatge_nou)
+  Hint: Heu d'entrar «head(viatge_nou)» per comprovar els primers casos
+    de la variable lliures.
+
+- Class: cmd_question
+  Output: Podem obtenir ara els resums numèrics per a la variable
+    «lliures», usant la funció describe() del paquet psych. Apliqueu
+    aquesta funció per obtenir els principals resums numèrics de la
+    variable «lliures». Preneu nota, escrivint-los a algun altre lloc,
+    dels valors de la mitjana i la desviació típica perquè els farem
+    servir més tard.
+  CorrectAnswer: describe(viatge_nou$lliures)
+  AnswerTests: swirl1cmd= describe(viatge_nou$lliures)
+  Hint: Heu d'entrar «describe(viatge_nou$lliures)» per obtenir
+    els resums numèrics de la variable «lliures» al conjunt de dades
+    «new_trip».
+
+- Class: mult_question
+  Output: Amb respecte a la variable «euros», com penseu que han
+    canviat els resums numèrics a la variable «lliures»? Quins resums
+    numèrics han canviat?
+  AnswerChoices: la mitjana, la mediana, la desviació estàndard, però no el coeficient d'asimetria o la curstosi
+
+
+    the mean, the median, the standard deviation, but not the skweness or the kurtosis; the mean, the median, the standard deviation, the skewness and the kurtosis; the skewness and the kurtosis but not the mean, the median and the standard deviation; the mean and the standard deviation, but not the median, the skewness and the kurtosis
+  CorrectAnswer: la mitjana, la mediana, la desviació estàndard, però no el coeficient d'asimetria o la curstosi; la mitjana, la mediana, la desviació estàndard, el coeficient d'asimetria i la curstosi; el coeficient d'asimetria i la curtosis, però no la mitjana, la mediana o la desviació estándard; la mitjana i la desviació estàndard, però no la mediana, el coeficient d'asimetria o la curstosi;
+  AnswerTests: word=la mitjana, la mediana, la desviació estàndard, però no el coeficient d'asimetria o la curstosi
+  Hint: Les mesures de posició es veuen afectades pel canvi d'origen i
+    d'escala, mentre que les mesures de dispersió es veuen afectades pel
+    canvi d'escala. Les mesures de forma no es veuen afectades per
+    transformacions lineals, i consegüentment no canvien.
+
+- Class: text
+  Output: Torneu are als resums numèrics que havíeu anotat abans per a
+    la variable «euros» i compareu-los amb els resums numèrics per a la
+    variable «lliures» per confirmar la proposició de la pregunta anterior.
+
+- Class: text
+  Output: Podem calcular ara els resums numèrics per a la variable «lliures»
+    usant els resums numèrics de la variable «euros». Per exemple,
+    d'acord amb el que havíem dit abans, sabem que mitjana_lliures =
+    (mitjana_euros - 50)/1.12, mediana_lliures = (mediana_euros - 50)/1.12,
+    mentre que desv_estand_lluires = desv_estand_euros/1.12 (les mesures
+    de dispersió no es veuen afectades pel canvi d'origen), i per últim
+    les mesures de forma no canvien quan s'apliquen transformacions
+    lineals.
+
+- Class: cmd_question
+  Output: Confirmeu ara com la transformació lineal afecta la mitjana
+    usant la mitjana de «euros» que havíem anotat abans i aplicant-li
+    la transformació lineal que hem estat fent servir.
+  CorrectAnswer: (313.93 - 50)/1.12
+  AnswerTests: swirl1cmd= (313.93 - 50)/1.12
+  Hint: La mitjana de la variable «euros» era 313.93, i hem d'aplicar
+    la transformació lineal (313.93 - 50)/1.12
+
+- Class: text
+  Output: Ara podeu comparar els resultats del càlcul de la pregunta
+    anterioramb la mitjan per a la variable «lliures» que havíeu anotat
+    prèviament. Haurien de ser iguals.
+
+- Class: cmd_question
+  Output: Confirmeu ara com afecten les transformacions lineals a la
+    desviació estàndard, agafant la desviació estàndard de la variable
+    «euros» que havíeu anotat abans, i aplicant-li la transformació lineal
+    que hem estat usant.
+  CorrectAnswer: 157.25/1.12
+  AnswerTests: swirl1cmd= 157.25/1.12
+  Hint: La desviació estàndard de la variable euros és 157.25, i la
+    desviació estàndard, considerant que és una mesura de dispersió,
+    sols es veu afectada pels canvis d'escala, en conseqüència la
+    desviació estàndard en lliures l'obtenim fent 157.25/1.12.
+
+- Class: text
+  Output: Els resultats que acabem de descriure per a la mitjana i la
+    desviació típica, que són els mateixos per a totes les mesures de
+    posició i dispersió, així com el resultat que la forma no canvia, són
+    sols vàlid per a transformacions lineals. Per a transformacions
+    no-lineals no és veritat que podem predir els valors de la nova
+    mitjana, de la desviació estàndard o d'altres resums numèrics,
+    i que la forma no canviï. En realitat, s'usen algunes transformacions
+    no-lineals per canviar la forma de la distribució. Per exemple la
+    transformació logarítmica, que consisteix en prendre logaritme natural
+    per a tots els valors del conjunt de dades,
+    noves_dades = log(dades_originals), s'usa a vegades per reduir
+    l'asimetria d'una distribució, és a dir per canviar la forma de la
+    distribució.
+
+- Class: cmd_question
+  Output: Useu la funció hist() per obtenir un histograma de la variable
+    euros.
+  CorrectAnswer: hist(trip$euros)
+  AnswerTests: swirl1cmd= hist(trip$euros)
+  Hint: Heu d'entrar «hist(viatge$euros)" per obtenir l'histograma de la
+    variable euros.
+
+- Class: mult_question
+  Output: L'histograma de la variable euros és
+  AnswerChoices: asimètric cap a la dreta; asimètrica cap a l'esquerra; simètric
+  CorrectAnswer: asimètric cap a la dreta
+  AnswerTests: asimètric cap a la dreta
+  Hint: Atès que les freqüències estan concentrades als valors baixos i
+    s'estenen amb menys freqüències cap als valors alts, tenim asimetria
+    cap a la dreta o asimetria positiva.
+
+- Class: cmd_question
+  Output: Podem provar d'usar la transformació logarítmica per veure si
+    podem obtenir una distribució més simètrica. Apliqueu la funció
+    log() a la variable «euros» i assigneu el resultat a una nova
+    variable anomenant-la «log_euros».
+  CorrectAnswer: log_euros <- log(viatge$euros)
+  AnswerTests: swirl1cmd=log_euros <- log(viatge$euros)
+  Hint: Heu d'entrar «log_euros <- log(viatge$euros)» per transformar
+    els valors originals en euros al logaritme natural d'aquests valors.
+
+- Class: cmd_question
+  Output: Obteniu ara l'histograma de la transformació logarítmica de
+    la variable «euros», és a dir per a la variable «log_euros».
+  CorrectAnswer: hist(log_euros)
+  AnswerTests: swirl1cmd= hist(log_euros)
+  Hint: Heu d'entrar «hist(log_euros)» per obtenir el nou histograma.
+
+- Class: text
+  Output: Com podeu veure, si transformem la variable euros, que
+    havíem vist que era asimètrica cap a la dreta, usant la transformació
+    logarítmica, obtenim una distribució més simètrica.
+
+- Class: text
+  Output: Hem acabat aquesta lliçó. Ara sabeu com canviar les unitats
+    de mesura de les vostres variables numèriques, i què passa amb els
+    principals resums numèrics per a la distribució de les vostres variables
+    si feu una transformació.

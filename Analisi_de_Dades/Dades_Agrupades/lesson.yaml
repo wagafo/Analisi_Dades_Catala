@@ -104,6 +104,10 @@
   Hint: Heu d'entrar «emm(gdental,order=1)» per obtenir la mitjana per
     als pagaments de l'assegurança dental
 
+- Class: video
+  Output: Us agradaria veure ara un vídeo sobre com calcular la mitjana amb dades agrupades?
+  VideoLink: https://youtu.be/rIFwiGVKXBc
+
 - Class: cmd_question
   Output: Per a la desviació estàndard és més complicat, atèx que el
     paquet actuar no té una funció directa per calcular-la. L'ordre és
