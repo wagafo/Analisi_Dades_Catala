@@ -7,7 +7,7 @@
   Version: 0.1.2
 
 - Class: text
-  Output: "En aquesta lliçó, aprendreu com examinar el vostre espai local 
+  Output: "En aquesta lliçó, aprendreu com examinar el vostre espai local
     de treball a l'R i començareu a explorar la relació entre el vostre
     espai de treball i el sistema de fitxers del vostre ordinador."
 
@@ -38,7 +38,7 @@
   CorrectAnswer: ls()
   AnswerTests: omnitest(correctExpr='ls()')
   Hint: Entreu ls() per veure tots els objectes al vostre espai de treball
-    local. 
+    local.
 
 - Class: text
   Output: Algunes ordres d'R són les mateixes que les seves equivalents a Linux
@@ -57,11 +57,11 @@
     usant ls().
   CorrectAnswer: ls()
   AnswerTests: omnitest(correctExpr='ls()')
-  Hint: Entreu ls() per veure tots els objectes 
+  Hint: Entreu ls() per veure tots els objectes
 
 - Class: cmd_question
   Output: Feu una llista de tots els fitxers al vostre directori de
-    treball usan list.files() o dir().
+    treball usant list.files() o dir().
   CorrectAnswer: list.files()
   AnswerTests: any_of_exprs('list.files()', 'dir()')
   Hint: Entreu list.files() per fer una llista de tots els fitxers del vostre
@@ -92,7 +92,7 @@
 
 - Class: cmd_question
   Output: Assigneu el valor del directori de treball actual a una variable
-    anomenada «old.dir». 
+    anomenada «old.dir».
   CorrectAnswer: old.dir <- getwd()
   AnswerTests: omnitest(correctExpr='old.dir <- getwd()')
   Hint: Entreu old.dir <- getwd() per assignar el valor del directori actual
@@ -109,7 +109,7 @@
   CorrectAnswer: dir.create("testdir")
   AnswerTests: omnitest(correctExpr='dir.create("testdir")')
   Hint: Entreu dir.creat("testdir") per crear un directori al directori
-    de treball actual anomenat «testdir» 
+    de treball actual anomenat «testdir»
 
 - Class: text
   Output: Farem tota la nostra feina a aquest nou directori i després
