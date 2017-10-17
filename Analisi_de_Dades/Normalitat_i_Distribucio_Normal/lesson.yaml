@@ -1,0 +1,267 @@
+- Class: meta
+  Course: Analisi de Dades
+  Lesson: Normalitat i Distribucio Normal
+  Author: Walter Garcia-Fontes
+  Type: Standard
+  Organization: Universitat Pompeu Fabra
+  Version: 1.0.0
+
+- Class: text
+  Output: Ara treballarem amb la distribució normal a l'R, per una part
+    comprovarem si una distribució donada s'assembla a la distribució
+    normal (això és el que anomenem valoració de la normalitat), i per
+    una altra part calcularem percentatges a diferents àrees de la distribució
+    normal.
+
+- Class: cmd_question
+  Output: Treballarem amb una variable anomenada «punts», que són els punts
+    marcats pel Pau Gasol durant la seva primera temporada a la NBA
+    (2003-2004). Useu la funció head() per comprovar els primers casos
+    d'aquesta variable.
+  CorrectAnswer: head(punts)
+  AnswerTests: omnitest(correctExpr='head(punts)')
+  Hint: Heu d'entrar "head(punts)" per veure els primers casos d'aquesta
+    variable.
+    
+- Class: text
+  Output: La primera tasca que podem provar és veure si la distribució
+    de punts és semblant a la distribució normal gràficament. Per això
+    podem fer un histograma per veure la seva forma. La distribució
+    normal té forma de muntanya. També podem posar a sobre una distribució
+    normal per comparar la nostra distribució amb una distribució normal
+    de veritat.
+
+- Class: cmd_question
+  Output: Ens caldran la mitjana i la desviació típica de la variable
+    punts per a les gràfiques i altres càlculs posteriors, de manera
+    que els calcularem. Primer calculeu la mitjana de la variable
+    punts amb la funció mean() i deseu-la a una variable anomenada
+    «m».
+  CorrectAnswer: m <- mean(punts)
+  AnswerTests: omnitest(correctExpr='m <- mean(punts)')
+  Hint: Heu d'entrar «m <- mean(punts)» per desar la  mitjana
+    a una variable anomenada «m».
+
+- Class: cmd_question
+  Output: Ara calculeu la desviació estàndard de punts amb la funció sd
+    i deseu-la a una variable anomenada «s».
+  CorrectAnswer: s <- sd(punts)
+  AnswerTests: omnitest(correctExpr='s <- sd(punts)')
+  Hint: Heu d'entrar «s <- sd(punts)» per desar la desviació estàndard
+    a una variable anomenada «s».
+
+- Class: cmd_question
+  Output: Dibuixeu un histograma per a la variable punts. Demaneu a l'R
+    que mostri un histograma amb hist(punts,prob=TRUE), cosa que
+    ens donarà les freqüències relatives a l'eix vertical.
+  CorrectAnswer: hist(punts,prob=TRUE)
+  AnswerTests: omnitest(correctExpr='hist(punts,prob=TRUE)')
+  Hint: You have to enter "hist(punts,prob=TRUE)" to get the histogram.
+
+- Class: cmd_question
+  Output: Anem a posar a sobre del histograma una corba normal per
+    a comparar. Ho podeu fer amb curve(dnorm(x,mean=m,sd=s),add=TRUE).
+  CorrectAnswer: curve(dnorm(x,mean=m,sd=s),add=TRUE)
+  AnswerTests: omnitest(correctExpr='curve(dnorm(x,mean=m,sd=s),add=TRUE)')
+  Hint: Heu d'entrar «curve(dnorm(x,mean=m,sd=s),add=TRUE)» per obtenir una
+    corba normal a sobre de l'histograma.
+    
+- Class: text
+  Output: A partir de la gràfica, podem veure que tot i que la distribució
+    de punts no és exactament igual a la distribució normal, no està massa
+    lluny, de manera que la distribució de punts podria ser semblant a
+    la distribució normal.
+
+- Class: text
+  Output: Per verificar la normalitat, a continuació calcularem
+    resums numèrics per veure si la distribució de punts marcats pel
+    Pau Gasol durant el seu any de rookie és semblant a la distribució
+    normal. Per això, és útil comprovar l'asimetria de la distribució,
+    atès que hauria de ser més o menys simètrica (la distribució normal
+    és perfectament simètrica) i la curtosi, que és una mesura de la
+    relació entre la cima i les cues de la distribució.
+
+- Class: cmd_question
+  Output: Per obtenir les mesures d'asimetria i de la curtosis usarem
+    la funció describe() del paquet psych, que s'ha carregat per a
+    vosaltres. Apliqueu ara aquesta funció a la variable punts per
+    obtenir aquestes mesures.
+  CorrectAnswer: describe(punts)
+  AnswerTests: omnitest(correctExpr='describe(punts)')
+  Hint: Heu d'entrar «describe(punts)» per obtenir els resums numèrics
+    de la variable punts.
+    
+- Class: text
+  Output: Com podeu veure, el coeficient d'asimetria és de 0.09, de manera
+    que podem dir que la distribució és força simètrica, mentre que la
+    curtosi és igual a -0.11, força baixa, així que la distribució té
+    una curtosi semblant a la distribució normal (la fórmula al paquet
+    psych implica que la distribució normal té una curtosi igual a 0, en
+    alguns altres paquets i al Stata la kurtosis és 3 per a la distribució
+    normal). O sigui que pel que fa a aquests resums la distribució és
+    propera a la distribució normal.
+
+- Class: text
+  Output: La tasca final que podem realitzar per verificar la normalitat
+    de la distribució és comparar àrees específiques de la distribució
+    per comprovar si la freqüència que trobem a aquestes àrees s'ajusta
+    a les freqüències que tenim a la distribució normal. Per exemple,
+    d'acord amb la regla 68-95-99.7%, a l'interval (m - s,
+    m + s) tenim 68% de la freqüència, o sigui que a l'interval
+    (m - s, m) tenim 34% de la freqüència.
+
+- Class: mult_question
+  Output: D'acord amb la regla 68-95-99.7%, a l'interval (m - 2*s,
+    m - s), és a dir entre 2 desviacions estàndard a sota de la mitjana
+    i una desviació estàndard a sota de la mitjana, quin percentatge
+    de la freqüència tenim a la distribució normal?
+  AnswerChoices: 13.5; 95; 68; 27; 34
+  CorrectAnswer: 13.5
+  AnswerTests: word= 13.5
+  Hint: D'acord amb la regla, a l'interval (m - 2*s, m) tenim
+    95/2 = 47.5%, i a l'interval (m -s, m) tenim 34%, per tant,
+    quin percentatge tenim a (m - 2*s, m -s)?
+
+- Class: cmd_question
+  Output: Us hem preparat una taula amb la freqüència aproximada que
+    espereu tenir a la distribució normal d'acord amb la regla 68-95-99.7%.
+    Per aquesta raó li diem «freqüències esperades». Comproveu la taula
+    entrant «taula_normal» ara.
+  CorrectAnswer: taula_normal
+  AnswerTests: omnitest(correctExpr='taula_normal')
+  Hint: Heu d'entrar «taula_normal»  per veure la freqüència a
+    cada interval d'acord amb regla 68-95-99.7%.
+
+- Class: cmd_question
+  Output: Hem de comprovar ara quina freqüència relativa observem a la
+    nostra distribució a aquests mateixos intervals basats en múltiples
+    exactes de desviació estàndard a sobre i a sota de la mitjana. Per
+    exemple, per comprovar la freqüència relativa per a punts a sota
+    de m - 3*s, podem entrar
+    sum(punts < m - 3*s) / length(punts). Proveu-ho.
+  CorrectAnswer: sum(punts < m - 3*s) / length(punts)
+  AnswerTests: omnitest(correctExpr='sum(punts < m - 3*s) / length(punts)')
+  Hint: Entreu «sum(punts < m - 3*s) / length(punts)» 
+
+- Class: cmd_question
+  Output: Això ens està dient que per a l'interval «m - 3*s» hi ha una
+    freqüència relativa observada de 0%. La freqüència relativa esperada
+    era de 
+    0.00135, o sigui 0.135%, així que és semblant. Podem comprovar ara
+    altres intervals. Per exemple anem a comprovar ara la freqüència relativa
+    observada de l'interval «(m, m+s)» amb l'ordre
+    sum(punts > m & punts < m + s) / length(punts).
+  CorrectAnswer: sum(punts > m & punts < m + s) / length(punts)
+  AnswerTests: omnitest(correctExpr='sum(punts > m & punts < m + s) / length(punts)')
+  Hint: Heu d'entrar «sum(punts > m & punts < m + s) / length(punts)»
+    per comprovar la freqüència relativa observada entre la mitjana i una
+    desviació estàndard a sobre de la mitjana.
+
+- Class: cmd_question
+  Output: Comparant la freqüència esperada de l'interval (m, m+s)
+    que és igual a 0.34134 amb la freqüència relativa observada igual a
+    0.2941176, veiem que no estem massa lluny un altre cop. Entreu ara
+    l'ordre per comprovar la freqüència relativa observada de l'interval
+    (m - 2*s, m - s).
+  CorrectAnswer: sum(punts > m - 2*s & punts < m - s) / length(punts)
+  AnswerTests: omnitest(correctExpr='sum(punts > m - 2*s & punts < m - s) / length(punts)')
+  Hint: Heu d'entrar
+    «sum(punts > m - 2*s & punts < m - s) / length(punts)»
+    per comprovar la freqüència relativa observada entre la mitjana menys
+    2 desviacions estàndard i la mitjana menys 1 desviació estàndard.
+    
+- Class: cmd_question
+  Output: La freqüència relativa observada és 0.1323529 mentre que l'esperada
+    és 0.1391, estem força a prop, en conclusió la distribució punts no és
+    massa diferent a la normal en aquest interval. Hauríeu de completar
+    la taula completa de freqüències relatives esperades i observades,
+    per poder valorar si la distribució punts és semblant a la normal o no.
+    Us hem preparat aquesta taula i l'hem anomenada «taula_dist». Entreu
+    ara «taula_dist» i comproveu aquesta taula.
+  CorrectAnswer: taula_dist
+  AnswerTests: omnitest(correctExpr='taula_dist')
+  Hint: Heu d'entrar «taula_dist» per comprovar la taula amb freqüències
+    relatives esperades i observades.
+
+- Class: text
+  Output: Podem comprovar ara les columnes «esperat» i «observat». Podem
+    veure que els percentatges no són massa diferents. Junt amb les altres
+    comprovacions que hem fet, gràficament i amb els resums numèrics,
+    podem concloure que la distribució dels punts marcats pel Gasol a la
+    seva primera temporada a la NBA segueix aproximadament una distribució
+    normal.
+    
+- Class: cmd_question
+  Output: També podem realitzar càlculs amb la distribució normal sense
+    la necessitat de la taula de la distribució normal estàndard. Per exemple,
+    per obtenir el percentatge de casos que cauen a la dreta de z = 2, on
+    z és un valor estandaritzat, usem l'ordre
+    pnorm(2,lower.tail= FALSE). Proveu-ho ara.
+  CorrectAnswer: pnorm(2,lower.tail= FALSE)
+  AnswerTests: omnitest(correctExpr='pnorm(2,lower.tail= FALSE)')
+  Hint: Entreu «pnorm(2,lower.tail= FALSE)» per veure el percentatge de casos
+    a la dreta d'un valor en una distribució normal.
+
+- Class: cmd_question
+  Output: Per comprovar un valor a l'esquerra hem d'establir
+    «lower.tail=TRUE». Per exemple per comprovar el percentatge de casos
+    a l'esquerra de z = 0, podeu entrar 
+    pnorm(0,lower.tail=TRUE). Entreu aquesta ordre.
+  CorrectAnswer: pnorm(0,lower.tail=TRUE)
+  AnswerTests: omnitest(correctExpr='pnorm(0,lower.tail=TRUE)')
+  Hint: Entreu l'ordre «pnorm(0,lower.tail=TRUE)» per obtenir la
+    freqüència a l'esquerra de z=0 a la distribució normal estàndard.
+
+- Class: cmd_question
+  Output: Hem obtingut 0.5 exactament perquè z=0 és la mediana de la
+    distribució normal estàndard. Podeu també comprovar els percentatges
+    directament amb qualsevol distribució normal, no cal que sigui l'estàndard.
+    Per exemple per obtenir el percentatge de casos a sobre de x=7 a una
+    distribució normal amb mitjana igual a 6 i desviació estàndard igual
+    a 1.5, l'ordre és
+    pnorm(7,mean=6,sd=1.5,lower.tail=FALSE). Proveu-ho.
+  CorrectAnswer: pnorm(7,mean=6,sd=1.5,lower.tail=FALSE)
+  AnswerTests: omnitest(correctExpr='pnorm(7,mean=6,sd=1.5,lower.tail=FALSE)')
+  Hint: Entreu l'ordre «pnorm(7,mean=6,sd=1.5,lower.tail=FALSE)»
+    per obtenir la freqüència relativa a sobre de 7 a una distribució
+    normal amb mitjana igual a 6 i desviació estàndard igual a 1.5.
+
+- Class: cmd_question
+  Output: També podem esbrinar un valor associat amb un percentatge, Per
+    això farem servir la funció qnorm() en comptes de la funció pnorm().
+    Imagineu-vos que volem esbrinar quin és el valor que deixa un 25%
+    de la freqüència relativa a l'esquerra de la distribució normal amb
+    mitjana igual a 3 i desviació estàndard igual a 2. L'ordre és
+    qnorm(0.25,mean=3,sd=2,lower.tail=TRUE). Proveu aquesta ordre.
+  CorrectAnswer: qnorm(0.25,mean=3,sd=2,lower.tail=TRUE)
+  AnswerTests: omnitest(correctExpr='qnorm(0.25,mean=3,sd=2,lower.tail=TRUE)')
+  Hint: Entreu l'ordre «qnorm(0.25,mean=3,sd=2,lower.tail=TRUE)» per obtenir
+    el valor que deixa 25% a l'esquerra a una distribució normal amb mitjana
+    igual a 3 i desviació estàndard igual a 2.
+
+- Class: cmd_question
+  Output: Ara us esteu convertint en una persona experta. Doneu l'ordre
+    per obtenir la proporció de freqüències a la dreta de 6 en una
+    distribució normal amb mitjana igual a 5 i desviació estàndard igual
+    a 1.5.
+  CorrectAnswer: pnorm(6,mean=5,sd=1.5,lower.tail=FALSE)
+  AnswerTests: omnitest(correctExpr='pnorm(6,mean=5,sd=1.5,lower.tail=FALSE)')
+  Hint: Entreu l'ordre «pnorm(6,mean=5,sd=1.5,lower.tail=FALSE)»
+    per obtenir la freqüència relativa a sobre de 6 a una distribució
+    normal amb mitjana igual a 5 i desviació estàndard igual a 1.5.
+
+- Class: cmd_question
+  Output: I ara doneu l'ordre per obtenir el valor a aquesta mateixa
+    distribució normal (mitjana = 5, desviació estàndard = 1.5) que
+    deixa 35% de la freqüència a l'esquerra.
+  CorrectAnswer: qnorm(0.35,mean=5,sd=1.5,lower.tail=TRUE)
+  AnswerTests: omnitest(correctExpr='qnorm(0.35,mean=5,sd=1.5,lower.tail=TRUE)')
+  Hint: Entreu l'ordre «qnorm(0.35,mean=5,sd=.1.5,lower.tail=TRUE)» per obtenir
+    el valor que deixa 35% a l'esquerra a una distribució normal amb mitjana
+    igual a 5 i desviació estàndard igual a 1.5.
+
+- Class: text
+  Output: Això acaba aquesta lliçó! Ara sabeu com comprovar si una distribució
+    s'assembla a la normal (valoració de la normalitat) i com fer càlculs
+    amb la distribució normal a l'R.
+    
