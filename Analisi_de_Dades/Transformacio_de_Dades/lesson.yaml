@@ -80,7 +80,7 @@
     lineal?
   AnswerChoices: (x - 50)/1.12; (x/1.12 - 50); (x - 50)/0.89
   CorrectAnswer: (x - 50)/1.12
-  AnswerTests: word=(x - 50)/1.12
+  AnswerTests: word= (x - 50)/1.12
   Hint: Penseu que primer paguen 50 euros (x-50) i després converteixen
     la quantitat restant a lliures, i per això han de dividir el que els
     queda en euros per 1.12.
