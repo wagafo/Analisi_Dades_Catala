@@ -67,7 +67,7 @@
     (arrodonit a dos punts decimals) en aquest canvi d'escala?
   AnswerChoices: 0.89; 1.12; 1
   CorrectAnswer: 1.12
-  AnswerTests: word= 1.12
+  AnswerTests: omnitest(correctVal='1.12')
   Hint: Havíem definit un canvi d'escala com «x/b». Si teniu 1 euro, i
     el canvieu a lliures (1/b), obteniu 0,89 lliures. Quin és el valor
     de «b» (arrodonit a dos decimals)?
@@ -80,7 +80,7 @@
     lineal?
   AnswerChoices: (x - 50)/1.12; (x/1.12 - 50); (x - 50)/0.89
   CorrectAnswer: (x - 50)/1.12
-  AnswerTests: word= (x - 50)/1.12
+  AnswerTests: omnitest(correctVal='(x - 50)/1.12')
   Hint: Penseu que primer paguen 50 euros (x-50) i després converteixen
     la quantitat restant a lliures, i per això han de dividir el que els
     queda en euros per 1.12.
