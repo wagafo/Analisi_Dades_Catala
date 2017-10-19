@@ -24,7 +24,7 @@
     «viatge». Doneu-li una ullada usant la funció head(), que us mostra
     els primers casos de un conjunt de dades.
   CorrectAnswer: head(viatge)
-  AnswerTests: swirl1cmd=head(viatge)
+  AnswerTests: omnitest(correctExpr='head(viatge)')
   Hint: Heu d'entrar  «head(viatge)» per veure  els primers casos del marc
     de dades «viatge».
 
@@ -36,7 +36,7 @@
     de la mitjana, la mediana, la desviació estàndard, el coeficient
     d'asimetria i la curtosis.
   CorrectAnswer: describe(viatge$euros)
-  AnswerTests: swirl1cmd=describe(viatge$euros)
+  AnswerTests: omnitest(correctExpr='describe(viatge$euros)')
   Hint: Heu d'entrar «describe(viatge$euros)» per obtenir els resums numèrics
     del conjunt de dades viatge.
 
@@ -53,7 +53,7 @@
     aquest cas?
   AnswerChoices: 50; -50; 0; 1
   CorrectAnswer: 50
-  AnswerTests: word= 50
+  AnswerTests: omnitest(correctVal='50')
   Hint: Havíem definit un canvi d'origin com «x - a». Aquí cada estudiant
     paga 50 per l'assegurança, de manera que si tenien x euros, ara tenen
     50 menys. Quin és el valor de «a»?
@@ -80,7 +80,7 @@
     lineal?
   AnswerChoices: (x - 50)/1.12; (x/1.12 - 50); (x - 50)/0.89
   CorrectAnswer: (x - 50)/1.12
-  AnswerTests: omnitest(correctVal='(x - 50)/1.12')
+  AnswerTests:  omnitest(correctVal='(x - 50)/1.12')
   Hint: Penseu que primer paguen 50 euros (x-50) i després converteixen
     la quantitat restant a lliures, i per això han de dividir el que els
     queda en euros per 1.12.
@@ -91,9 +91,9 @@
     han canviat el que els queda a lliures (és a dir, han aplicat una
     transformació lineal). Entreu una ordre per convertir la variable
     «euros» i anomeneu la nova variable «lliures»
-  CorrectAnswer: lliures <- (trip$euros - 50)/1.12
-  AnswerTests: swirl1cmd= lliures <- (trip$euros - 50)/1.12
-  Hint: Heu d'entrar «lliures <- (trip$euros - 50)/1.12», això aplicarà
+  CorrectAnswer: lliures <- (viatge$euros - 50)/1.12
+  AnswerTests: omnitest(correctExpr='lliures <- (viatge$euros - 50)/1.12')
+  Hint: Heu d'entrar «lliures <- (viatge$euros - 50)/1.12», això aplicarà
     la nostra transformació lineal a la variable «euros».
 
 - Class: cmd_question
@@ -102,7 +102,7 @@
     a això la funció data.frame(). Anomeneu el nou marc de dades
     «viatge_nou».
   CorrectAnswer: viatge_nou <- data.frame(lliures)
-  AnswerTests: swirl1cmd=viatge_nou <- data.frame(lliures)
+  AnswerTests: omnitest(correctExpr='viatge_nou <- data.frame(lliures)')
   Hint: Heu d'entrar «viatge_nou <- data.frame(lliures)» per crear el
     nou marc de dades.
 
@@ -110,7 +110,7 @@
   Output: Anem a comprovar ara els primers casos del marc de dades
     «viatge_nou» que acabeu de crear. Entreu l'ordre apropiada.
   CorrectAnswer: head(viatge_nou)
-  AnswerTests: swirl1cmd= head(viatge_nou)
+  AnswerTests: omnitest(correctExpr='head(viatge_nou)')
   Hint: Heu d'entrar «head(viatge_nou)» per comprovar els primers casos
     del marc de dades que heu creat.
 
@@ -123,9 +123,9 @@
     numèric, i el segon és el nombre de posicions decimals que volem.
     Entreu ara l'ordre per arrodonir la variable «lliures» a dos posicions
     decimals, i assigneu el resultat a la mateixa variable i el mateix
-    marc de dades. «viatge_nou$lliures».
+    marc de dades.
   CorrectAnswer: viatge_nou$lliures <- round(lliures,2)
-  AnswerTests: swirl1cmd= viatge_nou$lliures <- round(lliures,2)
+  AnswerTests: omnitest(correctExpr='viatge_nou$lliures <- round(lliures,2)')
   Hint: Heu d'entrar «viatge_nou$lliures <- round(lliures,2)» per
     arrodonir les dades de lliures a dos punts decimals, i per desar
     els resultats al mateix marc de dades amb el mateix nom de variable.
@@ -134,7 +134,7 @@
   Output: Useu ara la funció head() un altre cop per comprovar que les
     dades efectivament han estat arrodonides a dos punts decimals.
   CorrectAnswer: head(viatge_nou)
-  AnswerTests: swirl1cmd=head(viatge_nou)
+  AnswerTests: omnitest(correctExpr='head(viatge_nou)')
   Hint: Heu d'entrar «head(viatge_nou)» per comprovar els primers casos
     de la variable lliures.
 
@@ -146,28 +146,26 @@
     dels valors de la mitjana i la desviació típica perquè els farem
     servir més tard.
   CorrectAnswer: describe(viatge_nou$lliures)
-  AnswerTests: swirl1cmd= describe(viatge_nou$lliures)
+  AnswerTests: omnitest(correctExpr='describe(viatge_nou$lliures)')
   Hint: Heu d'entrar «describe(viatge_nou$lliures)» per obtenir
     els resums numèrics de la variable «lliures» al conjunt de dades
-    «new_trip».
+    «viatge_nou».
 
 - Class: mult_question
   Output: Amb respecte a la variable «euros», com penseu que han
     canviat els resums numèrics a la variable «lliures»? Quins resums
     numèrics han canviat?
-  AnswerChoices: la mitjana, la mediana, la desviació estàndard, però no el coeficient d'asimetria o la curstosi
-
-
-    the mean, the median, the standard deviation, but not the skweness or the kurtosis; the mean, the median, the standard deviation, the skewness and the kurtosis; the skewness and the kurtosis but not the mean, the median and the standard deviation; the mean and the standard deviation, but not the median, the skewness and the kurtosis
-  CorrectAnswer: la mitjana, la mediana, la desviació estàndard, però no el coeficient d'asimetria o la curstosi; la mitjana, la mediana, la desviació estàndard, el coeficient d'asimetria i la curstosi; el coeficient d'asimetria i la curtosis, però no la mitjana, la mediana o la desviació estándard; la mitjana i la desviació estàndard, però no la mediana, el coeficient d'asimetria o la curstosi;
-  AnswerTests: word=la mitjana, la mediana, la desviació estàndard, però no el coeficient d'asimetria o la curstosi
+  AnswerChoices: mesures de posició i dispersió però no de forma; mesures
+    de forma però no de posició o dispersió; totes les mesures
+  CorrectAnswer: mesures de posició i dispersió però no de forma
+  AnswerTests: omnitest(correctVal='mesures de posició i dispersió però no de forma')
   Hint: Les mesures de posició es veuen afectades pel canvi d'origen i
     d'escala, mentre que les mesures de dispersió es veuen afectades pel
     canvi d'escala. Les mesures de forma no es veuen afectades per
     transformacions lineals, i consegüentment no canvien.
 
 - Class: text
-  Output: Torneu are als resums numèrics que havíeu anotat abans per a
+  Output: Torneu ara als resums numèrics que havíeu anotat abans per a
     la variable «euros» i compareu-los amb els resums numèrics per a la
     variable «lliures» per confirmar la proposició de la pregunta anterior.
 
@@ -176,7 +174,7 @@
     usant els resums numèrics de la variable «euros». Per exemple,
     d'acord amb el que havíem dit abans, sabem que mitjana_lliures =
     (mitjana_euros - 50)/1.12, mediana_lliures = (mediana_euros - 50)/1.12,
-    mentre que desv_estand_lluires = desv_estand_euros/1.12 (les mesures
+    mentre que desv_estand_lliures = desv_estand_euros/1.12 (les mesures
     de dispersió no es veuen afectades pel canvi d'origen), i per últim
     les mesures de forma no canvien quan s'apliquen transformacions
     lineals.
@@ -186,7 +184,7 @@
     usant la mitjana de «euros» que havíem anotat abans i aplicant-li
     la transformació lineal que hem estat fent servir.
   CorrectAnswer: (313.93 - 50)/1.12
-  AnswerTests: swirl1cmd= (313.93 - 50)/1.12
+  AnswerTests: omnitest(correctExpr='(313.93 - 50)/1.12')
   Hint: La mitjana de la variable «euros» era 313.93, i hem d'aplicar
     la transformació lineal (313.93 - 50)/1.12
 
@@ -201,7 +199,7 @@
     «euros» que havíeu anotat abans, i aplicant-li la transformació lineal
     que hem estat usant.
   CorrectAnswer: 157.25/1.12
-  AnswerTests: swirl1cmd= 157.25/1.12
+  AnswerTests: omnitest(correctExpr='157.25/1.12')
   Hint: La desviació estàndard de la variable euros és 157.25, i la
     desviació estàndard, considerant que és una mesura de dispersió,
     sols es veu afectada pels canvis d'escala, en conseqüència la
@@ -226,7 +224,7 @@
   Output: Useu la funció hist() per obtenir un histograma de la variable
     euros.
   CorrectAnswer: hist(trip$euros)
-  AnswerTests: swirl1cmd= hist(trip$euros)
+  AnswerTests: omnitest(correctExpr='hist(trip$euros)')
   Hint: Heu d'entrar «hist(viatge$euros)" per obtenir l'histograma de la
     variable euros.
 
@@ -245,7 +243,7 @@
     log() a la variable «euros» i assigneu el resultat a una nova
     variable anomenant-la «log_euros».
   CorrectAnswer: log_euros <- log(viatge$euros)
-  AnswerTests: swirl1cmd=log_euros <- log(viatge$euros)
+  AnswerTests: omnitest(correctExpr='log_euros <- log(viatge$euros)')
   Hint: Heu d'entrar «log_euros <- log(viatge$euros)» per transformar
     els valors originals en euros al logaritme natural d'aquests valors.
 
@@ -253,7 +251,7 @@
   Output: Obteniu ara l'histograma de la transformació logarítmica de
     la variable «euros», és a dir per a la variable «log_euros».
   CorrectAnswer: hist(log_euros)
-  AnswerTests: swirl1cmd= hist(log_euros)
+  AnswerTests: omnitest(correctExpr='hist(log_euros)')
   Hint: Heu d'entrar «hist(log_euros)» per obtenir el nou histograma.
 
 - Class: text
@@ -266,3 +264,5 @@
     de mesura de les vostres variables numèriques, i què passa amb els
     principals resums numèrics per a la distribució de les vostres variables
     si feu una transformació.
+
+
