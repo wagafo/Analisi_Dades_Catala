@@ -223,8 +223,8 @@
 - Class: cmd_question
   Output: Useu la funció hist() per obtenir un histograma de la variable
     euros.
-  CorrectAnswer: hist(trip$euros)
-  AnswerTests: omnitest(correctExpr='hist(trip$euros)')
+  CorrectAnswer: hist(viatge$euros)
+  AnswerTests: omnitest(correctExpr='hist(viatge$euros)')
   Hint: Heu d'entrar «hist(viatge$euros)" per obtenir l'histograma de la
     variable euros.
 
@@ -264,5 +264,3 @@
     de mesura de les vostres variables numèriques, i què passa amb els
     principals resums numèrics per a la distribució de les vostres variables
     si feu una transformació.
-
-
