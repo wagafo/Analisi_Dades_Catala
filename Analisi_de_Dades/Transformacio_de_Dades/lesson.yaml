@@ -232,7 +232,7 @@
   Output: L'histograma de la variable euros és
   AnswerChoices: asimètric cap a la dreta; asimètrica cap a l'esquerra; simètric
   CorrectAnswer: asimètric cap a la dreta
-  AnswerTests: asimètric cap a la dreta
+  AnswerTests: omnitest(correctVal='asimètric cap a la dreta')
   Hint: Atès que les freqüències estan concentrades als valors baixos i
     s'estenen amb menys freqüències cap als valors alts, tenim asimetria
     cap a la dreta o asimetria positiva.
