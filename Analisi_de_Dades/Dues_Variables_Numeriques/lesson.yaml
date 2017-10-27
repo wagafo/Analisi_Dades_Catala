@@ -1,0 +1,595 @@
+- Class: meta
+  Course: Analisi de dades
+  Lesson: Dues variables numeriques
+  Author: Walter Garcia-Fontes
+  Type: Standard
+  Organization: Universitat Pompeu Fabra
+  Version: 1.0.0
+
+- Class: text
+  Output: En aquest tutorial presentarem les principals tècniques per a
+    l'anàlisi de dues variables numèriques amb el R. Treballarem amb un
+    conjunt de dades que ja us hem carregat. És un conjunt de dades
+    sobre els resultats de 21 estudiants a un examen parcial i un examen
+    final. Té tres variables. 1) el número d'observació, 2) la nota del
+    parcial, i 3) la nota del final. El marc de dades es diu «exam».
+
+- Class: cmd_question
+  Output: Useu ara la funció head() per comprovar els primers casos, així
+    com el nom de les variables incloses al marc de dades.
+  CorrectAnswer: head(exam)
+  AnswerTests: omnitest(correctExpr='head(exam)')
+  Hint: Heu d'entrar «head(exam)» per veure els primers casos de les variables
+    incloses al marc de dades «exam».
+
+- Class: mult_question
+  Output: En aquest cas, què penseu que és més raonable?
+  AnswerChoices: el final és la variable dependent, i el parcial és la
+    variable explicativa; el parcial és la variable dependent, i el final
+    és la variable explicativa
+  CorrectAnswer: el final és la variable dependent, i el parcial és la
+    variable explicativa
+  AnswerTests: omnitest(correctVal='el final és la variable dependent, i el parcial és la variable explicativa')
+  Hint: Es pot usar el parcial per predir la nota de l'examen final.
+
+- Class: cmd_question
+  Output: Atès que treballarem per una estona amb les variables d'aquest
+    conjunt de dades, és convenient assignar-les a variables de l'espai de
+    treball actual al R, de manera de no haver de referir a elles tota l'estona
+    usant el nom del marc de dades. Així, començarem assignant la variable
+    final amb «final <- exam$final». Entreu ara aquesta ordre.
+  CorrectAnswer: final <- exam$final
+  AnswerTests: omnitest(correctExpr='final <- exam$final')
+  Hint: Heu d'entrar «final <- exam$final» i ara tindreu una variable
+    anomenada final a l'espai de treball actual, de manera que podreu
+    referir-vos directament en les ordres sense haver d'usar «exam$final».
+
+- Class: cmd_question
+  Output: Assigneu ara la variable parcial al marc de dades exam, a una
+    variable que també es digui parcial a l'espai de treball actual, de manera
+    semblant a com ho heu fet amb la variable final.
+  CorrectAnswer: parcial <- exam$parcial
+  AnswerTests: omnitest(correctExpr='parcial <- exam$parcial')
+  Hint: Heu d'entrar «parcial <- exam$parcial» i ara tindreu una variable
+    anomenada parcial a l'espai de treball actual, de manera que us podeu
+    referir directament a ella en les ordres sense haver de fer servir
+    exam$parcial.
+
+- Class: text
+  Output: Abans d'intentar entendre la relació entre les variables, hem
+    d'entendre la distribució de cada variable per separat. Per fer això,
+    tenim les eines habituals al R, però si volguéssim realitzar una anàlisi
+    exhaustiva hauríem d'usar totes les eines que hem après per fer això.
+    Però anem a provar d'entendre els patrons principals de les distribucions
+    de les notes de l'examen parcial i final.
+
+- Class: cmd_question
+  Output: Useu la funció boxplot() per obtenir un panorama de la distribució
+    de la variable parcial. Recordeu que podeu usar «parcial» directament,
+    sense haver de referir al marc de dades, atès que tenim ara una
+    variable a l'espai de treball actual del R que es diu «parcial».
+  CorrectAnswer: boxplot(parcial)
+  AnswerTests: omnitest(correctExpr='boxplot(parcial)')
+  Hint: Heu d'entrar «boxplot(parcial)» per obtenir un panorama de la
+    distribució de la variable parcial.
+
+- Class: mult_question
+  Output: D'acord amb el que observeu a la distribució de la variable
+    parcial usant el diagrama de caixa, podem dir que la distribució
+  AnswerChoices: és asimètrica cap a la dreta i té un valor atípic; és
+    asimètrica cap a l'esquerra i té un valor atípic; és simètrica i no
+    té valors atípics
+  CorrectAnswer: és asimètrica cap a la dreta i té un valor atípic
+  AnswerTests: omnitest(correctVal='és asimètrica cap a la dreta i té un valor atípic')
+  Hint: Comproveu cap a quin costat s'estén el diagrama de caixa, i si hi
+    ha casos marcats amb un cercle petit.
+
+- Class: cmd_question
+  Output: Comproveu ara la distribució de la variable final, un altre cop
+    usant el diagrama de caixa i usant la variable «final» a l'espai de
+    treball actual
+  CorrectAnswer: boxplot(final)
+  AnswerTests: omnitest(correctExpr='boxplot(final)')
+  Hint: Heu d'entrar «boxplot(final)» per obtenir un panorama de la distribució
+    de la variable final.
+
+- Class: mult_question
+  Output: Del que podeu veure al diagrama de caixa per a la variable final,
+    podeu dir que
+  AnswerChoices: la distribució per a la nota del final és més simètrica i
+    també té un valor atípic; la distribució per a la nota del final és
+    asimètrica cap a la dreta i no té valors atípics
+  CorrectAnswer: la distribució per a la nota del final és més simètrica i també té un valor atípic
+  AnswerTests: omnitest(correctVal='la distribució per a la nota del final és més simètrica i també té un valor atípic')
+  Hint: Verifiqueu si el diagrama de caixa s'estén cap un cantó o un altre i
+    si hi ha casos marcats amb un cercle petit.
+
+- Class: text
+  Output: Hauríeu de realitzar sempre un anàlisi detallat per a cada
+    variable per separat abans d'iniciar l'anàlisi de les relacions entre
+    les variables.
+
+- Class: cmd_question
+  Output: Un cop que enteneu aquestes distribucions separades, podeu
+    començar a analitzar les possible relacions entre elles. La primera
+    comprovació per a la relació entre dues variables numèriques és
+    comprovar el diagrama de dispersió entre elles. Per obtenir un
+    diagrama de dispersió entre la variable Y a l'eix vertical, i la
+    variable X a l'eix horitzontal, l'ordre apropiada és «plot(Y~X)».
+    Proveu-la.
+  CorrectAnswer: plot(final~parcial)
+  AnswerTests: omnitest(correctExpr='plot(final~parcial)')
+  Hint: Heu d'entrar «plot(final~parcial)» per obtenir el diagrama de
+    dispersió de la variable final respecte a la variable parcial.
+
+- Class: mult_question
+  Output: EL diagrama de dispersió ens dóna una idea visual de la
+    possible relació entre les dues variables. En aquest cas, quina
+    penseu que és la millor descripció?
+  AnswerChoices: relació lineal positiva però no massa forta; relació
+    lineal molt forta; relació lineal negativa no massa fota; cap relació lineal
+  CorrectAnswer: relació lineal positiva però no massa forta
+  AnswerTests: omnitest(correctVal='relació lineal positiva però no massa forta')
+  Hint: Mireu al patró dels núvol de punts i si hi té pendent positiu o
+    negatiu.
+
+- Class: figure
+  Output: El diagrama de dispersió ens permet identificar valors atípics.
+    Els valors atípics són casos amb una diferència gran respecte de la
+    mitjana de qualsevol de les dues variables o d'ambdues. Us hem marcat
+    els valors atípics al diagrama de dispersió. També hem dibuixat una
+    línia horitzontal igual a la mitjana del final, i una línia vertical
+    igual a la mitjana del parcial.
+  Figure: figure_outliers.R
+  FigureType: new
+
+- Class: cmd_question
+  Output: Una mesura de la possible relació lineal entre les dues variables
+    és el coeficient de correlació. Per obtenir la correlació entre les
+    variables X i Y al R, l'ordre és cor(X,Y). Useu ara aquesta ordre per
+    comprovar la correlació lineal entre les variables «parcial» i «final».
+  CorrectAnswer: cor(parcial,final)
+  AnswerTests: any_of_exprs('cor(parcial,final)','cor(final,parcial)')
+  Hint: Heu d'entrar «cor(parcial,final)» per obtenir la correlació lineal
+    entre les variables de les notes del parcial i el final. L'ordre no
+    importa, podeu també entrar «cor(final,parcial)».
+
+- Class: mult_question
+  Output: Hauríeu d'haver obtingut 0.64029 com a coeficient de correlació.
+    Això us diu que hi ha
+  AnswerChoices: correlació lineal positiva però no massa forta; correlació
+    lineal positiva i molt forta; correlació lineal negativa no massa forta;
+    cap correlació lineal
+  CorrectAnswer: correlació lineal positiva però no massa forta
+  AnswerTests: omnitest(correctVal='correlació lineal positiva però no massa forta')
+  Hint: Mireu el signe del coeficient de correlació i si està lluny de 1 o
+    -1.
+
+- Class: cmd_question
+  Output: L'altra eina principal per descriure la relació entre dues
+    variables és la línia de regressió. Podem demanar al R que calculi
+    la constant i el pendent de la línia de regressió entre la variable
+    dependent Y i la variable explicativa X amb lm(Y~X). Proveu-lo ara
+    amb les variables parcial i final, i assigneu el resultat a un objecte
+    que anomeneu «fit».
+  CorrectAnswer: fit <- lm(final~parcial)
+  AnswerTests: omnitest(correctExpr='fit <- lm(final~parcial)')
+  Hint: Heu d'entrar «fit <- cor(parcial,final)» per calcular la línia de
+    regressió i desar els resultats a un objecte anomenat fit.
+
+- Class: cmd_question
+  Output: Per comprovar els valors de la constant i el pendent, simplement
+    heu d'entrar ara el nom de l'objecte que acabeu de crear. Feu-ho ara.
+  CorrectAnswer: fit
+  AnswerTests: omnitest(correctExpr='fit')
+  Hint: Heu d'entrar «fit» per mostrar la constant i el pendent de la línia
+    de regressió.
+
+- Class: mult_question
+  Output: El pendent ens mostra
+  AnswerChoices: que per cada punt que un estudiant obté al parcial, es
+    prediu que obtindrà 1.12 punts al final; que per cada punt que un
+    estudiant obté al final, es  prediu que obtindrà 1.12 punts al parcial
+  CorrectAnswer: que per cada punt que un estudiant obté al parcial, es prediu que obtindrà 1.12 punts al final
+  AnswerTests: omnitest(correctVal='que per cada punt que un estudiant obté al parcial, es prediu que obtindrà 1.12 punts al final')
+  Hint: La línia de regressió prediu l'efecte de la variable explicativa
+    (nota al parcial) sobre la variable dependent (nota al final).
+
+- Class: cmd_question
+  Output: Ens agradaria dibuixar la línia de regressió al diagrama de
+    dispersió. Per fer això, dibuixeu un altre cop el diagrama de
+    dispersió amb l'ordre «plot(Y~X)».
+  CorrectAnswer: plot(final~parcial)
+  AnswerTests: omnitest(correctExpr='plot(final~parcial)')
+  Hint: Heu d'entrar «plot(final~parcial)» per obtenir el diagrama de dispersió
+    entre el final i el parcial.
+
+- Class: cmd_question
+  Output: I ara, per obtenir la línia de regressió al diagrama de dispersió,
+    usem l'ordre «abline(fit)». Proveu-la ara.
+  CorrectAnswer: abline(fit)
+  AnswerTests: omnitest(correctExpr='abline(fit)')
+  Hint: Heu d'entrar «abline(fit)» per obtenir la línia de regressió al
+    diagrama de dispersió entre el final i el parcial.
+
+- Class: cmd_question
+  Output: Un dels objectius principals de l'anàlisi de regressió és predir
+    el valor de la variable dependent donats valors de la variable
+    explicativa. Quina és la predicció de la nota a l'examen final per a
+    un estudiant que va obtindre un 70 al parcial? Podem calcular
+    la predicció directament usant la constant estimada (-4.953) i el
+    pendent (1.127). Entreu la fórmula apropiada per calcular aquesta
+    predicció.
+  CorrectAnswer: -4.953+70*1.127
+  AnswerTests: any_of_exprs('-4.953+70*1.127','-4.953+1.127*70','70*1.127-4.953','1.127*70-4.953')
+  Hint: Heu d'entrar «-4.953+70*1.127» per predir la nota final d'un
+    estudiant que va obtenir una nota igual a 70 a l'examen parcial.
+
+- Class: cmd_question
+  Output: També podeu predir usant la funció predict() del R. Per això
+    heu d'entrar els valors de la variable explicativa a un vector.
+    Per exemple per predir per al mateix cas que abans, l'ordre és
+    «predict(fit,data.frame(parcial=70))». Proveu-la ara.
+  CorrectAnswer: predict(fit,data.frame(parcial=70))
+  AnswerTests: omnitest(correctExpr='predict(fit,data.frame(parcial=70))')
+  Hint: Heu d'entrar «predict(fit,data.frame(parcial=70))» per predir la
+    nota de l'examen final per a un estudiant que va obtindre una nota
+    igual a 70 al parcial.
+
+- Class: cmd_question
+  Output: Podem obtenir un conjunt de resultats més complet amb la
+    funció summary() del R. Recordeu que hem desat el resultat de la
+    regressió a un objecte anomenat «fit». Useu ara aquest objecte com
+    a argument de la funció summary() perquè el R us mostri més resultats
+    de la regressió.
+  CorrectAnswer: summary(fit)
+  AnswerTests: omnitest(correctExpr='summary(fit)')
+  Hint: Heu d'entrar «summary(fit)» perquè el R us mostri més resultats de
+    la regressió.
+
+- Class: text
+  Output: Als resultats mostrats pel R podeu veure un altre cop els coeficients
+    de la regressió sota «Estimate». També podeu obtenir el valor per al
+    coeficient de determinació (també anomenat R-quadrat, R-squared en
+    anglès), que és igual a 0.41, i algunes estadístics per als residus
+    de la regressió.
+
+- Class: mult_question
+  Output: El valor del coeficient de determinació (R-squared) ens està dient
+    que
+  AnswerChoices: la nota del parcial explica 41% de la variació de les
+    notes del final; el final explica 41% de la variació de les notes
+    del final
+  CorrectAnswer: la nota del parcial explica 41% de la variació de les
+    notes del final
+  AnswerTests: omnitest(correctVal='la nota del parcial explica 41% de la variació de les notes del final')
+  Hint: El R-quadrat (R-squared) us diu el percentatge de la variació de
+    la nota del final que podeu explicar amb la variació de la nota del
+    parcial.
+
+- Class: cmd_question
+  Output: Una altra part important del diagnòstic de la línia de regressió
+    és el diagrama de residus. Us permet identificar anomalies en la relació
+    entre les dues variables, com ara la no-linealitat o una dispersió
+    creixent o decreixent. Per posar els residus a una gràfica, primer els
+    hem de calcular. Ho podem fer amb la funció resid() del R. Useu-la
+    amb l'object «fit» com a argument, i assigneu el resultat a un nou
+    objecte anomenat «fit.res».
+  CorrectAnswer: fit.res <- resid(fit)
+  AnswerTests: omnitest(correctExpr='fit.res <- resid(fit)')
+  Hint: Heu d'entrar «fit.res <- resid(fit)» per calcular els residus i
+    assignar els resultats a un nou objecte anomenat fit.res.
+
+- Class: cmd_question
+  Output: Podem ara fer el diagrama dels residus. També afegirem una
+    etiqueta a l'eix vertical amb «ylab» i un títol al diagrama amb «main».
+    L'ordre és plot(fit.res~parcial, ylab="Residus", main="Diagrama de
+    residus"). Proveu-ho ara.
+  CorrectAnswer: plot(fit.res~parcial, ylab="Residuals", main="Residual Plot")
+  AnswerTests: omnitest(correctExpr='plot(fit.res~parcial, ylab="Residus", main="Diagrama de residus")')
+  Hint: Heu d'entrar «plot(fit.res~midterm, ylab="Residuals", main="Residual Plot")» per obtenir el diagrama de residus.
+
+- Class: cmd_question
+  Output: També és convenient afegir una línia horitzontal a 0, atès que
+    hi ha residus positius i negatius, i perquè l'anàlisi dels residus sigui
+    apropiat, els residus haurien d'estar distribuïts a sobre i a sota
+    de la línia de regressió sense cap patró específic. Dibuixarem doncs
+    una línia horitzontal amb abline(0,0). Feu-lo ara.
+  CorrectAnswer: abline(0,0)
+  AnswerTests: omnitest(correctExpr='abline(0,0)')
+  Hint: Heu d'entrar «abline(0,0)» per dibuixar una línia horitzontal.
+
+- Class: cmd_question
+  Output: Una altra eina per comprovar els residus és simplement
+    l'histograma. L'histograma dels residus hauria de mostrar una distribució
+    semblant a la distribució normal. Obteniu l'histograma dels residus,
+    recordeu que vam desar els residus a un objecte anomenat «fit.res».
+  CorrectAnswer: hist(fit.res)
+  AnswerTests: omnitest(correctExpr='hist(fit.res)')
+  Hint: Heu d'entrar «hist(fit.res)» per fer un histograma dels residus.
+
+- Class: figure
+  Output: Encara un altre element de diagnòstic de l'anàlisi de regressió
+    és la identificació d'observacions influents. Són observacions
+    que tenen una influència anormal sobre els resultats que observem,
+    és a dir, sense aquests casos l'efecte de la variable explicativa sobre
+    la variable dependent canvia significativament. Les observacions que
+    poden ser influents tenen un valor amb una diferència gran respecte
+    a la mitjana de la variable explicativa. Recordeu que havíem identificat
+    3 valors atípics al principi d'aquesta lliçó. Us hem tornat a fer el
+    diagrama de dispersió amb els tres valors atípics marcats.
+  Figure: figure_outliers.R
+  FigureType: new
+
+- Class: cmd_question
+  Output: Per analitzar els valors influents els hem d'identificar
+    esbrinant el seu número d'observació, els hem d'eliminar, i hem de
+    veure si el pendent canvia o no. Una funció útil per identificar
+    valors atípics és la funció identify() del R. Entrant identify(Y~X)
+    obteniu un diagrama de dispersió entre Y i X. Podeu clicar sobre
+    els diferents casos que voleu identificar, i un cop que premeu
+    «Esc» (la tecla escape), el R us mostrarà el número de cas (número
+    d'observació) dels casos en la mateixa gràfica, és a dir la fila
+    al marc de dades on podeu trobar aquests casos. Prement Esc un altre cop
+    el R imprimirà els números dels casos i us retornarà a tutorial. Entreu
+    ara la funció identify() amb la nostra variable dependent i explicativa,
+    i cliqueu després sobre els tres valors atípics. No us oblideu de clicar
+    Esc dos cops a continuació per retornar al tutorial i perquè el R us
+    mostri els casos.
+  CorrectAnswer: identify(final~parcial)
+  AnswerTests: omnitest(correctExpr='identify(final~parcial)')
+  Hint: Heu d'entrar «identify(final~parcial)», després clicar al diagrama
+    gràfic sobre els valors atípics, i després prémer «Esc» dos cops.
+
+- Class: text
+  Output: Com podeu veure. el R ha identificat aquests casos com els
+    cassos 2, 18 i 19. El cas 19 no és un cas que és atípic amb respecte
+    a la mitjana de la variable explicativa (està a prop de línia vertical),
+    així que no té el potencial de ser influent. Eliminem doncs els casos
+    2 i 18, que tenen una diferència gran respecte a la mitjana del parcial,
+    i mirem si canvien els resultats.
+
+- Class: cmd_question
+  Output: Per eliminar aquests casos, ho podem fer entrant l'ordre
+    exam[-c(2,18),] i assignant el resultat a un nou marc de dades
+    anomenat exam_nou. Això i diu al R que no tingui en compte els casos 2
+    i 18 (per això tenim el signe menys davant el primer argument), però
+    deixar les columnes (variables) sense tocar (per això tenim la coma
+    i res després de la coma). Proveu doncs «exam_nou <- exam[-c(2,18),]»
+    per eliminar els casos 2 i 18 i obtenir un nou marc de dades anomenat
+    exam_nou sense aquests casos.
+  CorrectAnswer: exam_nou <- exam[-c(2,18),]
+  AnswerTests: omnitest(correctExpr='exam_nou <- exam[-c(2,18),]')
+  Hint: Heu d'entrar "exam_nou <- exam[-c(2,18),]" per eliminar els
+    casos 2 i 18.
+
+- Class: cmd_question
+  Output: Ara podeu obtenir els resultats de la regressió un altre cop
+    i veure si els resultats han canviat significativament. Feu-lo amb
+    l'ordre lm(final~parcial, data=exam_nou), noteu que heu d'especificar
+    el nou marc de dades, sinó el R continuaria usant encara les variables
+    originals amb els casos 2 i 18.
+  CorrectAnswer: lm(final~parcial, data=exam_nou)
+  AnswerTests: omnitest(correctExpr='lm(final~parcial, data=exam_nou)')
+  Hint: Heu d'entrar «lm(final~parcial, data=exam_nou)» per calcular la
+    regressió sense els casos 18 i 19.
+
+- Class: text
+  Output: Com podeu veure, ara el pendent de la regressió s'ha reduït
+    a 0.087. Era 1.127 abans, així que és un 13% més petit. Podem dir
+    que aquests casos són influent, sense els, l'efecte de la nota del
+    parcial sobre la nota del final és més reduït.
+
+- Class: text
+  Output: A vegades la dispersió de les dades és tan gran que no podem
+    esbrinar cap relació lineal entre les variables. Hi ha algunes
+    tècniques basades en la «suavització» de la variació de la variable
+    dependent, i que intenten inferir la relació entre les dues variables
+    un cop aquesta dispersió ha estat eliminada. Una d'aquestes tècniques
+    s'anomena la traça mitjana o mediana, depenent de quina sigui la mesura
+    de centre utilitzada per suavitzar la variació de la variable dependent.
+    El R té un conjunt d'eines que usen tècniques de suavització, que poden
+    ser útils quan hi ha molta variació en la variable dependent però encara
+    creiem que hauria d'haver-hi una relació entre les variables.
+
+- Class: cmd_question
+  Output: Us hem carregat un conjunt de dades, amb dues variables, Y
+    és el temps en minuts que porta realitzar una tasca per part de diversos
+    equips a una empresa, i X és el nombre de membres de cada equip. Doneu
+    una ullada al marc de dades usant la funció head(), el marc de dades
+    s'anomena «task».
+  CorrectAnswer: head(task)
+  AnswerTests: omnitest(correctExpr='head(task)')
+  Hint: Hem d'entrar «head(task)» per comprovar els primers casos del
+    marc de dades «task».
+
+- Class: cmd_question
+  Output: Hem desat les variables X i Y a l'espai de treball actaul del R,
+    així podem treballar amb els seus noms directament, sense haver de
+    referir al nom del marc de dades. Prepareu un diagrama de dispersió
+    de Y (temps a finalitzar una tasca) contra X (nombre de membre de l'equip),
+    usant la funció plot().
+  CorrectAnswer: plot(Y~X)
+  AnswerTests: omnitest(correctExpr='plot(Y~X)')
+  Hint: Heu d'entrar «plot(Y~X)» per obtenir el diagrama de dispersió de Y
+    contra X.
+
+- Class: mult_question
+  Output: D'acord amb el que observeu al diagrama de dispersió
+  AnswerChoices: hi ha molta dispersió i és difícil esbrinar la relació
+    entres les variables; hi ha una relació lineal positiva molt clara;
+    hi ha una relació lineal negativa molt clara
+  CorrectAnswer: hi ha molta dispersió i és difícil esbrinar la relació
+    entre les variables
+  AnswerTests: omnitest(correctVal='hi ha molta dispersió i és difícil esbrinar la relació entre les variables')
+  Hint: Com es pot veure a les dades, és difícil esbrinar la relació entre Y
+    i X.
+
+- Class: figure
+  Output: Us hem preparat un diagrama de residus per a la regressió lineal
+    entre Y i X. Podeu comprovar-ho a la finestra de la dreta. 
+  Figure: figure_resid.R
+  FigureType: new
+
+- Class: mult_question
+  Output: El diagrama de residus mostra
+  AnswerChoices: una possible relació no lineal; una possible relació lineal
+  CorrectAnswer: una possible relació no lineal
+  AnswerTests: omnitest(correctVal='una possible relació no lineal')
+  Hint: Per a valors petits de X els residus són positius, per a valors
+    intermedis són negatius, i per a valors alts de X els residus són
+    un altre cop positius.
+
+- Class: figure
+  Output: Hem dibuixat ara el diagrama de dispersió amb una línia de regressió.
+    Podem veure que la línia de regressió no s'ajusta bé als punts al diagrama
+    de dispersió, i que mostra una relació lineal molt feble.
+  Figure: figure_fit.R
+  FigureType: new
+
+- Class: cmd_question
+  Output: Ara usarem el paquet «plotluck» al R per suavitzar la variació
+    de la variable dependent i obtenir una idea sobre una possible relació
+    no lineal entre Y i X. Per fer això, l'ordre és plotluck(task,Y~X),
+    recordant que el nom del marc de dades és task, Y és el temps a realitzar
+    una tasca, i X és el nombre de membres de l'equip que realitza la tasca.
+    Entreu aquesta ordre ara.
+  CorrectAnswer: plotluck(task,Y~X)
+  AnswerTests: omnitest(correctExpr='plotluck(task,Y~X)')
+  Hint: Heu d'entrar «plotluck(task,Y~X)» per obtenir una traça de la relació
+    entre Y i X.
+
+- Class: mult_question
+  Output: El nombre de membres òptim a l'equip (el que minimitza el temps
+    de realitzar la tasca) és aproximadament
+  AnswerChoices: 6; 4; 10
+  CorrectAnswer: 6
+  AnswerTests: omnitest(correctVal='6')
+  Hint: Comproveu per a què valors de X el valor d Y és mínim, d'acord amb
+    la traça.
+
+- Class: text
+  Output: L'anàlisi de regressió lineal, com mostra el seu nom, és apropiat
+    per a la descripció de la relació lineal entre dues variables. En altres
+    paraules, quan a un diagrama de dispersió veiem que la relació s'ajusta
+    bé a una relació lineal, podem aplicar l'anàlisi de regressió lineal,
+    sempre tenint en compte de definir una variable dependent i una variable
+    explicativa per descriure aquesta relació. En alguns casos, però, el
+    diagrama de dispersió mostra una relació que no s'ajusta bé al que
+    suggeriria una línia.
+
+- Class: cmd_question
+  Output: Us hem carregat un marc de dades anomenat "effadv", que correspon
+    a un conjunt d'empreses per a les quals hem col·lectat dades sobre
+    despesa en publicitat («pub») i vendes («vendes»). Esperem que la
+    publicitat tingui un efecte positiu sobre les vendes. Anem a mirar
+    el diagrama de dispersió, amb plot(vendes~pub). Proveu-ho ara.
+  CorrectAnswer: plot(vendes~pub)
+  AnswerTests: omnitest(correctExpr='plot(vendes~pub)')
+  Hint: Heu d'entrar «plot(vendes~pub)» per obtenir una diagrama de
+    dispersió entre vendes i publicitat.
+    
+- Class: cmd_question
+  Output: EL núvol de punts suggereix una possible relació no lineal entre
+    publicitat i vendes. Però podem obtenir un panorama millor dibuixant
+    també la recta de regressió al diagrama de dispersió mitjançant
+    abline(lm(vendes~pub)). Feu-lo ara.
+  CorrectAnswer: abline(lm(vendes~pub))
+  AnswerTests: omnitest(correctExpr='abline(lm(vendes~pub))')
+  Hint: Heu d'entrar «abline(lm(vendes~pub))» per dibuixar la recta de
+    regressió.
+
+- Class: mult_question
+  Output: La recta de regressió ens mostra que per a  valors petits la
+    línia està sistemàticament a sobre dels punts reals, per a valors
+    intermedis la línia està a sota, i per a valors alts està un altre cop
+    a sobre dels punts reals. D'acord amb això, si voleu predir la quantitat
+    de vendes per a una despesa en publicitat igual a 4.5
+  AnswerChoices: hi haurà una sobrepredicció; la predicció serà correcta, hi
+    haurà una predicció per sota del valor real
+  CorrectAnswer: hi haurà una sobrepredicció
+  AnswerTests: omnitest(correctVal='hi haurà una sobrepredicció')
+  Hint: Penseu quin valor prediria la línia per a un valor de publicitat
+    de 4.5, comparat amb els valors reals (els cercles petits).
+
+- Class: cmd_question
+  Output: una manera senzilla de treballar amb no linealitats d'aquest tipus
+    és usar el model log-log. Al model log-log, prenem logaritmes naturals
+    de la variable dependent i la variable explicativa, i calculem la
+    regressió amb les variables transformades. Anem a convertir primr la
+    variable dependent amb lvendes <- log(vendes). Feu-ho ara.
+  CorrectAnswer: lvendes <- log(vendes)
+  AnswerTests: omnitest(correctExpr='lvendes <- log(vendes)')
+  Hint: Heu d'entrar «lvendes <- log(vendes)» per transformar la variable
+    de vendes a logaritmes.
+
+- Class: cmd_question
+  Output: Realitzeu la mateixa transformació logarítmica amb publicitat
+    («pub») i anomeneu la nova variable «ladv».
+  CorrectAnswer: lpub <- log(pub)
+  AnswerTests: omnitest(correctExpr='lpub <- log(pub)')
+  Hint: Heu d'entrar «lpub <- log(pub)» per transformar la variable vendes
+    a logaritmes.
+
+- Class: cmd_question
+  Output: Feu ara un diagrama de dispersió entre lvendes i lpub.
+  CorrectAnswer: plot(lvendes~lpub)
+  AnswerTests: omnitest(correctExpr='plot(lvendes~lpub)')
+  Hint: Heu d'entrar «plot(lvendes~ladv)» per fer un diagrama de dispersió
+    entre lvendes i lpub.
+
+- Class: cmd_question
+  Output: Afegiu ara una línia de regressió al diagrama amb 
+    abline(lm(lvendes~lpub)).
+  CorrectAnswer: abline(lm(lvendes~lpub))
+  AnswerTests: omnitest(correctExpr='abline(lm(lvendes~lpub))')
+  Hint: Heu d'entrar «abline(lm(lvendes~lpub))» per afegir una línia de
+    regressió al diagrama de dispersió.
+
+- Class: mult_question
+  Output: El diagrama de dispersió amb les variables transformades mostra
+  AnswerChoices: una relació lineal; la mateixa relació no lineal que abans;
+  CorrectAnswer: una relació lineal
+  AnswerTests: omnitest(correctVal='una relació lineal')
+  Hint: Comproveu ara si els punts estan distribuïts sense patrons a sobre
+    i a sota de la línia de regressió.
+
+- Class: cmd_question
+  Output: Podem calcular ara la línia de regressió i realitzar una predicció
+    per a un valor de publicitat igual a 4.5. Primer obtenim els coeficients
+    de la regressió per a les variables transformades amb lm(lvendes~lpub).
+    Feu-ho ara.
+  CorrectAnswer: lm(lvendes~lpub)
+  AnswerTests: omnitest(correctExpr='lm(lvendes~lpub)')
+  Hint: Heu d'entrar «lm(lvendes~lpub)» per obtenir els coeficients de la
+    regressió.
+
+- Class: cmd_question
+  Output: Podem predir ara per a una publicitat igual a 4.5, però recordeu
+    que la regressió s'ha executat amb les variables transformades, de
+    manera que hem d'usar log(4.5). L'ordre és aleshores 
+    predict(lm(lvendes~lpub),data.frame(lpub=log(4.5))). Proveu-ho ara.
+  CorrectAnswer: predict(lm(lvendes~lpub),data.frame(lpub=log(4.5)))
+  AnswerTests: omnitest(correctExpr='predict(lm(lvendes~lpub),data.frame(lpub=log(4.5)))')
+  Hint: Heu d'entrar «predict(lm(lvendes~lpub),data.frame(lpub=log(4.5)))"
+    per predir el valor del logaritme de vendes per a una publicitat igual
+    a 4.5.
+
+- Class: cmd_question
+  Output: El valor que heu obtingut, 2.921418, és en realitat log(vendes)
+    i no simplement vendes. Per recuperar el valor de vendes, heu d'aplicar
+    la funció exponencial (atès que exp(log(x)) = x). Ho podeu fer entrant
+    exp(2.921418). Feu-lo ara.
+  CorrectAnswer: exp(2.921418)
+  AnswerTests: omnitest(correctExpr='exp(2.921418)')
+  Hint: Heu d'entrar «exp(2.921418)» per obtenir la predicció de vendes, i
+    no log(vendes).
+    
+- Class: text
+  Output: Podríeu haver fer això en un únic pas amb
+    exp(predict(lm(lvendes~lpub),data.frame(lpub=log(4.5)))), però és
+    una ordre realment llarga. Amb el procediment que hem presentat és
+    possible ajustar altres transformacions, com ara el model semi-log,
+    que sols transforma la variable dependent. Aquí finalitzem aquesta
+    lliçó, ara teniu diverses eines per analitzar la relació entre dues
+    variables.
