@@ -287,7 +287,7 @@
     residus"). Proveu-ho ara.
   CorrectAnswer: plot(fit.res~parcial, ylab="Residuals", main="Residual Plot")
   AnswerTests: omnitest(correctExpr='plot(fit.res~parcial, ylab="Residus", main="Diagrama de residus")')
-  Hint: Heu d'entrar «plot(fit.res~midterm, ylab="Residuals", main="Residual Plot")» per obtenir el diagrama de residus.
+  Hint: Heu d'entrar «plot(fit.res~parcial, ylab="Residuals", main="Residual Plot")» per obtenir el diagrama de residus.
 
 - Class: cmd_question
   Output: També és convenient afegir una línia horitzontal a 0, atès que
