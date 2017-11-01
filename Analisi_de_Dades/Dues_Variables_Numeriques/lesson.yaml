@@ -398,13 +398,13 @@
     equips a una empresa, i X és el nombre de membres de cada equip. Doneu
     una ullada al marc de dades usant la funció head(), el marc de dades
     s'anomena «task».
-  CorrectAnswer: head(task)
-  AnswerTests: omnitest(correctExpr='head(task)')
-  Hint: Hem d'entrar «head(task)» per comprovar els primers casos del
-    marc de dades «task».
+  CorrectAnswer: head(tasca)p
+  AnswerTests: omnitest(correctExpr='head(tasca)')
+  Hint: Hem d'entrar «head(tasca)» per comprovar els primers casos del
+    marc de dades «tasca».
 
 - Class: cmd_question
-  Output: Hem desat les variables X i Y a l'espai de treball actaul del R,
+  Output: Hem desat les variables X i Y a l'espai de treball actual del R,
     així podem treballar amb els seus noms directament, sense haver de
     referir al nom del marc de dades. Prepareu un diagrama de dispersió
     de Y (temps a finalitzar una tasca) contra X (nombre de membre de l'equip),
@@ -450,13 +450,13 @@
 - Class: cmd_question
   Output: Ara usarem el paquet «plotluck» al R per suavitzar la variació
     de la variable dependent i obtenir una idea sobre una possible relació
-    no lineal entre Y i X. Per fer això, l'ordre és plotluck(task,Y~X),
-    recordant que el nom del marc de dades és task, Y és el temps a realitzar
+    no lineal entre Y i X. Per fer això, l'ordre és plotluck(tasca,Y~X),
+    recordant que el nom del marc de dades és tasca, Y és el temps a realitzar
     una tasca, i X és el nombre de membres de l'equip que realitza la tasca.
     Entreu aquesta ordre ara.
-  CorrectAnswer: plotluck(task,Y~X)
-  AnswerTests: omnitest(correctExpr='plotluck(task,Y~X)')
-  Hint: Heu d'entrar «plotluck(task,Y~X)» per obtenir una traça de la relació
+  CorrectAnswer: plotluck(tasca,Y~X)
+  AnswerTests: omnitest(correctExpr='plotluck(tasca,Y~X)')
+  Hint: Heu d'entrar «plotluck(tasca,Y~X)» per obtenir una traça de la relació
     entre Y i X.
 
 - Class: mult_question
