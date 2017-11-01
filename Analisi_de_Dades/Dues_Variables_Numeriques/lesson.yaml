@@ -174,7 +174,7 @@
     que anomeneu «fit».
   CorrectAnswer: fit <- lm(final~parcial)
   AnswerTests: omnitest(correctExpr='fit <- lm(final~parcial)')
-  Hint: Heu d'entrar «fit <- cor(parcial,final)» per calcular la línia de
+  Hint: Heu d'entrar «fit <- lm(final~parcial)» per calcular la línia de
     regressió i desar els resultats a un objecte anomenat fit.
 
 - Class: cmd_question
@@ -427,7 +427,7 @@
 
 - Class: figure
   Output: Us hem preparat un diagrama de residus per a la regressió lineal
-    entre Y i X. Podeu comprovar-ho a la finestra de la dreta. 
+    entre Y i X. Podeu comprovar-ho a la finestra de la dreta.
   Figure: figure_resid.R
   FigureType: new
 
@@ -488,7 +488,7 @@
   AnswerTests: omnitest(correctExpr='plot(vendes~pub)')
   Hint: Heu d'entrar «plot(vendes~pub)» per obtenir una diagrama de
     dispersió entre vendes i publicitat.
-    
+
 - Class: cmd_question
   Output: EL núvol de punts suggereix una possible relació no lineal entre
     publicitat i vendes. Però podem obtenir un panorama millor dibuixant
@@ -539,7 +539,7 @@
     entre lvendes i lpub.
 
 - Class: cmd_question
-  Output: Afegiu ara una línia de regressió al diagrama amb 
+  Output: Afegiu ara una línia de regressió al diagrama amb
     abline(lm(lvendes~lpub)).
   CorrectAnswer: abline(lm(lvendes~lpub))
   AnswerTests: omnitest(correctExpr='abline(lm(lvendes~lpub))')
@@ -567,7 +567,7 @@
 - Class: cmd_question
   Output: Podem predir ara per a una publicitat igual a 4.5, però recordeu
     que la regressió s'ha executat amb les variables transformades, de
-    manera que hem d'usar log(4.5). L'ordre és aleshores 
+    manera que hem d'usar log(4.5). L'ordre és aleshores
     predict(lm(lvendes~lpub),data.frame(lpub=log(4.5))). Proveu-ho ara.
   CorrectAnswer: predict(lm(lvendes~lpub),data.frame(lpub=log(4.5)))
   AnswerTests: omnitest(correctExpr='predict(lm(lvendes~lpub),data.frame(lpub=log(4.5)))')
@@ -584,7 +584,7 @@
   AnswerTests: omnitest(correctExpr='exp(2.921418)')
   Hint: Heu d'entrar «exp(2.921418)» per obtenir la predicció de vendes, i
     no log(vendes).
-    
+
 - Class: text
   Output: Podríeu haver fer això en un únic pas amb
     exp(predict(lm(lvendes~lpub),data.frame(lpub=log(4.5)))), però és
