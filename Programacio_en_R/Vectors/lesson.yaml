@@ -195,14 +195,14 @@
   Output: Sembla que ens falta quelcom... Ah, sí! El vostre nom!
 
 - Class: cmd_question
-  Output: 'Per afegir (o «concatenate», és a dir «concatenar») el vostre
-    nom al final de my_char, useu la funció c() d''aquesta manera:
+  Output: Per afegir (o «concatenate», és a dir «concatenar») el vostre
+    nom al final de my_char, useu la funció c(). Heu d'entrar
     c(my_char, "el_vostre_nom_aquí"). Poseu el vostre nom en cometes dobles
     on hem posat "el_vostre_nom_aquí". Proveu-ho ara, emmagatzemant el resultat
-    en una nova variable anomenada my_name.'
+    en una nova variable anomenada my_name.
   CorrectAnswer: my_name <- c(my_char, "Swirl")
   AnswerTests: var_is_a("character", "my_name"); expr_uses_func("c"); expr_creates_var("my_name");
-    val_has_length(4)
+    val_has_length(5)
   Hint: Afegiu el vostre nom al final del vector my_char usant la funció c().
     Assegureu-vos d'assignar el resultat a una nova variable anomenada my_name.
     Si el vostre nom fos «Swirl», hauríeu d'entrar
