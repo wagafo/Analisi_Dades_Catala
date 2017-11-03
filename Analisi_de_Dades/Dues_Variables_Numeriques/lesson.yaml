@@ -397,8 +397,8 @@
     és el temps en minuts que porta realitzar una tasca per part de diversos
     equips a una empresa, i X és el nombre de membres de cada equip. Doneu
     una ullada al marc de dades usant la funció head(), el marc de dades
-    s'anomena «task».
-  CorrectAnswer: head(tasca)p
+    s'anomena «tasca».
+  CorrectAnswer: head(tasca)
   AnswerTests: omnitest(correctExpr='head(tasca)')
   Hint: Hem d'entrar «head(tasca)» per comprovar els primers casos del
     marc de dades «tasca».
@@ -417,7 +417,7 @@
 - Class: mult_question
   Output: D'acord amb el que observeu al diagrama de dispersió
   AnswerChoices: hi ha molta dispersió i és difícil esbrinar la relació
-    entres les variables; hi ha una relació lineal positiva molt clara;
+    entre les variables; hi ha una relació lineal positiva molt clara;
     hi ha una relació lineal negativa molt clara
   CorrectAnswer: hi ha molta dispersió i és difícil esbrinar la relació
     entre les variables
