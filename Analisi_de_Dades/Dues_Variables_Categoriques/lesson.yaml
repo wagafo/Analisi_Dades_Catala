@@ -1,0 +1,292 @@
+- Class: meta
+  Course: Analisi de dades
+  Lesson: Dues variables categoriques
+  Author: Walter Garcia-Fontes
+  Type: Standard
+  Organization: Universitat Pompeu Fabra
+  Version: 1.0.0
+
+- Class: text
+  Output: Aquest és un tutorial sobre l'anàlisi de dues variables
+    categòriques amb el R.
+
+- Class: text
+  Output: Hi ha dues maneres de carregar les dades per a les variables
+    categòriques, 1) cas per cas, i 2) directament a una taula de
+    contingència.
+
+- Class: cmd_question
+  Output: Diem que les dades les tenim cas per cas quan les tenim a
+    un full de càlcul. La primera línia conté el nom de les variables,
+    cada fila conté les dades d'un individu, i hi ha dues columnes amb
+    cadascuna de les variables categòriques que volem analitzar. Hem
+    carregat un marc de dades provinent d'un full de càlcul d'aquest tipus
+    anomenat «movilitat», que conté les dades de la comarca on viuen 36
+    personnes i el mitjà de transport que fan servir. Entreu
+    «movilitat» (sense les cometes) per veure les dades "cas per cas"
+    d'aquestes 36 persones.
+  CorrectAnswer: movilitat
+  AnswerTests: omnitest(correctExpr='movilitat')
+  Hint: Heu d'entrar «movilitat» per veure els primers casos de les
+    variables categòriques incloses al marc de dades «movilitat».
+
+- Class: cmd_question
+  Output: Per obtenir la taula de contingència d'aquest conjunt de
+    de dades, simplement usem la funció table(), donant-li com argument
+    el nom del marc de dades. Proveu-ho ara, assignant el resultat a un
+    objecte que anomeneu «dist».
+  CorrectAnswer: dist <- table(movilitat)
+  AnswerTests: omnitest(correctExpr='dist <- table(movilitat)')
+  Hint: Heu d'entrar «dist <- table(movilitat)» per obtenir la taula de
+    contingència de les variables categòriques «comarca» i «transport» i
+    assignar-la a un objecte anomenat «dist».
+
+- Class: cmd_question
+  Output: La funció table() obté la taula de freqüències absolutes de la
+    distribució conjunta entre les dues variables categòriques. Per
+    veure ara el resultat entreu «dist» (sense les cometes).
+  CorrectAnswer: dist
+  AnswerTests: omnitest(correctExpr='dist')
+  Hint: Heu d'entrar «dist» per veure les freqüències absolutes de
+    la distribució conjunta entre les variables «comarca» i «transport».
+
+- Class: cmd_question
+  Output: La distribució conjunta també es pot presentar de forma gràfica
+    mitjançant un diagrama de barres. Això es pot fer mitjançant la
+    funció barplot(). El primer argument és un objecte taula, i pot
+    tenir altres arguments. Proveu per exemple barplot(dist, legend=TRUE)
+    per obtenir el diagrama de barres de les dues variables de forma apilada.
+  CorrectAnswer: barplot(dist, legend=TRUE)
+  AnswerTests: omnitest(correctExpr='barplot(dist, legend=TRUE)')
+  Hint: Entreu «barplot(dist, legend=TRUE)» per obtenir un diagrama de barres
+    apilat.
+
+- Class: cmd_question
+  Output: Una funció útil és t(). Aquest funció transposa una taula, és a
+    dir que les columnes passen a ser files i les files passen a ser
+    columnes. Proveu de transposar l'objecte «dist» que acabem de crear.
+  CorrectAnswer: t(dist)
+  AnswerTests: omnitest(correctExpr='t(dist)')
+  Hint: Heu d'entrar «t(dist)» per transposar la taula de contingència.
+
+- Class: cmd_question
+  Output: Per defecte el R fa els diagrames de barra amb la variable
+    columna a l'eix horitzontal, i de forma apilada. Podem fer un
+    diagrama de barres amb la variable fila a l'eix horitzontal, i de
+    forma agrupada, amb l'ordre barplot(t(dist),legend=TRUE,beside=TRUE).
+    Proveu-ho ara.
+  CorrectAnswer: barplot(t(dist),legend=TRUE,beside=TRUE)
+  AnswerTests: omnitest(correctExpr='barplot(t(dist),legend=TRUE,beside=TRUE)')
+  Hint: Entreu «barplot(t(dist),legend=TRUE,beside=TRUE)» per obtenir un
+    diagrama de barres agrupat i amb la variable fila a l'eix horitzontal.
+
+- Class: cmd_question
+  Output: Per obtenir les freqüències relatives de la distribució
+    conjunta de les dues variables categòriques, usem la funció
+    prop.table(). L'argument és la taula, que no hem de tornar a especificar
+    com vam fer el primer cop, sinó que podem especificar usant l'objecte
+    «dist» que vam crear. Proveu-ho ara.
+  CorrectAnswer: prop.table(dist)
+  AnswerTests: omnitest(correctExpr='prop.table(dist)')
+  Hint: Heu d'entrar «prop.table(dist)» per veure les freqüències relatives de
+    la distribució conjunta entre les variables «comarca» i «transport».
+
+- Class: cmd_question
+  Output: La distribució marginal de la variable fila (en aquest cas «comarca»)
+    la podem obtenir usant la funció margin.table(). Té dos arguments, el
+    primer és la taula (podem usar «dist») i el segon és 1 per a la variable
+    fila. Obteniu ara la distribució marginal de la variable «comarca».
+  CorrectAnswer: margin.table(dist,1)
+  AnswerTests: omnitest(correctExpr='margin.table(dist,1)')
+  Hint: Heu d'entrar «margin.table(dist,1)» per veure les freqüències absolutes
+    de la distribució marginal de la variable fila.
+
+- Class: cmd_question
+  Output: De manera semblant podem obtenir la distribució marginal de
+    la variable columna (en aquest cas «transport»), en aquest cas el
+    segon argument de la funció margin.table() ha de ser 2. Obteniu
+    ara les freqüències absolutes de la variable columna «transport».
+  CorrectAnswer: margin.table(dist,2)
+  AnswerTests: omnitest(correctExpr='margin.table(dist,2)')
+  Hint: Heu d'entrar «margin.table(dist,2)» per veure les freqüències absolutes     de la variable columna de la taula de contingència.
+
+- Class: cmd_question
+  Output: Per obtenir les freqüències relatives de les distribucions
+    marginals s'ha de fer servir la funció prop.table, donant-li com
+    argument la distribució marginal que acabem de mostrar, per exemple
+    per obtenir les freqüències relatives de la distribució marginal
+    de la variable fila «comarca» podem donar l'ordre
+    prop.table(margin.table(dist,1)). Proveu aquesta ordre ara.
+  CorrectAnswer: prop.table(margin.table(dist,1))
+  AnswerTests: omnitest(correctExpr='prop.table(margin.table(dist,1))')
+  Hint: Heu d'entrar «prop.table(margin.table(dist,1))» per veure les
+    freqüències relatives de la variable fila de la taula de contingència.
+
+- Class: cmd_question
+  Output: Per últim, per obtenir les distribucions condicionals, fem
+    servir la funció prop.table() amb dos arguments, el primer és la
+    taula i el segon és la variable per la qual volem condicionar. Per
+    exemple per condicionar per la variable fila hem d'entrar 1. Entreu
+    ara l'ordre apropiada per obtenir les freqüències relatives de
+    la distribució de «transport» condicionada a «comarca».
+  CorrectAnswer: prop.table(dist,1)
+  AnswerTests: omnitest(correctExpr='prop.table(dist,1)')
+  Hint: Heu d'entrar «prop.table(dist,1)» per obtenir les freqüències
+    relatives de la distribució condicional de la variable «transport»
+    condicionada a la variable «comarca».
+
+- Class: text
+  Output: Quan observem que les distribucions condicionals es veuen
+    diferents diem que les variables categòriques estan relacionades.
+
+- Class: mult_question
+  Output: D'acord amb el que observeu a la distribució condicional
+    de la variable «transport» condicionada a la variable «comarca»,
+    quina de les següents afirmacions us sembla correcta?
+  AnswerChoices: hi ha relació entre les variables; no hi ha relació entre les variables
+  CorrectAnswer: hi ha relació entre les variables
+    entre les variables
+  AnswerTests: omnitest(correctVal='hi ha relació entre les variables')
+  Hint: Mireu si les distribucions condicionals són semblants o diferents.
+
+- Class: cmd_question
+  Output: Una altra manera convenient de mirar si les distribucions
+    condicionals són iguals o diferents és mitjançant una gràfica de
+    barres. Posant tot a la mateixa escala és fàcil jutjar si hi ha
+    diferències en les proporcions de la variable que volem analitzar.
+    Per exemple per representar el diagrama de barres de la variable fila
+    («comarca») condicionada a la variable columna («transport») podem
+    donar l'ordre barplot(prop.table(dist,2),legend=TRUE). Proveu-la ara.
+  CorrectAnswer: barplot(prop.table(dist,2),legend=TRUE)
+  AnswerTests: omnitest(correctExpr='barplot(prop.table(dist,2),legend=TRUE)')
+  Hint: Heu d'entrar «barplot(prop.table(dist,2),legend=TRUE)» per obtenir
+    el diagrama de barres de la distribució condicional de la variable
+    fila condicionada a la variable columna.
+
+- Class: mult_question
+  Output: Observant les distribucions condicionals que acabem d'obtenir,
+    quina de les següents afirmacions us sembla correcta?
+  AnswerChoices: A la Noguera és la comarca on es fa servir més el cotxe; Al Barcelonès és on es fa servir més l'autobús
+  CorrectAnswer: A la Noguera és la comarca on es fa servir més el cotxe
+    entre les variables
+  AnswerTests: omnitest(correctVal='A la Noguera és la comarca on es fa servir més el cotxe')
+  Hint: Mireu les freqüències relatives a cada columna, Autobús i Cotxe, cosa
+   que us mostra la proporció en què es fa servir el mitjà de transport
+   de la columna a les diferents comarques, i mireu quina comarca té la
+   proporció més gran.
+
+- Class: cmd_question
+  Output: Posant com a segon argument a la funció prop.table() un 2, podem
+    obtenir les distribucions de la variable fila («comarca») condicionada
+    a la variable columna («transport»). Obteniu ara aquestes distribucions
+    mitjançant l'ordre apropiada.
+  CorrectAnswer: prop.table(dist,2)
+  AnswerTests: omnitest(correctExpr='prop.table(dist,2)')
+  Hint: Heu d'entrar «prop.table(dist,2)» per obtenir les freqüències relatives
+    de la distribució condicionada de la variable fila («comarca»)
+    condicionada a la variable columna («transport»).
+
+- Class: cmd_question
+  Output: Per obtenir el diagrama de barres de la variable columna
+    («transport») condicionada a la variable fila («comarca»), podem
+    donar l'ordre següent barplot(t(prop.table(dist,1)),legend=TRUE).
+    Entreu aquesta ordre ara.
+  CorrectAnswer: barplot(t(prop.table(dist,1)),legend=TRUE)
+  AnswerTests: omnitest(correctExpr='barplot(t(prop.table(dist,1)),legend=TRUE)')
+  Hint: Heu d'entrar «barplot(t(prop.table(dist,1)),legend=TRUE)» per obtenir
+    el diagrama de barres de la variable columna condicionada a la variable
+    fila.
+
+- Class: text
+  Output: A més de «cas per cas», les dades es poden entrar directament
+    des d'una taula de contingència.
+
+- Class: cmd_question
+  Output: Treballarem ara amb un nou conjunt de dades amb dues variables
+    categòriques, «equip de futbol preferit» a les files, i «ciutat de
+    residència» a les columnes. Les dades les podeu veure si entreu
+    «aficionats» (sense cometes) a la línia d'ordres. Feu-lo ara.
+  CorrectAnswer: aficionats
+  AnswerTests: omnitest(correctExpr='aficionats')
+  Hint: Entreu «aficionats» per veure la taula de contingència de les variables
+    «equip de futbol preferit» i «ciutat de residència».
+
+- Class: cmd_question
+  Output: El primer que hem de fer és entrar les freqüències absolutes de
+    la distribució conjunta. Les podem fer creant un vector amb la funció
+    c(), i hem d'entrar les freqüències al llarg de les files, és a dir
+    c(4,2,0,1,5,1,0,1,6) i assigneu els resultat a un objecte
+    anomenat «freq». Feu-ho ara.
+  CorrectAnswer: freq <- c(4,2,0,1,5,1,0,1,6)
+  AnswerTests: omnitest(correctExpr='freq <- c(4,2,0,1,5,1,0,1,6)')
+  Hint: Entreu «freq <- c(4,2,0,1,5,1,0,1,6)» per veure la taula de
+    contingència de les variables.
+
+- Class: cmd_question
+  Output: Ara creem una taula a partir de les freqüències que hem desat
+    a l'ordre anterior, mitjançant la funció matrix(). Li hem de dir
+    que hi ha tres columnes (ncol=3), i que les dades les hem entrades
+    per files (byrow=TRUE), a més li hem de dir que el tipus és «table».
+    Tot junt queda as.table(matrix(freq, ncol=3, byrow=TRUE)). Creeu
+    ara aquesta taula i assigneu-la a l'objecte «lamevataula».
+  CorrectAnswer: lamevataula <- as.table(matrix(freq, ncol=3, byrow=TRUE))
+  AnswerTests: omnitest(correctExpr='lamevataula <- as.table(matrix(freq, ncol=3, byrow=TRUE))')
+  Hint: Entreu «lamevataula <- as.table(matrix(freq, ncol=3, byrow=TRUE))» per
+    crear la taula d'equips i ciutats a l'objecte «lamevataula».
+
+- Class: cmd_question
+  Output: Per entrar el nom de les categories de cada variable usem
+    les funcions colnames() i rownames(). Per exemple per entrar el nom
+    de les categories de la variable columna entrem
+    colnames(lamevataula) <- c("Barcelona","Madrid","Sevilla"). Entreu
+    ara els noms de la variable columna.
+  CorrectAnswer: colnames(lamevataula) <- c("Barcelona","Madrid","Sevilla")
+  AnswerTests: omnitest(correctExpr='colnames(lamevataula) <- c("Barcelona","Madrid","Sevilla")')
+  Hint: Entreu «colnames(lamevataula) <- c("Barcelona","Madrid","Sevilla")»
+    per entrar els noms de les categories de la variable columna.
+
+- Class: cmd_question
+  Output: Sabent que els noms de les categories de la variable fila són
+    "Barça", "Real Madrid", "Betis", entreu ara aquests noms mitjançant la
+    funció rownames().
+  CorrectAnswer: rownames(lamevataula) <- c("Barça","Real Madrid","Sevilla")
+  AnswerTests: omnitest(correctExpr='rownames(lamevataula) <- c("Barça","Real Madrid","Sevilla")')
+  Hint: Entreu «rownames(lamevataula) <- c("Barça","Real Madrid","Sevilla")»
+    per entrar els noms de les categories de la variable fila.
+
+- Class: cmd_question
+  Output: Ara podem entrar «lamevataula» (sense cometes) per veure la taula
+    que hem creat.
+  CorrectAnswer: lamevataula
+  AnswerTests: omnitest(correctExpr='lamevataula')
+  Hint: Entreu «lamevataula» per veure la taula de contingència.
+
+- Class: cmd_question
+  Output: Ja tenim la taula creada. Ara podem fer l'anàlisi de la relació entre
+    les dues variables categòriques com vam fer amb l'exemple anterior. Per
+    exemple obteniu el diagrama de barres de la distribució condicional de
+    la preferència d'equip de futbol condicionada a la ciutat de residència,
+    mitjançant l'ordre barplot(prop.table(lamevataula,2),legend=TRUE).
+  CorrectAnswer: barplot(prop.table(lamevataula,2),legend=TRUE)
+  AnswerTests: omnitest(correctExpr='barplot(prop.table(lamevataula,2),legend=TRUE)')
+  Hint: Entreu «barplot(prop.table(lamevataula,2),legend=TRUE)» per veure
+    la distribució condicional d'equip de preferència condicionada a ciutat
+    de residència.
+
+- Class: mult_question
+  Output: Observant les distribucions condicionals d'equip de preferència
+    condicionades a ciutat de residència, podem dir que
+  AnswerChoices: Hi ha relació, la preferència per equip es veu afectada
+    per la ciutat de residència; No hi ha relació, la preferència per
+    equip és independent de la ciutat de residència"
+  CorrectAnswer: Hi ha relació, la preferència per equip es veu afectada
+    per la ciutat de residència
+  AnswerTests: omnitest(correctVal='Hi ha relació, la preferència per equip es veu afectada per la ciutat de residència')
+  Hint: Mireu les freqüències relatives a cada columna a cada ciutat, per
+    veure si les proporcions de preferència pels equip són diferents a les
+    diferents ciutats.
+
+- Class: text
+  Output: Heu acabat la lliçó sobre l'anàlisi de la relació entre dues
+    variables categòriques. Ara sabeu com entrar les dades i com determinar
+    si hi ha relació o si podem dir que les variables són independents.

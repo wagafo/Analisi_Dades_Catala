@@ -1,0 +1,7 @@
+comarca <- c("Barcelonès","Barcelonès","Barcelonès","Barcelonès","Barcelonès","Barcelonès","Barcelonès","Barcelonès","Barcelonès","Barcelonès","Noguera","Noguera","Noguera","Noguera","Noguera","Noguera","Noguera","Noguera","Noguera","Noguera","Noguera","Noguera","Noguera","Noguera","L'Anoia","L'Anoia","L'Anoia","L'Anoia","L'Anoia","L'Anoia","L'Anoia","L'Anoia","Bages","Bages","Bages","Bages")
+transport <- c("Cotxe","Cotxe","Cotxe","Rodalies","Rodalies","Rodalies","Autobús","Autobús","Autobús","Autobús","Cotxe","Cotxe","Cotxe","Rodalies","Rodalies","Rodalies","Autobús","Autobús","Autobús","Autobús","Cotxe","Cotxe","Cotxe","Autobús","Cotxe","Cotxe","Cotxe","Rodalies","Rodalies","Rodalies","Autobús","Autobús","Cotxe","Autobús","Rodalies","Bicicleta")
+movilitat <- data.frame(comarca,transport)
+aficionats <- matrix(c(4,2,0,1,5,1,0,1,6),ncol=3, byrow=TRUE)
+colnames(aficionats) <- c("Barcelona","Madrid","Sevilla")
+rownames(aficionats) <- c("Barça","Real Madrid","Betis")
+aficionats <- as.table(aficionats)
