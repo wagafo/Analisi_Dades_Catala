@@ -287,7 +287,7 @@
     residus"). Proveu-ho ara.
   CorrectAnswer: plot(fit.res~parcial, ylab="Residuals", main="Residual Plot")
   AnswerTests: omnitest(correctExpr='plot(fit.res~parcial, ylab="Residus", main="Diagrama de residus")')
-  Hint: Heu d'entrar «plot(fit.res~parcial, ylab="Residuals", main="Residual Plot")» per obtenir el diagrama de residus.
+  Hint: Heu d'entrar «plot(fit.res~parcial, ylab="Residuals", main="Diagrama de residus")» per obtenir el diagrama de residus.
 
 - Class: cmd_question
   Output: També és convenient afegir una línia horitzontal a 0, atès que
@@ -407,7 +407,7 @@
   Output: Hem desat les variables X i Y a l'espai de treball actual del R,
     així podem treballar amb els seus noms directament, sense haver de
     referir al nom del marc de dades. Prepareu un diagrama de dispersió
-    de Y (temps a finalitzar una tasca) contra X (nombre de membre de l'equip),
+    de Y (temps a finalitzar una tasca) contra X (nombre de membres de l'equip),
     usant la funció plot().
   CorrectAnswer: plot(Y~X)
   AnswerTests: omnitest(correctExpr='plot(Y~X)')
