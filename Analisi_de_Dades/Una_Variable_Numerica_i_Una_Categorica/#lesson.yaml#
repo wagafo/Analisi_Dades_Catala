@@ -1,0 +1,176 @@
+- Class: meta
+  Course: Analisi de dades
+  Lesson: Una variable numerica i una categorica
+  Author: Walter Garcia-Fontes
+  Type: Standard
+  Organization: Universitat Pompeu Fabra
+  Version: 1.0.0
+
+- Class: text
+  Output: Aquest tutorial us donarà eines per analitzar la relació
+    entre una variable categòrica i una numèrica. L'anàlisi no
+    introdueix gaires coses noves, es tracta d'analitzar la distribució
+    de la variable numèrica (una única variable, per tant es fan servir
+    la mitjana, la desviació estàndard, la mediana, l'histograma, etc. per
+    descriure la seva distribució) per a cada grup definit per la
+    variable categòrica. Si aquestes distribucions per a cada grup són
+    diferents, diem que hi ha relació entre les dues variables.
+
+- Class: cmd_question
+  Output: Farem servir un marc de dades que ja us hem introduït que es diu
+    «rendcom», i que conté dues variables. Una variable numèrica que es
+    diu «renda» i que recull la renda de diferents persones, i una
+    altra variable anomenada «comarca» que ens diu en quina comarca viu
+    cada persona. Entreu ara «rendcom» (sense les cometes) per veure
+    l'aspecte d'aquest marc de dades.
+  CorrectAnswer: rendcom
+  AnswerTests: omnitest(correctExpr='rendcom')
+  Hint: Entreu «rendcom» per veure l'aspecte del marc de dades.
+
+- Class: text
+  Output: En aquest tutorial farem servir tres paquets del R que ja us hem
+    habilitat, «psych», «lattice» i «gplots». Recordeu d'instal·lar-los
+    (install.packages(nom_paquet)) i habilitar-los (library(nom_paquet)) en
+    la vostra instal·lació del R si els voleu fer servir. Ara començarem
+    l'anàlisi de la relació entre «renda» i «comarca».
+
+- Class: cmd_question
+  Output: El primer que hem de fer és obtenir els resums numèrics de la
+    variable «renda» per a cada categoria de la variable «comarca». Per
+    això farem servir la funció describeBy() del paquet «psych». El primer
+    argument d'aquesta funció és la variable numèrica, i el segon la variable
+    categòrica. Proveu ara aquesta funció.
+  CorrectAnswer: describeBy(rendcom$renda,rendcom$comarca)
+  AnswerTests: omnitest(correctExpr='describeBy(rendcom$renda,rendcom$comarca)')
+  Hint: Entreu «describeBy(rendcom$renda,rendcom$comarca)» per obtenir
+    els resums numèrics principals per a cada grup definit per la variable
+    categòrica.
+
+- Class: mult_question
+  Output: Observant les distribucions de la variable numèrica per a cada
+    grup, podem dir que
+  AnswerChoices: Són força diferents, per tant hi ha relació entre les dues
+    variables, la comarca de residència influeix la distribució de la renda;
+    Són força iguals, per tant la distribució de la renda és independent
+    de la comarca de residència
+  CorrectAnswer: Són força diferents, per tant hi ha relació entre les dues
+    variables, la comarca de residència influeix la distribució de la renda
+  AnswerTests: omnitest(correctVal='Són força diferents, per tant hi ha relació entre les dues variables, la comarca de residència influeix la distribució de la renda')
+  Hint: Mireu la mitjana, la mediana, la desviació estàndard, el coeficient
+    d'asimetria, la curtosis, i jutgeu si varien per les diferents comarques.
+
+- Class: cmd_question
+  Output: Com habitualment, una imatge val més que mil paraules. Una manera
+    molt convenient de comprovar si la distribució de la variable numèrica
+    és diferent quan condicionem al valor de la variable categòrica, és
+    mitjançant eines gràfiques. El diagrama de caixa és una descripció força
+    completa de la distribució d'una variable numèrica. Una eina molt útil
+    és per tant posar diagrames de caixa un al costat de l'altre per poder-los
+    comparar. Ho podem fer mitjançant l'ordre
+    boxplot(renda~comarca,data=rendcom, xlab="Comarca", ylab="Renda"). Els
+    arguments xlab i ylab li posen noms als eixos. Entreu ara aquesta
+    ordre per comparar les distribucions de la variable numèrica per als
+    grups definits per la variable categòrica.
+  CorrectAnswer: boxplot(renda~comarca,data=rendcom, xlab="Comarca", ylab="Renda")
+  AnswerTests: omnitest(correctExpr='boxplot(renda~comarca,data=rendcom, xlab="Comarca", ylab="Renda")')
+  Hint: Entreu «boxplot(renda~comarca,data=rendcom, xlab="Comarca", ylab="Renda")» per obtenir diagrames de caixa un al costat de l'altre.
+
+- Class: mult_question
+  Output: D'acord amb el que observeu als diagrames de caixa un al costat
+    de l'altre, quina de les afirmacions següents és correcta?
+  AnswerChoices: Hi ha més dispersió de la renda al Barcelonès i la Noguera
+    que a la resta de comarques; hi ha valors atípics de la renda al
+    Barcelonès i la Noguera; els valors més freqüents de la renda són
+    més alts a la Noguera que a la resta de comarques
+  CorrectAnswer: Hi ha més dispersió de la renda al Barcelonès i la Noguera
+    que a la resta de comarques
+  AnswerTests: omnitest(correctVal='Hi ha més dispersió de la renda al Barcelonès i la Noguera que a la resta de comarques')
+  Hint: Mireu la llargada de les caixes per a la dispersió, els cercles per
+    als valors atípics i la línia horitzontal més gruixuda per al valor
+    més freqüent de la renda (la mediana de la renda).
+
+- Class: cmd_question
+  Output: L'altre resum gràfic usat sovint per a una variable
+    numèrica és l'histograma. Per tant és interessant també obtenir
+    histogrames separats per a cada grup definit per la variable
+    categòrica. Això ho podem fer amb la funció histograma() del paquet
+    «lattice». L'ordre adequada és
+    histogram(~renda|factor(comarca), data=rendcom, xlab="Renda"). Proveu
+    aquesta ordre ara.
+  CorrectAnswer: histogram(~renda|factor(comarca), data=rendcom, xlab="Renda")
+  AnswerTests: omnitest(correctExpr='histogram(~renda|factor(comarca), data=rendcom, xlab="Renda")')
+  Hint: Entreu «histogram(~renda|factor(comarca), data=rendcom, xlab="Renda")»
+    per obtenir histogrames per a cada grup definit per la variable categòrica.
+
+- Class: mult_question
+  Output: D'acord amb el que observeu als histogrames per a cada grup,
+    la renda freqüent més alta la trobem a la comarca
+  AnswerChoices: Bagès; Noguera; Barcelonès; Baix Llogregat
+  CorrectAnswer: Barcelonès
+  AnswerTests: omnitest(correctVal='Barcelonès')
+  Hint: Mireu quin histograma té la classe modal a un valor més alt de la
+    renda.
+
+- Class: cmd_question
+  Output: Per últim, és interessant també comparar les mitjanes de la variable
+    numèrica obtingudes dins de cada grup definit per la variable categòrica.
+    Si són força diferents sabem que la variable categòrica està relacionada
+    amb la distribució de la variable numèrica. Però si són iguals, encara hem
+    d'analitzar els altres resums numèrics, perquè sols si les distribucions
+    són iguals podem dir que les variables són independents. Per comparar
+    sols les mitjanes gràficament podem fer servir la funció plotmeans() del
+    paquet «gplots». L'ordre és plotmeans(renda~comarca, data=rendcom).
+    Proveu-ho ara.
+  CorrectAnswer: plotmeans(renda~comarca, data=rendcom)
+  AnswerTests: omnitest(correctExpr='plotmeans(renda~comarca, data=rendcom)')
+  Hint: Entreu «plotmeans(renda~comarca, data=rendcom)» per obtenir un
+    diagrama de les mitjanes i poder-les comparar.
+
+- Class: text
+  Output: Amb això hem completat la presentació de les eines per analitzar
+    la relació entre una variable numèrica i una categòrica. Un últim punt,
+    recordeu que de variables categòriques hi ha de dos tipus, nominals i
+    ordinals. La variable «comarca» del nostre exemple anterior és
+    nominal, les categories tenen un nom però no tenen un ordre natural.
+
+- Class: text
+  Output: Les variables categòriques ordinals, en canvi, es caracteritzen
+    perquè podem ordenar les categories, perquè la variable prové d'una
+    variable numèrica agrupada en categories. Exemples són «nivell de renda»,
+    «nivell educatiu», «grup d'edat», etc. Si voleu analitzar aquest tipus
+    de variables, teniu cura de posar com a nom de les categories quelcom
+    que alfabèticament quedi ordenat. Un truc per fer això és posar «1.»,
+    «2.», «3.», etc. davant de cada categoria. Per exemple «1. Sense estudis»,
+    «2. Primària», «3. Secundària», etc., per a una variable categòrica
+    sobre el nivell d'estudis. Així el R ens mostrarà primer «sense estudis»,
+    en segon lloc «primària», etc.
+
+
+- Class: figure
+  Output: Us hem preparat diagrames de caixa un al costat de l'altre
+    per analitzar la relació entre el nivell d'estudis i la renda. Perquè
+    el nivell d'estudis quedi ordenat correctament hem utilitzat el truc
+    esmentat a dalt.
+  Figure: figure_educ.R
+  FigureType: new
+
+- Class: mult_question
+  Output: Una altra diferència per a les variables categòriques nominals
+    i ordinals és que quan tenim la relació entre una variable numèrica i
+    una variable categòrica ordinal, podem parlar d'associació entre les
+    variables, perquè la variable categòrica prové d'una variable numèrica
+    agrupada. En base a això, quina us sembla que és l'afirmació correcta?
+  AnswerChoices: Hi ha una associació positiva entre la renda i el nivell
+    educatiu; Hi ha una associació negativa entre la renda i el nivell
+    educatiu; La renda i el nivell educatiu són dues variables
+    independents
+  CorrectAnswer: Hi ha una associació positiva entre la renda i el nivell d'estudis
+  AnswerTests: omnitest(correctVal='Hi ha una associació positiva entre la renda i el nivell educatiu')
+  Hint: Mireu si les distribucions de la variable numèrica varia per als
+    diferents grups definits per la variable categòrica, i si el nivell
+    de renda augmenta amb els anys dedicats a l'educació (que un cop agrupat
+    defineix el nivell educatiu).
+
+- Class: text
+  Output: Heu completat la lliçó on heu après les eines pera analitzar la
+    relació entre una variable numèrica i una variable categòrica.
