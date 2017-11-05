@@ -18,16 +18,16 @@
 - Class: cmd_question
   Output: Diem que les dades les tenim cas per cas quan les tenim a
     un full de càlcul. La primera línia conté el nom de les variables,
-    cada fila conté les dades d'un individu, i hi ha dues columnes amb
+    cada fila conté les dades d'un individu, i hi ha almenys dues columnes amb
     cadascuna de les variables categòriques que volem analitzar. Hem
     carregat un marc de dades provinent d'un full de càlcul d'aquest tipus
     anomenat «movilitat», que conté les dades de la comarca on viuen 36
-    personnes i el mitjà de transport que fan servir. Entreu
+    persones i el mitjà de transport que fan servir. Entreu
     «movilitat» (sense les cometes) per veure les dades "cas per cas"
     d'aquestes 36 persones.
   CorrectAnswer: movilitat
   AnswerTests: omnitest(correctExpr='movilitat')
-  Hint: Heu d'entrar «movilitat» per veure els primers casos de les
+  Hint: Heu d'entrar «movilitat» per veure els casos de les
     variables categòriques incloses al marc de dades «movilitat».
 
 - Class: cmd_question
@@ -112,7 +112,7 @@
 
 - Class: cmd_question
   Output: Per obtenir les freqüències relatives de les distribucions
-    marginals s'ha de fer servir la funció prop.table, donant-li com
+    marginals s'ha de fer servir la funció prop.table(), donant-li com
     argument la distribució marginal que acabem de mostrar, per exemple
     per obtenir les freqüències relatives de la distribució marginal
     de la variable fila «comarca» podem donar l'ordre
@@ -124,11 +124,11 @@
 
 - Class: cmd_question
   Output: Per últim, per obtenir les distribucions condicionals, fem
-    servir la funció prop.table() amb dos arguments, el primer és la
-    taula i el segon és la variable per la qual volem condicionar. Per
-    exemple per condicionar per la variable fila hem d'entrar 1. Entreu
-    ara l'ordre apropiada per obtenir les freqüències relatives de
-    la distribució de «transport» condicionada a «comarca».
+    servir un altre cop la funció prop.table() amb dos arguments.
+    El primer és la taula i el segon és un incidador de la variable per la
+    qual volem condicionar. Per exemple, per condicionar per la variable fila
+    hem d'entrar 1. Entreu ara l'ordre apropiada per obtenir les freqüències
+    relatives de la distribució de «transport» condicionada a «comarca».
   CorrectAnswer: prop.table(dist,1)
   AnswerTests: omnitest(correctExpr='prop.table(dist,1)')
   Hint: Heu d'entrar «prop.table(dist,1)» per obtenir les freqüències
@@ -140,12 +140,11 @@
     diferents diem que les variables categòriques estan relacionades.
 
 - Class: mult_question
-  Output: D'acord amb el que observeu a la distribució condicional
+  Output: D'acord amb el que observeu a les distribucions condicional
     de la variable «transport» condicionada a la variable «comarca»,
     quina de les següents afirmacions us sembla correcta?
   AnswerChoices: hi ha relació entre les variables; no hi ha relació entre les variables
   CorrectAnswer: hi ha relació entre les variables
-    entre les variables
   AnswerTests: omnitest(correctVal='hi ha relació entre les variables')
   Hint: Mireu si les distribucions condicionals són semblants o diferents.
 
@@ -153,9 +152,9 @@
   Output: Una altra manera convenient de mirar si les distribucions
     condicionals són iguals o diferents és mitjançant una gràfica de
     barres. Posant tot a la mateixa escala és fàcil jutjar si hi ha
-    diferències en les proporcions de la variable que volem analitzar.
-    Per exemple per representar el diagrama de barres de la variable fila
-    («comarca») condicionada a la variable columna («transport») podem
+    diferències en les proporcions de les categories de la variable que volem
+    analitzar. Per exemple per representar el diagrama de barres de la variable
+    fila («comarca») condicionada a la variable columna («transport») podem
     donar l'ordre barplot(prop.table(dist,2),legend=TRUE). Proveu-la ara.
   CorrectAnswer: barplot(prop.table(dist,2),legend=TRUE)
   AnswerTests: omnitest(correctExpr='barplot(prop.table(dist,2),legend=TRUE)')
@@ -164,22 +163,22 @@
     fila condicionada a la variable columna.
 
 - Class: mult_question
-  Output: Observant les distribucions condicionals que acabem d'obtenir,
-    quina de les següents afirmacions us sembla correcta?
+  Output: Observant les distribucions condicionals que acabem d'obtenir
+    gràficament, quina de les següents afirmacions us sembla correcta?
   AnswerChoices: A la Noguera és la comarca on es fa servir més el cotxe; Al Barcelonès és on es fa servir més l'autobús
   CorrectAnswer: A la Noguera és la comarca on es fa servir més el cotxe
     entre les variables
   AnswerTests: omnitest(correctVal='A la Noguera és la comarca on es fa servir més el cotxe')
   Hint: Mireu les freqüències relatives a cada columna, Autobús i Cotxe, cosa
-   que us mostra la proporció en què es fa servir el mitjà de transport
-   de la columna a les diferents comarques, i mireu quina comarca té la
+   que us mostra la proporció (sobre 1) de cada comarca en l'ús
+   del mitjà de transport de la columna, i mireu quina comarca té la
    proporció més gran.
 
 - Class: cmd_question
   Output: Posant com a segon argument a la funció prop.table() un 2, podem
-    obtenir les distribucions de la variable fila («comarca») condicionada
-    a la variable columna («transport»). Obteniu ara aquestes distribucions
-    mitjançant l'ordre apropiada.
+    obtenir les distribucions condicionals de la variable fila («comarca»)
+    condicionada a la variable columna («transport»). Obteniu ara aquestes
+    distribucions mitjançant l'ordre apropiada.
   CorrectAnswer: prop.table(dist,2)
   AnswerTests: omnitest(correctExpr='prop.table(dist,2)')
   Hint: Heu d'entrar «prop.table(dist,2)» per obtenir les freqüències relatives
@@ -187,15 +186,15 @@
     condicionada a la variable columna («transport»).
 
 - Class: cmd_question
-  Output: Per obtenir el diagrama de barres de la variable columna
-    («transport») condicionada a la variable fila («comarca»), podem
-    donar l'ordre següent barplot(t(prop.table(dist,1)),legend=TRUE).
-    Entreu aquesta ordre ara.
+  Output: Per obtenir el diagrama de barres de la distribució condicional
+    de la variable columna («transport») condicionada a la variable fila
+    («comarca»), podem donar l'ordre següent
+    barplot(t(prop.table(dist,1)),legend=TRUE). Entreu aquesta ordre ara.
   CorrectAnswer: barplot(t(prop.table(dist,1)),legend=TRUE)
   AnswerTests: omnitest(correctExpr='barplot(t(prop.table(dist,1)),legend=TRUE)')
   Hint: Heu d'entrar «barplot(t(prop.table(dist,1)),legend=TRUE)» per obtenir
-    el diagrama de barres de la variable columna condicionada a la variable
-    fila.
+    el diagrama de barres de la distribució condicional de la variable columna
+    condicionada a la variable fila.
 
 - Class: text
   Output: A més de «cas per cas», les dades es poden entrar directament
@@ -213,9 +212,9 @@
 
 - Class: cmd_question
   Output: El primer que hem de fer és entrar les freqüències absolutes de
-    la distribució conjunta. Les podem fer creant un vector amb la funció
+    la distribució conjunta. Creeu un vector amb la funció
     c(), i hem d'entrar les freqüències al llarg de les files, és a dir
-    c(4,2,0,1,5,1,0,1,6) i assigneu els resultat a un objecte
+    c(4,2,0,1,5,1,0,1,6). Assigneu el resultat a un objecte
     anomenat «freq». Feu-ho ara.
   CorrectAnswer: freq <- c(4,2,0,1,5,1,0,1,6)
   AnswerTests: omnitest(correctExpr='freq <- c(4,2,0,1,5,1,0,1,6)')
@@ -278,7 +277,7 @@
     condicionades a ciutat de residència, podem dir que
   AnswerChoices: Hi ha relació, la preferència per equip es veu afectada
     per la ciutat de residència; No hi ha relació, la preferència per
-    equip és independent de la ciutat de residència"
+    equip és independent de la ciutat de residència
   CorrectAnswer: Hi ha relació, la preferència per equip es veu afectada
     per la ciutat de residència
   AnswerTests: omnitest(correctVal='Hi ha relació, la preferència per equip es veu afectada per la ciutat de residència')
@@ -289,4 +288,5 @@
 - Class: text
   Output: Heu acabat la lliçó sobre l'anàlisi de la relació entre dues
     variables categòriques. Ara sabeu com entrar les dades i com determinar
-    si hi ha relació o si podem dir que les variables són independents.
+    si hi ha relació o si podem dir que les variables categòriques són
+    independents.
