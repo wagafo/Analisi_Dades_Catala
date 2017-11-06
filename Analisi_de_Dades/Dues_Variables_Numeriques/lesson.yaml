@@ -285,9 +285,9 @@
     etiqueta a l'eix vertical amb «ylab» i un títol al diagrama amb «main».
     L'ordre és plot(fit.res~parcial, ylab="Residus", main="Diagrama de
     residus"). Proveu-ho ara.
-  CorrectAnswer: plot(fit.res~parcial, ylab="Residuals", main="Residual Plot")
+  CorrectAnswer: plot(fit.res~parcial, ylab="Residus", main="Diagrama de residus")
   AnswerTests: omnitest(correctExpr='plot(fit.res~parcial, ylab="Residus", main="Diagrama de residus")')
-  Hint: Heu d'entrar «plot(fit.res~parcial, ylab="Residuals", main="Diagrama de residus")» per obtenir el diagrama de residus.
+  Hint: Heu d'entrar «plot(fit.res~parcial, ylab="Residus", main="Diagrama de residus")» per obtenir el diagrama de residus.
 
 - Class: cmd_question
   Output: També és convenient afegir una línia horitzontal a 0, atès que

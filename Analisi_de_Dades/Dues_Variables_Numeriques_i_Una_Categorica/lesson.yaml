@@ -1,0 +1,122 @@
+- Class: meta
+  Course: Analisi de dades
+  Lesson: Dues variables numeriques i una categorica
+  Author: Walter Garcia-Fontes
+  Type: Standard
+  Organization: Universitat Pompeu Fabra
+  Version: 1.0.0
+
+- Class: text
+  Output: En aquest tutorial veurem com analitzar la relació entre dues
+    variables numèriques i una categòrica, és a dir com introduir una
+    variable categòrica a l'anàlisi de les dues variables categòriques.
+    Es tracta de separar el conjunt de dades en grups definits per
+    la variable categòrica i comprovar la relació entre les dues variables
+    numèriques a cada grup.
+
+- Class: cmd_question
+  Output: Farem servir un marc de dades que ja us hem introduït que es diu
+    «salexp». Conté dades sobre el salari cobrat per 41 treballadors,
+    l'experiència en anys d'aquests treballadors, i la planta en la qual
+    treballen. Volem veure si l'experiència afecta el salari, i si ha
+    diferències en aquesta relació per les diferents plantes. Hi ha per
+    tant 3 variables, «salari», «exper» i «planta». Entreu «salexp» (sense
+    les cometes) per veure l'aspecte d'aquest conjunt de dades.
+  CorrectAnswer: salexp
+  AnswerTests: omnitest(correctExpr='salexp')
+  Hint: Entreu «salexp» per veure l'aspecte del marc de dades.
+
+- Class: text
+  Output: En aquest tutorial farem servir tres paquets del R que ja us hem
+    habilitat, «ggplot2» «nlme» i «data.table».  Recordeu d'instal·lar-los
+    (install.packages(nom_paquet)) i habilitar-los (library(nom_paquet)) en
+    la vostra instal·lació del R si els voleu fer servir.
+
+- Class: cmd_question
+  Output: Com sempre convé començar amb un diagrama de dispersió per
+    entendre la relació entre les dues variables numèriques. Un primer
+    diagrama de dispersió que podem fer és ignorant els grups definits
+    per la variable categòrica (les plantes). Per això fem servir
+    la funció plot() com vam fer al tutorial de dues variables numèriques.
+    Entreu ara l'ordre apropiada per obtenir el diagrama de dispersió.
+  CorrectAnswer: plot(salexp$salari~salexp$exper)
+  AnswerTests: omnitest(correctExpr='plot(salexp$salari~salexp$exper)')
+  Hint: Entreu «plot(salexp$salari~salexp$exper)» per veure el diagrama de
+    de dispersió.
+
+- Class: cmd_question
+  Output: El diagrama de dispersió suggereix una associació positiva entre
+    el salari i l'experiència, però amb una gran dispersió. Recordeu
+    que podeu dibuixar la línia de regressió al diagrama de dispersió
+    amb abline(lm(salexp$salari~salexp$exper)). Feu-lo ara.
+  CorrectAnswer: abline(lm(salexp$salari~salexp$exper))
+  AnswerTests: omnitest(correctExpr='abline(lm(salexp$salari~salexp$exper))')
+  Hint: Entreu «abline(lm(salexp$salari~salexp$exper))» per afegir la
+    la línia de regressió al diagrama de dispersió.
+
+- Class: cmd_question
+  Output: La línia de regressió ens confirma l'associació positiva, però
+    feble, entre les dues variables. Ens podem preguntar si aquesta
+    relació es manté dins de cada planta. Per això ens convé dibuixar
+    el diagrama de dispersió distingint els punts d'acord amb la variable
+    categòrica «planta». Això ho podem fer amb les funcions del paquest
+    ggplot2, que és un paquet molt complet per fer gràfiques. Explicar-lo
+    a fons donaria material per diversos tutorials. Aquí presentarem
+    directament l'ordre que cal. Seria
+    ggplot(salexp,aes(y = salari, x = exper,colour=planta,shape=planta)) + geom_point(). Aquesta ordre distingirà els punts de cada planta amb colors i formes
+    diversos. Proveu aquesta ordre ara.
+  CorrectAnswer: ggplot(salexp,aes(y = salari, x = exper,colour=planta,shape=planta)) + geom_point()
+  AnswerTests: omnitest(correctExpr='ggplot(salexp,aes(y = salari, x = exper,colour=planta,shape=planta)) + geom_point()')
+  Hint: Entreu «ggplot(salexp,aes(y = salari, x = exper,colour=planta,shape=planta)) + geom_point()» per fer un diagrama de dispersió distingint entre els
+    diversos grups amb diferents colors.
+
+- Class: cmd_question
+  Output: Si a més volem afegir línies de regressió per a cada planta, l'ordre
+    encara és més llarga. Seria
+    ggplot(wagexp,aes(y = Wage, x = Experience,colour=Plant,shape=Plant)) + geom_point() + geom_smooth(method="lm", fill = NA). Proveu-ho ara.
+  CorrectAnswer: ggplot(wagexp,aes(y = Wage, x = Experience,colour=Plant,shape=Plant)) + geom_point() + geom_smooth(method="lm", fill = NA)
+  AnswerTests: omnitest(correctExpr='ggplot(wagexp,aes(y = Wage, x = Experience,colour=Plant,shape=Plant)) + geom_point() + geom_smooth(method="lm", fill = NA)')
+  Hint: Entreu «ggplot(wagexp,aes(y = Wage, x = Experience,colour=Plant,shape=Plant)) + geom_point() + geom_smooth(method="lm", fill = NA)» per dibuixar
+    les línies de regressió i distingir els punts de cada planta.
+
+- Class: cmd_question
+  Output: Veiem que a cada planta es manté l'associació positiva entre
+    el salari i l'experiència. Ens interessa també obtenir els resums numèrics
+    per a cada planta. Per obtenir els coeficients de correlació per a cada
+    planta farem servir el paquet data.table. Primer hem de convertir
+    el marc de dades en un objecte data.table. Això ho fem mitjançant l'ordre
+    dt <- data.table(salexp). Feu-lo ara.
+  CorrectAnswer: dt <- data.table(salexp)
+  AnswerTests: omnitest(correctExpr='dt <- data.table(salexp)')
+  Hint: Entreu «dt <- data.table(salexp)» per crear un objecte data.table
+    a partir del marc de dades «salexp».
+
+- Class: cmd_question
+  Output: I ara podem obtenir la correlació per plantes amb l'ordre
+    dt[,list(Correlació = cor(salari,exper)),by=planta]. Entreu l'ordre
+    ara.
+  CorrectAnswer: dt[,list(Correlació = cor(salari,exper)),by=planta]
+  AnswerTests: omnitest(correctExpr='dt[,list(Correlació = cor(salari,exper)),by=planta]')
+  Hint: Entreu «dt[,list(Correlació = cor(salari,exper)),by=planta]» per obtenir
+    coeficients de correlació per planta.
+
+- Class: text
+  Output: Veiem que per a totes les plantes la correlació és positiva, excepte
+    per la planta E on es negativa però pràcticament 0. Si mirem el diagrama
+    de dispersió veiem que la línia de regressió per a aquesta planta és
+    pràcticament horitzontal.
+
+- Class: cmd_question
+  Output: Per últim, amb la funció lmList() del paquet nlme podem obtenir
+    els coeficients de la regressió lineal per a cada planta. L'ordre és
+    lmList(salari~exper|planta, data=salexp). Obteniu ara la regressió
+    per a cada planta.
+  CorrectAnswer: lmList(salari~exper|planta, data=salexp)
+  AnswerTests: omnitest(correctExpr='lmList(salari~exper|planta, data=salexp)')
+  Hint: Entreu «lmList(salari~exper|planta, data=salexp)» per obtenir
+    els coeficients de correlació per a cada planta.
+
+- Class: text
+  Output: Veiem que els pendents són positius per a totes les plantes
+    excepte per a la planta E. Amb això acabem aquest tutorial en què
+    heu après com introduir una variable categòrica a l'anàlisi de regressió.
