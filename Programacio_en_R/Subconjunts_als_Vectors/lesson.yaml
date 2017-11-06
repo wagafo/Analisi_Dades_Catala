@@ -54,7 +54,7 @@
   AnswerChoices: Un vector de tots NA; un vector sense NA; un vector de
     TRUE i FALSE; un vector de longitud 0
   CorrectAnswer: Un vector de tots NA
-  AnswerTests: omnitest(correctVal="A vector of all NAs")
+  AnswerTests: omnitest(correctVal="Un vector de tots NA")
   Hint: Recordeu que is.na(x) ens diu on estan el NA a un vector. Això que
     si feu un subconjunt de x basat en això, que espereu que passarà?
 
