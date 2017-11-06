@@ -73,10 +73,10 @@
 - Class: cmd_question
   Output: Si a més volem afegir línies de regressió per a cada planta, l'ordre
     encara és més llarga. Seria
-    ggplot(wagexp,aes(y = Wage, x = Experience,colour=Plant,shape=Plant)) + geom_point() + geom_smooth(method="lm", fill = NA). Proveu-ho ara.
-  CorrectAnswer: ggplot(wagexp,aes(y = Wage, x = Experience,colour=Plant,shape=Plant)) + geom_point() + geom_smooth(method="lm", fill = NA)
-  AnswerTests: omnitest(correctExpr='ggplot(wagexp,aes(y = Wage, x = Experience,colour=Plant,shape=Plant)) + geom_point() + geom_smooth(method="lm", fill = NA)')
-  Hint: Entreu «ggplot(wagexp,aes(y = Wage, x = Experience,colour=Plant,shape=Plant)) + geom_point() + geom_smooth(method="lm", fill = NA)» per dibuixar
+    ggplot(salexp,aes(y = salari, x = exper,colour=planta,shape=planta)) + geom_point() + geom_smooth(method="lm", fill = NA). Proveu-ho ara.
+  CorrectAnswer: ggplot(salexp,aes(y = salari, x = exper,colour=planta,shape=planta)) + geom_point() + geom_smooth(method="lm", fill = NA)
+  AnswerTests: omnitest(correctExpr='ggplot(salexp,aes(y = salari, x = exper,colour=planta,shape=planta)) + geom_point() + geom_smooth(method="lm", fill = NA)')
+  Hint: Entreu «ggplot(salexp,aes(y = salari, x = exper,colour=planta,shape=planta)) + geom_point() + geom_smooth(method="lm", fill = NA)» per dibuixar
     les línies de regressió i distingir els punts de cada planta.
 
 - Class: cmd_question
@@ -114,7 +114,7 @@
   CorrectAnswer: lmList(salari~exper|planta, data=salexp)
   AnswerTests: omnitest(correctExpr='lmList(salari~exper|planta, data=salexp)')
   Hint: Entreu «lmList(salari~exper|planta, data=salexp)» per obtenir
-    els coeficients de correlació per a cada planta.
+    els coeficients de la regressió lineal per a cada planta.
 
 - Class: text
   Output: Veiem que els pendents són positius per a totes les plantes
