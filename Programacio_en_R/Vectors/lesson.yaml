@@ -234,7 +234,7 @@
     paste("Hola", "món!", sep = " "), on l'argument «sep» li diu a l'R
     que separi els elements units amb un espai.
   CorrectAnswer: paste("Hola", "món!", sep = " ")
-  AnswerTests: omnitest(correctExpr='paste("Hola", "món", sep = " ")')
+  AnswerTests: omnitest(correctExpr='paste("Hola", "món!", sep = " ")')
   Hint: Entreu paste("Hola", "món!", sep = " ") per unir les dues paraules
     "Hola" i "món!", separades per un espai. Hi hauria d'haver un espai
     entre les cometes dobles de l'argument «sep» de la funció paste().
