@@ -186,12 +186,12 @@
   Output: Si recordeu el principi d'aquesta lliçó, havíem comentat que les
     matrius sols poden tenir UN tipus de dades. En conseqüència, quan hem
     intentat combinar un vector de caràcters amb una matriu numèrica, l'R
-    va ser obligat a «forçar» els nombres a ser caràcters, per això les
+    ha estat obligat a «forçar» els nombres a ser caràcters, per això les
     cometes dobles.
 
 - Class: text
   Output: Això s'anomena «forçament implícit», perquè no ho hem demanat.
-    Simplement ha passat. Però perquè no va l'R convertir els noms dels
+    Simplement ha passat. Però perquè no ha convertit l'R els noms dels
     nostres pacients a nombres? Penseu quina pot ser la raó d'això.
 
 - Class: cmd_question
@@ -205,7 +205,7 @@
     què passarà.
 
 - Class: cmd_question
-  Output: Visualitzeu ara els continguts de my_data pe veure que hem obtingut.
+  Output: Visualitzeu ara els continguts de my_data per veure que hem obtingut.
   CorrectAnswer: my_data
   AnswerTests: omnitest(correctExpr='my_data')
   Hint: Entreu my_data per veure els seus continguts.
@@ -231,7 +231,7 @@
 - Class: text
   Output: També és possible assignar noms a les files i columnes individuals
     d'un marc de dades, cosa que presenta una altra via possible de determinar
-    quina fil de valor a la nostra taula pertany a cada pacient.
+    quina fila de valor a la nostra taula pertany a cada pacient.
 
 - Class: text
   Output: Tanmateix, atès que ja hem resolt aquest problema, intentem resoldre
