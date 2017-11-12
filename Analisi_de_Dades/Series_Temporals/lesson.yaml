@@ -1,0 +1,332 @@
+- Class: meta
+  Course: Analisi de dades
+  Lesson: Series temporals
+  Author: Walter Garcia-Fontes
+  Type: Standard
+  Organization: Universitat Pompeu Fabra
+  Version: 1.0.0
+
+- Class: text
+  Output: Moltes dades de tipus socio-econoòmic es presenten en forma de
+    sèries temporals. Una sèrie temporal és diferent a les dades de tall
+    transversal. Les dades de tall transversal són com una fotografia de
+    molts individus en un moment donat del temps. En canvi una sèrie temporal
+    és com una pel·lícula d'un sol individu al llarg del temps. En aquesta
+    lliçó veurem les tècniques bàsiques per analitzar sèries temporals amb el
+    R.
+
+- Class: cmd_question
+  Output: Una sèrie temporal no és més que una sèrie de números que estan
+    indexats amb ordre cronològic, La freqüència de les dades pot ser anual,
+    mensual, trimestral, diària, etc. Treballarem amb una sèrie corresponent
+    a les vendes d'una geladeria. S'han recollit les vendes per a cada
+    trimestre des del primer trimestre de 2012 fins a l'últim trimestre
+    de 2015. Les dades estan a un marc de dades anomenat «gelats» que ja
+    us hem carregat. Mireu els primers casos  d'aquest conjunt de dades amb
+    la funció head().
+  CorrectAnswer: head(gelats)
+  AnswerTests: omnitest(correctExpr='head(gelats)')
+  Hint: Heu d'entrar «head(gelats)» per veure els primers casos de les
+    variables del marc de dades «gelats».
+
+- Class: cmd_question
+  Output: Perquè el R pugui aplicar les funcionalitats de sèries temporals,
+    s'ha de crear un objecte "sèrie temporal" a partir de les dades del
+    marc de dades. Per això s'ha d'utilitzar la funció ts(). Aquesta
+    funció té tres arguments. El primer és una sèrie temporal, en el nostre
+    cas és la sèrie «gelats$vendes». El segon l'indica al R on comença la
+    sèrie, en el nostre cas hem d'entrar «start = c(2012,1)» per indicar-li
+    al R que la sèrie comença al primer trimestre de 2012. Per últim li hem
+    de dir la freqüència de la nostra sèrie temporal, en el nostre cas
+    és igual a 4 perquè hi ha 4 trimestres a dins d'un any. Aquest últim
+    argument s'ha d'entrar pel nostre cas com «frequency=4». Creeu ara
+    l'objecte sèrie temporal amb la funció ts() i aquests tres arguments, i
+    assigneu el resultat a «gelats.ts».
+  CorrectAnswer: gelats.ts <- ts(gelats$vendes,start=c(2012,1),frequency=4)
+  AnswerTests: omnitest(correctExpr='gelats.ts <- ts(gelats$vendes,start=c(2012,1),frequency=4)')
+  Hint: Heu d'entrar «gelats.ts <- ts(gelats$vendes,start=c(2012,1),frequency=4)» per crear
+    l'objecte sèrie temporal i assignar el resultat a «gelats.ts».
+
+
+- Class: text
+  Output: Una sèrie temporal és un sol número per a cada període, però
+    pensem que hi ha un model que explica aquest número. El valor de la
+    sèrie el pensem com format per diversos components, i la forma com
+    es combinen aquests components és el que anomenem model de la sèrie.
+    Els tres components principals són la tendència (T), l'estacionalitat
+    (S) i el component irregular (I). Podrien haver-hi altres components,
+    com el component cíclic, però en aquest tutorial els ignorarem. El
+    model pot ser additiu, amb la qual cosa la sèrie seria igual a
+    Y = T + S + I, o multiplicatiu, on la sèrie es formaria com
+    Y = T * S * I.
+
+- Class: cmd_question
+  Output: Com sabem si una sèrie és additiva o multiplicativa? Representem
+    la sèrie gràficament en primer lloc. Ho podem fer amb la funció
+    plot.ts() donant-li com argument l'objecte sèrie temporal que hem
+    creat.
+  CorrectAnswer: plot.ts(gelats.ts)
+  AnswerTests: omnitest(correctExpr='plot.ts(gelats.ts)')
+  Hint: Heu d'entrar «plot.ts(gelats.ts» per fer la gràfica de sèrie temporal
+    de la sèrie vendes de la gelateria.
+
+- Class: text
+  Output: Com podem veure a la gràfica de la sèrie temporal, s'aprecia una
+    tendència creixent en les vendes. També hi ha una forta estacionalitat,
+    als primers i quarts trimestres la sèrie està per sota de la tendència,
+    mentre que al segon i tercer trimestre està per sobre de la tendència.
+    A més veiem que un model additiu pot ser adequat per a aquesta sèrie
+    perquè els components estacionals tenen sempre aproximadament la
+    mateixa grandària.
+
+- Class: figure
+  Output: Les sèries amb components estacionals que s'amplifiquen (el més
+    habitual) o es redueixen en grandària amb el temps, poden ser
+    representades millor amb un model multiplicatiu. La figura de la
+    dreta mostra una sèrie que convindria analitzar amb un model
+    multiplicatiu.
+  Figure: multiplica.R
+  FigureType: new
+
+- Class: cmd_question
+  Output: Tornant a la nostra sèrie de vendes de la geladeria, farem
+    la descomposició de la sèrie en els seus components usant el model
+    additiu. Per això podem usar la funció decompose(), que descompondrà
+    la sèrie en la tendència (mitjana mòbil del mateix ordre que la
+    freqüència de la sèrie temporal, en aquest cas 4), estacionalitat i
+    component irregular. Hem de donar dos arguments. El primer argument és
+    l'objecte sèrie temporal «gelats.ts» que hem creat. El segon
+    és «type="additive"» si el model és additiu i «type=multiplicative»
+    si el model és multiplicatiu. Descomponem doncs la sèrie «gelats.ts»
+    usant un model additiu, i assignem el resultat a un nou objecte
+    anomenat «decomp.ts».
+  CorrectAnswer: decomp.ts <- decompose(gelats.ts,type="additive")
+  AnswerTests: omnitest(correctExpr='decomp.ts <- decompose(gelats.ts,type="additive")')
+  Hint: Heu d'entrar «decomp.ts <- decompose(gelats.ts,type="additive")» per
+    descompondre la sèrie en els seus components tendència, estacionalitat
+    i component irregular.
+
+- Class: cmd_question
+  Output: La funció decompose() identifica la tendència amb una mitjana
+    mòbil del mateix ordre que la freqüència de la sèrie. en el nostre
+    exemple serà 4. Si a més la freqüència és un nombre parell, la
+    mitjana mòbil serà una mitjana mòbil centrada. Per veure els valors
+    de la tendència entreu «decomp.ts$trend». Feu-lo ara.
+  CorrectAnswer: decomp.ts$trend
+  AnswerTests: omnitest(correctExpr='decomp.ts$trend')
+  Hint: Heu d'entrar «decomp.ts$trend)» per veure els valors de la mitjana
+    mòbil centrada d'ordre 4, és a dir la tendència de la sèrie.
+
+- Class: cmd_question
+  Output: Per confirmar que la sèrie que acabem de mostrar realment
+    representa la tendència de la sèrie, podem ara fer la gràfica temporal
+    de la sèrie amb la tendència superposada. Això ho podem fer amb la
+    funció ts.plot(). Com a primer argument donem la sèrie i com a segon
+    la tendència que acabem d'identificar. Proveu-ho ara.
+  CorrectAnswer: ts.plot(gelats.ts,decomp.ts$trend)
+  AnswerTests: omnitest(correctExpr='ts.plot(gelats.ts,decomp.ts$trend)')
+  Hint: Entreu «ts.plot(gelats.ts,decomp.ts$trend)» per fer la gràfica
+    temporal de la sèrie amb la tendència superposada.
+
+- Class: text
+  Output: Aquesta gràfica és suficient si la volem utilitzar per
+  nosaltres mateixos, però és poc il·lustrativa si la volem utilitzar
+    en informes i presentacions. Per això ens agradaria tenir colors i
+    llegendes per identificar la sèrie i la tendència.
+
+- Class: figure
+  Output: La gràfica es pot embellir molt amb la
+    funció autoplot() del paquet ggplot2. Aquí us fem un exemple, a
+    tutorials futurs podeu aprendre com fer servir aquest paquet gràfic. L'ordre
+    que ha generat aquesta gràfica és autoplot(gelats.ts,series="Vendes")+autolayer(decomp.ts$trend, series= "Tendència MA4")+labs(x="Trimestre",y="Vendes de gelat")+ggtitle("Vendes de gelat amb tendència").
+  Figure: plottrend.R
+  FigureType: new
+
+- Class: cmd_question
+  Output: El component estacional és un valor fix per a cada trimestre
+    que no canvia amb els anys. S'obté traient la tendència de la sèrie
+    i eliminant el component irregular (usant que la mitjana del component
+    irregular és igual a 0 al model additiu, i igual a 1 en el model
+    multiplicatiu). Per veure el component estacional, podem entrar
+    «decomp.ts$seasonal». Entreu-lo ara.
+  CorrectAnswer: decomp.ts$seasonal
+  AnswerTests: omnitest(correctExpr='decomp.ts$seasonal')
+  Hint: Entreu «decomp.ts$seasonal» per veure la sèrie del component
+    estacional.
+
+- Class: cmd_question
+  Output: Atès que el component estacional és el mateix valor per a un trimestre
+    donat, sols ens calen 4 valors. Els podem veure per als 4 trimestres
+    amb «decomp.ts$figure», en odre, trimestre 1, 2, 3 i 4. Entreu
+    aquesta ordre ara.
+  CorrectAnswer: decomp.ts$figure
+  AnswerTests: omnitest(correctExpr='decomp.ts$figure')
+  Hint: Entreu «decomp.ts$figure» per veure els quatre components estacionals.
+
+- Class: cmd_question
+  Output: Per últim, el component irregular és el que ens queda un cop
+    expliquem la tendència i l'estacionalitat, i que no podem explicar per
+    cap moviment sistemàtic de la sèrie. Podem veure els valors del
+    component irregular amb «decomp.ts$random». Proveu-ho ara.
+  CorrectAnswer: decomp.ts$random
+  AnswerTests: omnitest(correctExpr='decomp.ts$random')
+  Hint: Entreu «decomp.ts$random» per veure els component irregular.
+
+- Class: cmd_question
+  Output: Es poden representar la sèrie original i aquestes tres sèries
+    de la descomposició (tendència, estacionalitat i irregular) usant
+    la funció plot() i donant-li com a argument l'objecte produït per
+    la descomposició, «decomp.ts». Obteniu aquesta gràfica ara.
+  CorrectAnswer: plot(decomp.ts)
+  AnswerTests: omnitest(correctExpr='plot(decomp.ts)')
+  Hint: Entreu «plot(decomp.ts)» per veure la sèrie original i els quatre
+    components a l'hora.
+
+- Class: text
+  Output: A la gràfica podem observar a dalt del tot la sèrie original,
+    amb la tendència calculada amb mitjanes mòbils a sota, a continuació
+    veiem la sèrie de components estacionals, i a sota del tot el que
+    queda de la sèrie un cop que expliquem la tendència i l'estacionalitat,
+    és a dir, allò que no podem explicar.
+
+- Class: text
+  Output: Hi ha una altra manera per representar la tendència, que consisteix
+    en calcular una tendència lineal, és a dir una regressió lineal entre
+    la sèrie i una sèrie correlativa de nombres que representi el temps
+    (t= 1, 2, 3, 4, etc.).
+
+- Class: cmd_question
+  Output: Per obtenir la tendència lineal podem usar l'ordre
+    tslm(gelats.ts~trend). Obteniu la tendència lineal i assigneu el
+    resultat a un objecte anomenat «lintrend».
+  CorrectAnswer: lintrend <- tslm(gelats.ts~trend)
+  AnswerTests: omnitest(correctExpr='lintrend <- tslm(gelats.ts~trend)')
+  Hint: Entreu «lintrend <- tslm(gelats.ts~trend)» per obtenir una tendència
+    lineal de la sèrie temporal.
+
+- Class: cmd_question
+  Output: Podem veure ara aquesta tendència lineal junt amb la sèrie
+    usant un altre cop ts.plot() amb l'odre
+    ts.plot(gelats.ts,fitted(lintrend)). Obteniu aquesta gràfica ara.
+  CorrectAnswer: ts.plot(gelats.ts,fitted(lintrend))
+  AnswerTests: omnitest(correctExpr='ts.plot(gelats.ts,fitted(lintrend))')
+  Hint: Entreu «ts.plot(gelats.ts,fitted(lintrend))» per obtenir una
+    gràfica de la sèrie amb la tendència lineal sobredibuixada.
+
+- Class: cmd_question
+  Output: La tendència lineal no és més que una regressió lineal. Per veure
+    la constant i el pendent d'aquesta regressió, simplement entreu
+    «lintrend» s'imprimiran. Proveu-lo.
+  CorrectAnswer: lintrend
+  AnswerTests: omnitest(correctExpr='lintrend')
+  Hint: Entreu «lintrend» i s'imprimiran la contant i el pendent de
+    la regressió.
+
+- Class: cmd_question
+  Output: La tendència lineal també serveix per predir. Per predir hem
+    d'esbrinar primer el valor que tindria la variable auxiliar «Temps» per
+    al període que volem predir. Recordeu que la nostra sèrie començava
+    al primer trimestre de 2012 i anava fins a l'últim trimestre de 2015.
+    Suposeu que volem predir el valor de la tendència per al tercer
+    trimestre de 2016. Això són tres trimestres més enllà de l'últim
+    trimestre de la sèrie. Per veure a quin valor arriba la variable
+    auxiliar temps hem de veure quants períodes n'hi ha a la sèrie, i això
+    ho podem fer amb length(gelats.ts). Esbrineu quants períodes n'hi ha.
+  CorrectAnswer: length(gelats.ts)
+  AnswerTests: omnitest(correctExpr='length(gelats.ts)')
+  Hint: Entreu «length(gelats.ts)» per veure la longitud de la sèrie
+    «gelats.ts».
+
+- Class: cmd_question
+  Output: Ara que sabem que la sèrie té 16 períodes, sabem que la sèrie
+    auxiliar «Temps» arriba fins a t=16 a la sèrie. Si volem predir per
+    a tres períodes després, és a dir tercer trimestre de 2016, tindrem
+    t=16 + 3 = 19. Aquest és el valor que hem de fer servir per predir.
+    La predicció la fem amb la funció predict(), com a la regressió lineal
+    Per tant l'odre per obtenir la predicció per al tercer trimestre de
+    2017 serà predict(lintrend,data.frame(trend=19)). Obteniu aquesta
+    predicció.
+  CorrectAnswer: predict(lintrend,data.frame(trend=19))
+  AnswerTests: omnitest(correctExpr='predict(lintrend,data.frame(trend=19))')
+  Hint: Entreu «predict(lintrend,data.frame(trend=19))» per obtenir la
+    predicció per al tercer trimestre de 2016.
+
+- Class: cmd_question
+  Output: Aquesta és una predicció únicament de la tendència, però sabem
+    que la sèrie a vegades està per sobre o per sota de la tendència,
+    d'acord amb el component estacional que hem calculat. Per obtenir
+    la predicció de la sèrie tenint en compte l'estacionalitat, per tant
+    l'ordre serà predict(lintrend,data.frame(trend=19)) + decomp.ts$figure[3],
+    ja que estem predient per al tercer trimestre de 2016. Obteniu ara
+    la  predicció ajustada per la tendència.
+  CorrectAnswer: predict(lintrend,data.frame(trend=19))+decomp.ts$figure[3]
+  AnswerTests: omnitest(correctExpr='predict(lintrend,data.frame(trend=19))+decomp.ts$figure[3]')
+  Hint: Entreu «predict(lintrend,data.frame(trend=19))+decomp.ts$figure[3]»
+    per obtenir la predicció ajustada per l'estacionalitat.
+
+- Class: cmd_question
+  Output: Per a una sèrie per la qual pensem que el millor model és el
+    multiplicatiu, els procediments són els mateixos, però tenint en
+    compte que els components es combinen de manera multiplicativa,
+    Y = T*S*I. Per tant en comptes de sumes i restes, els procediments
+    comporten multiplicacions i divisions. Hem creat una altra sèrie trimestral
+    per a la qual els moviments estacionals s'amplifiquen amb el temps, i l'hem
+    desat a una sèrie anomenada «series2». Descomponeu la sèrie usant
+    decompose(), especifiqueu que el model és multiplicatiu amb
+    «type="multiplicative"» i assigneu el resultat a «series2.d».
+  CorrectAnswer: series2.d <- decompose(series2,type="multiplicative")
+  AnswerTests: omnitest(correctExpr='series2.d <- decompose(series2,type="multiplicative")')
+  Hint: Entreu «series2.d <- decompose(series2,type="multiplicative")» per obtenir els
+    components de la sèries «series2» usant un model multiplicatiu.
+
+- Class: cmd_question
+  Output: Representeu ara la sèrie i els seus component usant la funció
+    plot(), i usant l'objecte que acabeu de crear «series2.d».
+  CorrectAnswer: plot(series2.d)
+  AnswerTests: omnitest(correctExpr='plot(series2.d)')
+  Hint: Entreu «plot(series2.d)» per obtenir una gràfica amb la sèrie i
+    els seus components.
+
+- Class: cmd_question
+  Output: Per a una sèries multiplicativa, els components estacionals estan
+    al voltant de 1 (de 100 quan es presenten en percentatges). Son més
+    grans que 1 quan la sèrie està per sobre de la tendència, i són més
+    petits que 1 quan la sèrie està per sota de la tendència. Comproveu
+    els components estacionals amb «series2.d$seasonal»
+  CorrectAnswer: series2.d$seasonal
+  AnswerTests: omnitest(correctExpr='series2.d$seasonal')
+  Hint: Entreu «series2.d$seasonal» perquè el R ens mostri els components
+    estacionals.
+
+- Class: cmd_question
+  Output: Com podeu comprovar, els dos primers trimestres la sèrie està
+    per sota de la tendència, i els dos últims està per sobre de la tendència.
+    La sèrie va del primer trimestre de 2012 fins a l'últim de 2016, un any
+    més que l'anterior. Per tant té 20 períodes. Per fer una predicció per al
+    tercer trimestre, primer ajustem una tendència lineal, amb
+    «tslm(series2~trend». Feu-lo, i assigneu el resultat a «fit2».
+  CorrectAnswer: fit2 <- tslm(series2~trend)
+  AnswerTests: omnitest(correctExpr='fit2 <- tslm(series2~trend)')
+  Hint: Useu «tslm(series2~trend)» per calcular la constant i el pendent
+    d'una tendència lineal per a la sèrie «series2» i assignar el resultat
+    a «fit2».
+
+- Class: cmd_question
+  Output: Per fer la predicció, usem t=23, atès que la sèrie
+    arriba fins a t=20, i que volem predir tres períodes cap al futur.
+    Per predir la tendència fem servir «predict(fit2,data.frame(trend=23))» i
+    a més ajustem el component estacional del tercer trimestre
+    «series2.d$figure[3]», però recordeu que el model és multiplicatiu.
+    Obteniu aquesta predicció ara.
+  CorrectAnswer: predict(fit2,data.frame(trend=23))*series2.d$figure[3]
+  AnswerTests: omnitest(correctExpr='predict(fit2,data.frame(trend=23))*series2.d$figure[3]')
+  Hint: Amb  «predict(fit2,data.frame(trend=23))»
+    podem predir la tendència lineal, i per
+    ajustar-li el component estacional hem de multiplicar pel component
+    estacional del tercer trimestre, per tant queda
+    predict(fit2,data.frame(trend=23))*series2.d$figure[3].
+
+- Class: text
+  Output: Amb això hem acabat de presentar les tècniques bàsiques d'anàlisi
+    de sèries temporals, sabem com descompondre la sèrie, i com predir
+    mitjançant una tendència lineal.

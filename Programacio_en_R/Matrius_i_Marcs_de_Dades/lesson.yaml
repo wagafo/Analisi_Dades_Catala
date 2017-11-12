@@ -235,16 +235,16 @@
 
 - Class: text
   Output: Tanmateix, atès que ja hem resolt aquest problema, intentem resoldre
-    un problema diferent assignant nom a les alumnes del nostre marc de dades
+    un problema diferent assignant nom a les columnes del nostre marc de dades
     de manera que sabem quin tipus de mesurament representa cada columna.
 
 - Class: cmd_question
   Output: Atès que tenim sis columnes (incloent els noms dels pacients), ens
     caldrà crear primer un vector que contingui un element per a cada columna.
     Creeu un vector de caràcters anomenat cnames que contingui els valors
-    següents (en ordre) -- "patient", "edat", "pes", "pa", "rating", "test".
-  CorrectAnswer: cnames <- c("patient", "age", "weight", "bp", "rating", "test")
-  AnswerTests: omnitest(correctExpr='cnames <- c("patient", "age", "weight", "bp", "rating", "test")')
+    següents (en ordre) -- "pacient", "edat", "pes", "pa", "rating", "test".
+  CorrectAnswer: cnames <- c("pacient", "edat", "pes", "pa", "rating", "test")
+  AnswerTests: omnitest(correctExpr='cnames <- c("pacient", "edat", "pes", "pa", "rating", "test")')
   Hint: Assegureu-vos que els noms estan en minúscules envoltats per cometes
     dobles, i separats per comes. No us oblideu de la funció c().
 
