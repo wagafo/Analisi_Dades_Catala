@@ -304,7 +304,7 @@
     La sèrie va del primer trimestre de 2012 fins a l'últim de 2016, un any
     més que l'anterior. Per tant té 20 períodes. Per fer una predicció per al
     tercer trimestre, primer ajustem una tendència lineal, amb
-    «tslm(series2~trend». Feu-lo, i assigneu el resultat a «fit2».
+    «tslm(series2~trend)». Feu-lo, i assigneu el resultat a «fit2».
   CorrectAnswer: fit2 <- tslm(series2~trend)
   AnswerTests: omnitest(correctExpr='fit2 <- tslm(series2~trend)')
   Hint: Useu «tslm(series2~trend)» per calcular la constant i el pendent
