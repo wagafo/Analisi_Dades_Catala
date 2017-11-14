@@ -141,6 +141,7 @@
     línia horitzontal igual a la mitjana del final, i una línia vertical
     igual a la mitjana del parcial.
   Figure: figure_outliers.R
+
   FigureType: new
 
 - Class: cmd_question
@@ -345,9 +346,29 @@
   Output: Com podeu veure. el R ha identificat aquests casos com els
     cassos 2, 18 i 19. El cas 19 no és un cas que és atípic amb respecte
     a la mitjana de la variable explicativa (està a prop de línia vertical),
-    així que no té el potencial de ser influent. Eliminem doncs els casos
+    així que no té el potencial de ser influent. Eliminarem doncs els casos
     2 i 18, que tenen una diferència gran respecte a la mitjana del parcial,
-    i mirem si canvien els resultats.
+    i mirarem si canvien els resultats, però abans presentarem una altra
+    eina per identificar valors atípics.
+
+- Class: cmd_question
+  Output: Una altra eina útil és obtenir un diagrama de dispersió
+    amb etiquetes mostrant el número de cas. Per fer això, primer obtenim
+    el diagrama de dispersió amb amb cercles en color blau clar, de manera
+    que podem imprimir després el número de cas a sobre, amb
+    plot(final~parcial, col="lightblue"). Proveu-ho ara.    
+  CorrectAnswer: plot(final~parcial, col="lightblue")
+  AnswerTests: omnitest(correctExpr='plot(final~parcial, col="lightblue")')
+  Hint: Heu d'entrar «plot(final~parcial, col="lightblue")» per fer una
+    diagrama de dispersió amb cercles color blau clar.
+    
+- Class: cmd_question
+  Output: Imprimim les etiquetes amb el número de cas amb
+    text(final~parcial, labels=rownames(exam)). Entreu aquesta ordre.
+  CorrectAnswer: text(final~parcial, labels=rownames(exam))
+  AnswerTests: omnitest(correctExpr='text(final~parcial, labels=rownames(exam))')
+  Hint: You have to enter "text(final~parcial, labels=rownames(exam))" to label
+    each case with its case number.    
 
 - Class: cmd_question
   Output: Per eliminar aquests casos, ho podem fer entrant l'ordre
