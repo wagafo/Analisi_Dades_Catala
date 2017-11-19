@@ -1,0 +1,178 @@
+- Class: meta
+  Course: Analisi de dades
+  Lesson: Desigualtat i concentració
+  Author: Walter Garcia-Fontes
+  Type: Standard
+  Organization: Universitat Pompeu Fabra
+  Version: 1.0.0
+
+- Class: text
+  Output: Per entendre la distribució d'algunes variables és útil mesurar
+    el grau el desigualtat entre els seus valors, o, el que és equivalent,
+    fins a quin punt aquests valors estan concentrats. Per exemple per
+    analitzar la distribució de la renda o la riquesa, a part dels resums
+    numèrics i gràfics habituals, podria ser útil entendre fins a quin
+    punt la suma total de valors de la variable es concentren en uns pocs
+    casos. A l'economia industrial, la concentració de les indústries és
+    un factor important per a la competència entre empreses. A aquesta
+    lliçó aprendrem algunes mesures de desigualtat i concentració bàsiques
+    Usarem un paquet anomenat REAT, que ja us ha estat instal·lat i
+    habilitat, que conté totes aquestes mesures.
+
+- Class: cmd_question
+  Output: Comencem amb un exemple senzill. Hem creat un marc de dades
+    anomenat «amics» que conté les dades per als salaris de sis amics. Feu
+    una ullada a aquestes dades amb la funció head().
+  CorrectAnswer: head(amics)
+  AnswerTests: omnitest(correctExpr='head(amics)')
+  Hint: Heu d'entrar «head(amics)» per veure els primers casos de les
+    variables incloses al marc de dades anomenat «amics».
+
+- Class: cmd_question
+  Output: A partir de les dades ja podem veure que hi ha força desigualtat
+    entre els salaris d'aquests amics. Jan guanya significativament més
+    que la resta. L'índex de Gini és molt útil per analitzar la desigualtat.
+    La corba de Lorenz també ens mostra el grau de desigualtat, i està
+    relacionada amb la mesura de Gini. Podem obtenir l'index de desigualtat
+    de Gini i la corba de Lorenz amb les funcions gini() i lorenz() del
+    paquet REAT. L'ordre per obtenir l'índex de Gini és
+    gini(amics$salari,coefnorm=TRUE). Proveu-la ara.
+  CorrectAnswer: gini(amics$salari,coefnorm=TRUE)
+  AnswerTests: omnitest(correctExpr='gini(amics$salari,coefnorm=TRUE)')
+  Hint: Heu d'entrar «gini(amics$salari,coefnorm=TRUE)» per obtenir la
+    mesura de Gini.
+
+- Class: cmd_question
+  Output: Per representar la corba de Lorenz usem la funció lorenz(),
+    que pren com argument el vector de salaris que cabem d'usar.
+  CorrectAnswer: lorenz(amics$salari)
+  AnswerTests: lorenz(amics$salari)
+  Hint: Heu d'entrar «lorenz(amics$salari)» per obtenir la corba de Lorenz.
+
+- Class: mult_question
+  Output: D'acord amb el que observeu a la mesura de Gini i la corba de
+    Lorenz, quina de les proposicions següents penseu que és més apropiada?
+  AnswerChoices: hi ha desigualtat a la distribució de salaris dels amics,
+    però no és massa pronunciada; no hi ha desigualtat a la distribució
+    de salaris dels amics; hi ha desigualtat extrema a la distribució dels
+    salaris dels amics
+  CorrectAnswer: hi ha desigualtat a la distribució de salaris dels amics,
+    però no és massa pronunciada
+  AnswerTests: omnitest(correctVal='hi ha desigualtat a la distribució de salaris dels amics, però no és massa pronunciada')
+  Hint: Atès que l'índex de Gini és igual a 0.5076923 i la corba de Lorenz
+    està força lluny de la diagonal, hi ha desigualtat, però considerant
+    el valor de l'índex de Gini que no està a prop d'1, i que la corba
+    de Lorenz no està massa a prop dels eixos, no hi ha desigualtat extrema.
+    A l'exemple següent trobarem força més desigualtat.
+
+- Class: text
+  Output: Al món real, les dades de la renda, la riquesa o els salaris
+    s'analitzen habitualment amb conjunts de dades molt grans d'individus.
+    Consegüentment, les dades no venen en forma individual com al nostre
+    example senzill anterior, però en forma de taula de freqüències,
+    o sigui dades agrupades.
+
+- Class: figure
+  Output: Considereu la gràfica de la dreta que mostra la distribució
+    mundial de la riquesa el 2017. Podem veure ja a la gràfica que
+    hi ha una desigualtat molt gran a la distribució de la riquesa,
+    considerant que un 70.1% de la població sols manté un 3.9% de la
+    riquesa, mentre que un 0.7% manté un 46.3% de la riquesa global.
+  Figure: figure_wealth.R
+  FigureType: new
+
+- Class: cmd_question
+  Output: Anem a mesurar la desigualtat amb un índex de Gini i la
+    corba de Lorenz. Per fer això, hem de preparar la taula de
+    freqüències per a la distribució de la riquesa. Us hem preparat
+    un marc de dades amb aquestes dades. La riquesa està en dòlars,
+    i la població en milions. Enntreu «Riquesa_global» per veure
+    aquestes dades.
+  CorrectAnswer: Riquesa_global
+  AnswerTests: omnitest(correctExpr='Riquesa_global')
+  Hint: Heu d'entrar «Riquesa_global» per veure la taula de freqüències
+    per a les dades de la riquesa global.
+
+- Class: cmd_question
+  Output: Per analitzar les dades, ens calen usar els punts mig (marques
+    de classe) dels intervals de la taula anterior, com a riquesa mitjana
+    de cada interval. Per a l'últim interval, atès que és «més de
+    $1,000,000», hem de posar un valor raonable. Anem a usar
+    6,000,000 per a l'últim interval. Assigneu el resultat a un
+    vector anomenat «x».
+  CorrectAnswer: x <- c(5000,55000,550000,6000000)
+  AnswerTests: omnitest(correctExpr='x <- c(5000,55000,550000,6000000)')
+  Hint: Useu «x <- c(5000,55000,550000,6000000)» per als punts mig de cada
+    dada interval de riquesa.
+
+- Class: cmd_question
+  Output: Considerant que les dades estan agrupades, i no tenim dades
+    individuals com al primer exemple, hem d'especificar també els
+    pesos (freqüències) per a cada interval. Anem a usar els
+    percentatges de cada interval de riquesa de la gràfica (70.1, 21.3,
+    7.9 i 0.7). Creeu ara un vector amb aquestes pesos mostrals i
+    anomeneu-lo «w».
+  CorrectAnswer: w <- c(70.1, 21.3,7.9,0.7)
+  AnswerTests: omnitest(correctExpr='w <- c(70.1, 21.3,7.9,0.7)')
+  Hint: Entreu la informació del percentage de població de cada interval
+    de riquesa, «w <- c(70.1, 21.3,7.9,0.7)».
+
+- Class: cmd_question
+  Output: Ara podem calcular l'índex de Gini, usant un altre cop la funció
+    gini() del paquet REAT, amb gini(x, weighthing=w). Proveu-ho ara.
+  CorrectAnswer: gini(x,weighting=w)
+  AnswerTests: omnitest(correctExpr='gini(x,weighting=w)')
+  Hint: Calculeu l'índex de Gini amb "gini(x,weighting=w)".
+
+- Class: cmd_question
+  Output: Per fer la gràfica de la corba de Lorenz, usem un altre cop
+    la funció lorenz(), i els arguments són el mateixos que a la funció
+    gini() anterior.
+  CorrectAnswer: lorenz(x,weighting=w)
+  AnswerTests: omnitest(correctExpr='lorenz(x,weighting=w)')
+  Hint: Dibuixeu la corba de Lorenz amb «lorenz(x,weighting=w)».
+
+- Class: text
+  Output: Com es pot veure tant al valor de l'índex de Gini i la forma
+    de la corba de Lorenz, hi ha un alt grau de desigualtat a la distribució
+    de la riquesa a nivell mundial.
+
+- Class: cmd_question
+  Output: Un concepte similar és la concentració. Sempre que hi ha desigualtat
+    a la distribució de valors d'una variable, hi ha concentració.
+    Les mesures de concentració s'usen per a l'anàlisi d'indústries i mercats,
+    on també s'utilitzen mesures com l'índex de Gini. Treballarem ara
+    amb un conjunt de dades sobre les vendes de quatre empreses
+    automobilístiques, amb vendes iguals a 20, 50, 20 i 10 (en milions d'euros).
+    Creeu un vector amb aquests valors i anomeneu-lo «vendes».
+  CorrectAnswer: vendes <- c(20,50,20,10)
+  AnswerTests: omnitest(correctExpr='vendes <- c(20,50,20,10)')
+  Hint: Entreu «vendes <- c(20,50,20,10)» per crear el vector demanat.
+
+- Class: cmd_question
+  Output: Una mesura molt coneguda de concentració es coneix amb el nom
+    de mesura de concentració de Herfindahl-Hirschman. Es calcula com
+    la suma dels quadrats de les proporcions de vendes de cada empresa.
+    El paquet REAT té una funció anomenada herf() que calcula l'índex
+    de Herfindahl. Agafa com a argument un vector de vendes o qualsevol
+    altra variable que mesuri la quota de mercat. Proveu aquesta funció
+    ara amb el vector «vendes» que acabem de crear.
+  CorrectAnswer: herf(vendes)
+  AnswerTests: omnitest(correctExpr='herf(vendes)')
+  Hint: Entreu «herf(vendes)» per calcular l'índex de concentració de
+    Herfindahl-Hirschman.
+
+- Class: text
+  Output: El valor que hem obtingut per a la mesura de concentració
+    Herfindahl-Hirschman, 0.34, ens està dient que hi ha una concentració
+    relativament elevada en aquest mercat. Considereu que si totes les
+    empreses tinguessin exactament la mateixa dimensió l'índex seria
+    igual a 0.25 (cadascuna tindria un quart del mercat), i considerant
+    que sols hi ha 4 empreses al mercat, això implicaria un grau força
+    elevat de concentració. Aquí la concentració és encara una mica més
+    alta perquè hi ha una empresa (la que té vendes iguals a 50 milions
+    d'euros) que té un 50% de quota de mercat ( 50/(20 + 50 + 20 + 10) ).
+
+- Class: text
+  Output: Aquí hem completat aquesta lliçó sobre el càlcul de mesures i
+    gràfiques de desigualtat i concentració amb el R.

@@ -1,0 +1,12 @@
+pop <- c(70.1, 21.3, 7.9, 0.7)
+wea <- c(3.9, 10.6, 39.2, 46.3)
+bar <- matrix(cbind(pop,wea), ncol=4, byrow=TRUE)
+bar <- as.table(bar)
+colnames(bar) <- c("Menys de $10,000","$10,000-$100,000","$100,000-$1,000,000","$1,000,000+")
+rownames(bar) = c("Percentatge d'adults","Proporció de riquesa")
+par(mar=c(5, 2, 2, 0.5))
+bp <- barplot(bar,beside=TRUE,cex.names =0.8,ylim=c(0,90), main="Població adulta
+global i proporció de la riquesa total per grups de riquesa, 2017", cex.main=1, legend=TRUE, sub="Font: Credit Suisse Global Wealth Report, 2017")
+text(bp, bar + 5, sprintf("%.1f %%", bar))
+par(mar=c(5.1,4.1,4.1,2.1))
+rm(pop,wea,bar,bp)
