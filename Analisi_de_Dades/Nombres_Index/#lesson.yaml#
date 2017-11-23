@@ -1,0 +1,215 @@
+- Class: meta
+  Course: Analisi de dades
+  Lesson: Nombres index
+  Author: Walter Garcia-Fontes
+  Type: Standard
+  Organization: Universitat Pompeu Fabra
+  Version: 1.0.0
+
+- Class: text
+  Output: Per comparar l'evolució d'una sèrie temporal entre diferents
+    períodes de temps, es fa servir sovint la tècnica de nombres índex.
+    Quan es tracta d'una única sèrie es fan servir índex simples, és a
+    dir la variació percentual de la sèrie, amb un període de base que
+    es igual a 100. Però quan hi ha moltes sèries l'evolució de les
+    quals es volen analitzar a l'hora, cal construir un índex complex
+    o ponderat. Per analitzar l'evolució temporal de preus o quantitats
+    cal aquest tècnica molt freqüentment. En aquesta lliçó veurem com
+    construir aquest tipus d'índexs complexos o ponderats amb l'R.
+
+- Class: figure
+  Output: Treballarem amb un exemple senzill. Tenim tres productes A, B i C
+    per al qual tenim dades del preu i la quantitat de venda per a tres
+    anys, 1997, 1998, 1999. A la finestra de la dreta teniu una taula
+    amb les dades d'aquests tres productes. Hem d'entrar ara les dades
+    a l'R per poder-les analitzar.
+  Figure: figure_dat.R
+  FigureType: new
+
+- Class: cmd_question
+  Output: Primer hem de crear vectors amb els preus i quantitats. Anem
+    a crear aquest vector per al producte A, creeu el vector de quantitats
+    amb 3 elements, un per cada any, i doneu-li a aquest vector el nom
+    «q.A».
+  CorrectAnswer: q.A <- c(100,125,150)
+  AnswerTests: omnitest(correctExpr='q.A <- c(100,125,150)')
+  Hint: Heu d'entrar «q.A <- c(100,125,150)» per crear un vector amb els
+    tres anys de dades de quantitats per al producte A.
+
+- Class: cmd_question
+  Output: Ara creeu un vector semblant per al preu del producte A, i anomeneu-lo
+    «p.A».
+  CorrectAnswer: p.A <- c(10000,12500,13000)
+  AnswerTests: omnitest(correctExpr='p.A <- c(10000,12500,13000)')
+  Hint: Heu d'entrar «p.A <- c(10000,12500,13000)» per crear un vector amb els
+    tres anys de dades de preus per al producte A.
+    
+- Class: cmd_question
+  Output: Hauríem de continuar ara creant vectors com aquests per als productes
+    B i C. Ja us els hem creat. Anem a posar tots aquests vectors
+    q.A, p.A, q.B, p.B, q.C, p.C, en aquest ordre, en un marc de dades amb
+    la funció data.frame(). Poseu-li el nom «Dades».
+  CorrectAnswer: Dades <- data.frame(q.A, p.A, q.B, p.B, q.C, p.C)
+  AnswerTests: omnitest(correctExpr='Dades <- data.frame(q.A, p.A, q.B, p.B, q.C, p.C)')
+  Hint: Heu d'entrar «Dades <- data.frame(q.A, p.A, q.B, p.B, q.C, p.C)» per
+    crear un marc de dades amb els vectors de preus i quantitats dels productes
+    A, B i C.
+
+- Class: cmd_question
+  Output: Per completar les nostres dades anem a entrar els noms de les files,
+    és a dir els anys. Això ho podem fer amb la funció rownames(), que
+    pren com argument el marc de dades que acabem de crear, i al qual se
+    li ha d'assignar un vector amb els tres anys. Feu-lo ara.
+  CorrectAnswer: rownames(Dades) <- c(1997,1998,1999)
+  AnswerTests: omnitest(correctExpr='rownames(Dades) <- c(1997,1998,1999)')
+  Hint: Heu d'entrar «rownames(Dades) <- c(1997,1998,1999)» per donar-li a
+    les files del marc de dades «Dades» un nom corresponent a cada any.
+
+- Class: cmd_question
+  Output: Per comprovar que hem entrat les dades correctament, escriviu ara
+    «Dades» i compareu la taula que heu creat amb la taula de dades de la
+    gràfica de la dreta.
+  CorrectAnswer: Dades
+  AnswerTests: omnitest(correctExpr='Dades')
+  Hint: Heu d'entrar «Dades» per veure l'aspecte del marc de dades.
+
+- Class: text
+  Output: Quan tenim informació de preus i quantitats de diversos productes,
+    sempre hem d'entrar les dades en aquest format per poder calcular
+    els índexs de preus i quantitats, cosa que farem amb les funcions
+    priceIndex() i quantityIndex() del paquet micEconIndex.
+
+- Class: cmd_question
+  Output: Anem a calcular primer un índex complex o ponderat de Laspeyres
+    per als preus del tres productes. La sintaxi de la funció
+    priceIndex() és
+    priceIndex( c( "p.A", "p.B", "p.C" ),c( "q.A", "q.B", "q.C" ), 1, Dades)*100
+    on el «1» indica quin any s'utilitza com a base per a l'índex. Proveu
+    aquesta funció ara, i assigneu el resultat a «pL».
+  CorrectAnswer: pL <- priceIndex( c( "p.A", "p.B", "p.C" ),c( "q.A", "q.B", "q.C" ), 1, Dades)*100
+  AnswerTests: omnitest(correctExpr='pL <- priceIndex( c( "p.A", "p.B", "p.C" ),c( "q.A", "q.B", "q.C" ), 1, Dades)*100')
+  Hint: Heu d'entrar «pL <- priceIndex( c( "p.A", "p.B", "p.C" ),c( "q.A", "q.B", "q.C" ), 1, Dades)*100» per calcular un índex de preus de Laspeyres i assignar el resultat a «pL».
+
+- Class: cmd_question
+  Output: Mireu ara l'índex de preus que heu calculat entrant el nom de
+    l'objecte que heu creat.
+  CorrectAnswer: pL
+  AnswerTests: omnitest(correctExpr='pL')
+  Hint: Entreu «pL» per veure l'objecte creat.
+
+- Class: cmd_question
+  Output: L'índex de preus ens permet veure que els preus creixen aproximadament
+    un 16% respecte a l'any base el segon any, i aproximadament un 24% el
+    tercer any. Una manera útil de veure l'evolució dels preus és mitjançant
+    una gràfica de sèrie temporal de l'índex. La podem obtenir amb
+    «plot.ts(pL)». Obteniu ara aquesta gràfica.
+  CorrectAnswer: plot.ts(pL)
+  AnswerTests: omnitest(correctExpr='plot.ts(pL)')
+  Hint: Entreu «plot.ts(pL)» per veure una gràfica de sèrie temporal de
+    l'índex de preus de Laspeyres que hem calculat.
+
+- Class: text
+  Output: Per obtenir una gràfica molt més maca, useu el paquet ggplot2
+    que té més funcionalitats i és més flexible que el R bàsic per crear
+    gràfiques.
+
+- Class: figure
+  Output: Per exemple, la gràfica que teniu a la dreta per a l'índex
+    de Laspeyres s'ha creat amb l'ordre
+    qplot(x=rownames(Dades),y=pL,xlab="Any",ylab="Índex de preus de Laspeyres", main="Gràfica de l'índex de preus") + geom_line(aes(group=1)).
+  Figure: figure_pL.R
+  FigureType: new
+
+- Class: cmd_question
+  Output: Per obtenir un índex de Paasche, simplement hem d'afegir
+    "Paasche" com a últim argument de la funció price_index(), que quedaria
+    priceIndex( c( "p.A", "p.B", "p.C" ),c( "q.A", "q.B", "q.C" ), 1, Dades,"Paasche")*100. Proveu aquesta ordre ara.
+  CorrectAnswer: priceIndex( c( "p.A", "p.B", "p.C" ),c( "q.A", "q.B", "q.C" ), 1, Dades,"Paasche")*100
+  AnswerTests: omnitest(correctExpr='priceIndex( c( "p.A", "p.B", "p.C" ),c( "q.A", "q.B", "q.C" ), 1, Dades,"Paasche")*100')
+  Hint: Entreu «priceIndex( c( "p.A", "p.B", "p.C" ),c( "q.A", "q.B", "q.C" ), 1, Dades,"Paasche")*100» per calcular un índex de preus de Paasche.
+
+- Class: cmd_question
+  Output: Un índex de quantitat també pot ser de Laspeyres o Paasche, i
+    s'obté amb la funció quantityIndex() que té una sintaxi igual a la funció
+    priceIndex(). Obtenim ara un índex de quantitats de tipus Fisher, que
+    es calcula com una mitjana geomètrica de l'índex de Laspeyres i Paasche,
+    i amb la base en el segon any, amb quantityIndex( c( "p.A", "p.B", "p.C" ),c( "q.A", "q.B", "q.C" ), 2, Dades,"Fisher")*100. Proveu aquesta ordre ara.
+  CorrectAnswer: quantityIndex( c( "p.A", "p.B", "p.C" ),c( "q.A", "q.B", "q.C" ), 2, Dades,"Fisher")*100
+  AnswerTests: omnitest(correctExpr='quantityIndex( c( "p.A", "p.B", "p.C" ),c( "q.A", "q.B", "q.C" ), 2, Dades,"Fisher")*100')
+  Hint: Entreu «quantityIndex( c( "p.A", "p.B", "p.C" ),c( "q.A", "q.B", "q.C" ), 2, Dades,"Fisher")*100» per calcular un índex de quantitats de Fisher amb
+    base fixada al segon any.
+
+- Class: figure
+  Output: En termes pràctics, els índexs de preus es calculen en base
+    a unes ponderacions de cada producte pel seu pes en el valor total dels
+    productes, i com una mitjana ponderada d'índexs simples. A la taula
+    de la finestra dreta, podeu veure aquest tipus de dades, en base al mateix
+    exemple que hem anat treballant fins ara. Suposem que volem calcular
+    un índex de Laspeyres, Paasche o de Fisher en base al primer any com
+    abans. A la taula ja tenim calculades les ponderacions i els índexs
+    simples de preus per als tres productes.
+  Figure: figure_pond.R
+  FigureType: new    
+
+- Class: cmd_question
+  Output: Hem d'entrar ara les dades per aquest procediment. Ja hem creat
+    vectors amb noms pi.A, pi.B, pi.C, w.A, w.B, w.C per als índexs simples
+    de preus i les ponderacions. Creeu una marc de dades amb aquests
+    vectors, en l'ordre donat a dalt, usant la funció data.frame(), i
+    assigneu el resultat a un objecte anomenat «Dades2».
+  CorrectAnswer: Dades2 <- data.frame(pi.A, pi.B, pi.C, w.A, w.B, w.C)
+  AnswerTests: omnitest(correctExpr='Dades2 <- data.frame(pi.A, pi.B, pi.C, w.A, w.B, w.C)')
+  Hint: Entreu «Dades2 <- data.frame(pi.A, pi.B, pi.C, w.A, w.B, w.C)» per
+    entrar les dades per calcular l'índex ponderat de preus. 
+  
+- Class: cmd_question
+  Output: Assigneu-li com abans a cada fila els noms dels anys amb la
+    funció rownames().
+  CorrectAnswer: rownames(Dades2) <- c(1997,1998,1999)
+  AnswerTests: omnitest(correctExpr='rownames(Dades2) <- c(1997,1998,1999)')
+  Hint: Entreu «rownames(Dades2) <- c(1997,1998,1999)» per assignar-li 
+    l'any a les files.
+
+- Class: cmd_question
+  Output: Mireu l'aspecte del marc de dades que heu creat entrant el seu nom.
+  CorrectAnswer: Dades2
+  AnswerTests: omnitest(correctExpr='Dades2')
+  Hint: Entreu «Dades2» per veure el marc de dades creat.
+
+- Class: cmd_question
+  Output: Per calcular un índex de Paasche, on les ponderacions que s'usen
+    són les corresponents a cada any corrent, fem servir l'ordre
+    apply(Dades2, 1, function(x)  weighted.mean(x[1:3],x[4:6])). Proveu-la.
+  CorrectAnswer: apply(Dades2, 1, function(x) weighted.mean(x[1:3],x[4:6]))
+  AnswerTests: calculates_same_value='apply(Dades2, 1, function(x) weighted.mean(x[1:3],x[4:6]))'
+  Hint: Entreu «apply(Dades2, 1, function(x) weighted.mean(x[1:3],x[4:6]))»
+    per calcular l'índex de preus de Paasche amb els índexs simples i les ponderacions.
+
+- Class: cmd_question
+  Output: Per calcular l'índex de Laspeyres, hem de mantenir les ponderacions
+    fixes a l'any base. Hem creat un marc de dades amb les ponderacions
+    fixes a l'any base perquè veieu el seu aspecte i com s'haurien d'entrar
+    les dades. Entreu «Dades3» per veure el seu aspecte.
+  CorrectAnswer: Dades3
+  AnswerTests: omnitest(correctExpr='Dades3')
+  Hint: Entreu «Dades3» per veure el marc de dades amb les ponderacions
+    fixes a l'any base.
+
+- Class: cmd_question
+  Output: Ara podem tornar a utilitzar la mateixa ordre d'abans per calcular
+    l'índex de preus ponderat, amb el marc de dades «Dades3»,
+    apply(Dades3, 1, function(x) weighted.mean(x[1:3],x[4:6])). Entreu aquesta
+    ordre i calculareu un índex de preus de Laspeyres.
+  CorrectAnswer: apply(Dades3, 1, function(x) weighted.mean(x[1:3],x[4:6]))
+  AnswerTests: calculates_same_value='apply(Dades3, 1, function(x) weighted.mean(x[1:3],x[4:6]))'
+  Hint: Entreu «apply(Dades3, 1, function(x) weighted.mean(x[1:3],x[4:6]))»
+    per calcular l'índex de Paasche amb els índexs simples i les ponderacions.
+
+- Class: text
+  Output: Si recordeu els valors obtinguts per als índexs de Laspyeres i Paasche
+    amb el primer procediment, podeu comprovar que són els mateixos obtinguts
+    per aquest segon procediment, que és el més utilitzat en la pràctica
+    perquè normalment no disposem de la informació de la quantitat de béns
+    i serveis, sinó únicament de valors per calcular les ponderacions. Amb
+    això acabem aquesta lliçó sobre com calcular nombres índex amb el R.
+    

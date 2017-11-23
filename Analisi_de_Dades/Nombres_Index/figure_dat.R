@@ -1,0 +1,6 @@
+frame_files <- lapply(sys.frames(), function(x) x$ofile)
+frame_files <- Filter(Negate(is.null), frame_files)
+PATH <- dirname(frame_files[[length(frame_files)]])
+img <- readPNG(paste(PATH,"R.png",sep="/"))
+plot(0:1,0:1,type="n",ann=FALSE,axes=FALSE)
+rasterImage(img,0,0,1.35,1.35)
