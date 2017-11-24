@@ -119,7 +119,7 @@
 
 - Class: cmd_question
   Output: Ara podem calcular l'índex de Gini, usant un altre cop la funció
-    gini() del paquet REAT, amb gini(x, weighthing=w). Proveu-ho ara.
+    gini() del paquet REAT, amb gini(x, weighting=w). Proveu-ho ara.
   CorrectAnswer: gini(x,weighting=w)
   AnswerTests: omnitest(correctExpr='gini(x,weighting=w)')
   Hint: Calculeu l'índex de Gini amb "gini(x,weighting=w)".
