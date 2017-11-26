@@ -141,7 +141,6 @@
     línia horitzontal igual a la mitjana del final, i una línia vertical
     igual a la mitjana del parcial.
   Figure: figure_outliers.R
-
   FigureType: new
 
 - Class: cmd_question
@@ -356,19 +355,19 @@
     amb etiquetes mostrant el número de cas. Per fer això, primer obtenim
     el diagrama de dispersió amb amb cercles en color blau clar, de manera
     que podem imprimir després el número de cas a sobre, amb
-    plot(final~parcial, col="lightblue"). Proveu-ho ara.    
+    plot(final~parcial, col="lightblue"). Proveu-ho ara.
   CorrectAnswer: plot(final~parcial, col="lightblue")
   AnswerTests: omnitest(correctExpr='plot(final~parcial, col="lightblue")')
   Hint: Heu d'entrar «plot(final~parcial, col="lightblue")» per fer una
     diagrama de dispersió amb cercles color blau clar.
-    
+
 - Class: cmd_question
   Output: Imprimim les etiquetes amb el número de cas amb
     text(final~parcial, labels=rownames(exam)). Entreu aquesta ordre.
   CorrectAnswer: text(final~parcial, labels=rownames(exam))
   AnswerTests: omnitest(correctExpr='text(final~parcial, labels=rownames(exam))')
   Hint: You have to enter "text(final~parcial, labels=rownames(exam))" to label
-    each case with its case number.    
+    each case with its case number.
 
 - Class: cmd_question
   Output: Per eliminar aquests casos, ho podem fer entrant l'ordre

@@ -130,7 +130,7 @@
 
 - Class: text
   Output: Aquesta gràfica és suficient si la volem utilitzar per
-  nosaltres mateixos, però és poc il·lustrativa si la volem utilitzar
+    nosaltres mateixos, però és poc il·lustrativa si la volem utilitzar
     en informes i presentacions. Per això ens agradaria tenir colors i
     llegendes per identificar la sèrie i la tendència.
 
@@ -138,7 +138,9 @@
   Output: La gràfica es pot embellir molt amb la
     funció autoplot() del paquet ggplot2. Aquí us fem un exemple, a
     tutorials futurs podeu aprendre com fer servir aquest paquet gràfic. L'ordre
-    que ha generat aquesta gràfica és autoplot(gelats.ts,series="Vendes")+autolayer(decomp.ts$trend, series= "Tendència MA4")+labs(x="Trimestre",y="Vendes de gelat")+ggtitle("Vendes de gelat amb tendència").
+    que ha generat aquesta gràfica és autoplot(gelats.ts,series="Vendes")
+    +autolayer(decomp.ts$trend, series= "Tendència MA4")+labs(x="Trimestre",
+    y="Vendes de gelat")+ggtitle("Vendes de gelat amb tendència").
   Figure: plottrend.R
   FigureType: new
 
