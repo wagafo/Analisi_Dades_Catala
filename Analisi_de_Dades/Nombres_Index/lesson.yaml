@@ -88,7 +88,7 @@
     aquesta funció ara, i assigneu el resultat a «pL».
   CorrectAnswer: pL <- priceIndex( c( "p.A", "p.B", "p.C" ),c( "q.A", "q.B", "q.C" ), 1, Dades)*100
   AnswerTests: omnitest(correctExpr='pL <- priceIndex( c( "p.A", "p.B", "p.C" ),c( "q.A", "q.B", "q.C" ), 1, Dades)*100')
-  Hint: Heu d'entrar «pL <- priceIndex( c( "p.A", "p.B", "p.C" ),c( "q.A", "q.B", "q.C" ), 1, Dades)*100» per calcular un índex de preus de Laspyeres i assignar el resultat a «pL».
+  Hint: Heu d'entrar «pL <- priceIndex( c( "p.A", "p.B", "p.C" ),c( "q.A", "q.B", "q.C" ), 1, Dades)*100» per calcular un índex de preus de Laspeyres i assignar el resultat a «pL».
 
 - Class: cmd_question
   Output: Mireu ara l'índex de preus que heu calculat entrant el nom de
@@ -100,7 +100,7 @@
 - Class: cmd_question
   Output: L'índex de preus ens permet veure que els preus creixen aproximadament
     un 16% respecte a l'any base el segon any, i aproximadament un 24% el
-    segon any. Una manera útil de veure l'evolució dels preus és mitjançant
+    tercer any. Una manera útil de veure l'evolució dels preus és mitjançant
     una gràfica de sèrie temporal de l'índex. La podem obtenir amb
     «plot.ts(pL)». Obteniu ara aquesta gràfica.
   CorrectAnswer: plot.ts(pL)
@@ -122,7 +122,7 @@
 
 - Class: cmd_question
   Output: Per obtenir un índex de Paasche, simplement hem d'afegir
-    "Paasche" com a últim argument de la funció price_index, que quedaria
+    "Paasche" com a últim argument de la funció price_index(), que quedaria
     priceIndex( c( "p.A", "p.B", "p.C" ),c( "q.A", "q.B", "q.C" ), 1, Dades,"Paasche")*100. Proveu aquesta ordre ara.
   CorrectAnswer: priceIndex( c( "p.A", "p.B", "p.C" ),c( "q.A", "q.B", "q.C" ), 1, Dades,"Paasche")*100
   AnswerTests: omnitest(correctExpr='priceIndex( c( "p.A", "p.B", "p.C" ),c( "q.A", "q.B", "q.C" ), 1, Dades,"Paasche")*100')
@@ -130,9 +130,9 @@
 
 - Class: cmd_question
   Output: Un índex de quantitat també pot ser de Laspeyres o Paasche, i
-    s'obté amb la funció quantity_index() que té una sintaxi igual a la funció
-    price_index(). Obtenim ara un índex de quantitats de tipus Fisher, que
-    es calcula com una mitjana geomètrica de l'índex de Lasypeyres i Paasche,
+    s'obté amb la funció quantityIndex() que té una sintaxi igual a la funció
+    priceIndex(). Obtenim ara un índex de quantitats de tipus Fisher, que
+    es calcula com una mitjana geomètrica de l'índex de Laspeyres i Paasche,
     i amb la base en el segon any, amb quantityIndex( c( "p.A", "p.B", "p.C" ),c( "q.A", "q.B", "q.C" ), 2, Dades,"Fisher")*100. Proveu aquesta ordre ara.
   CorrectAnswer: quantityIndex( c( "p.A", "p.B", "p.C" ),c( "q.A", "q.B", "q.C" ), 2, Dades,"Fisher")*100
   AnswerTests: omnitest(correctExpr='quantityIndex( c( "p.A", "p.B", "p.C" ),c( "q.A", "q.B", "q.C" ), 2, Dades,"Fisher")*100')
@@ -153,8 +153,8 @@
 
 - Class: cmd_question
   Output: Hem d'entrar ara les dades per aquest procediment. Ja hem creat
-    vectors amb noms pi.A, pi.B, pi.C, w.A, w.B, w.C per a les ponderacions
-    i els índexs simples de preus. Creeu una marc de dades amb aquests
+    vectors amb noms pi.A, pi.B, pi.C, w.A, w.B, w.C per als índexs simples
+    de preus i les ponderacions. Creeu una marc de dades amb aquests
     vectors, en l'ordre donat a dalt, usant la funció data.frame(), i
     assigneu el resultat a un objecte anomenat «Dades2».
   CorrectAnswer: Dades2 <- data.frame(pi.A, pi.B, pi.C, w.A, w.B, w.C)
@@ -168,7 +168,7 @@
   CorrectAnswer: rownames(Dades2) <- c(1997,1998,1999)
   AnswerTests: omnitest(correctExpr='rownames(Dades2) <- c(1997,1998,1999)')
   Hint: Entreu «rownames(Dades2) <- c(1997,1998,1999)» per assignar-li 
-    l'any a les columnes.
+    l'any a les files.
 
 - Class: cmd_question
   Output: Mireu l'aspecte del marc de dades que heu creat entrant el seu nom.
@@ -178,12 +178,12 @@
 
 - Class: cmd_question
   Output: Per calcular un índex de Paasche, on les ponderacions que s'usen
-    són les corresponent a cada any corrent, fem servir l'ordre
+    són les corresponents a cada any corrent, fem servir l'ordre
     apply(Dades2, 1, function(x)  weighted.mean(x[1:3],x[4:6])). Proveu-la.
   CorrectAnswer: apply(Dades2, 1, function(x) weighted.mean(x[1:3],x[4:6]))
   AnswerTests: calculates_same_value='apply(Dades2, 1, function(x) weighted.mean(x[1:3],x[4:6]))'
   Hint: Entreu «apply(Dades2, 1, function(x) weighted.mean(x[1:3],x[4:6]))»
-    per calcular l'índex de Paasche amb els índexs simples i les ponderacions.
+    per calcular l'índex de preus de Paasche amb els índexs simples i les ponderacions.
 
 - Class: cmd_question
   Output: Per calcular l'índex de Laspeyres, hem de mantenir les ponderacions
@@ -199,14 +199,14 @@
   Output: Ara podem tornar a utilitzar la mateixa ordre d'abans per calcular
     l'índex de preus ponderat, amb el marc de dades «Dades3»,
     apply(Dades3, 1, function(x) weighted.mean(x[1:3],x[4:6])). Entreu aquesta
-    ordre i calculareu un índex de Laspeyres.
+    ordre i calculareu un índex de preus de Laspeyres.
   CorrectAnswer: apply(Dades3, 1, function(x) weighted.mean(x[1:3],x[4:6]))
   AnswerTests: calculates_same_value='apply(Dades3, 1, function(x) weighted.mean(x[1:3],x[4:6]))'
   Hint: Entreu «apply(Dades3, 1, function(x) weighted.mean(x[1:3],x[4:6]))»
     per calcular l'índex de Paasche amb els índexs simples i les ponderacions.
 
 - Class: text
-  Output: Si recordeu els valors obtinguts per als índexs de Laspyers i Paasche
+  Output: Si recordeu els valors obtinguts per als índexs de Laspyeres i Paasche
     amb el primer procediment, podeu comprovar que són els mateixos obtinguts
     per aquest segon procediment, que és el més utilitzat en la pràctica
     perquè normalment no disposem de la informació de la quantitat de béns

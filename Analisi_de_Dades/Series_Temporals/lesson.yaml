@@ -96,7 +96,7 @@
     freqüència de la sèrie temporal, en aquest cas 4), estacionalitat i
     component irregular. Hem de donar dos arguments. El primer argument és
     l'objecte sèrie temporal «gelats.ts» que hem creat. El segon
-    és «type="additive"» si el model és additiu i «type=multiplicative»
+    és «type="additive"» si el model és additiu i «type="multiplicative"»
     si el model és multiplicatiu. Descomponem doncs la sèrie «gelats.ts»
     usant un model additiu, i assignem el resultat a un nou objecte
     anomenat «decomp.ts».
