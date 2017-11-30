@@ -9,7 +9,7 @@
 - Class: text
   Output: En aquest tutorial veurem com analitzar la relació entre dues
     variables numèriques i una categòrica, és a dir com introduir una
-    variable categòrica a l'anàlisi de les dues variables categòriques.
+    variable categòrica a l'anàlisi de les dues variables numèriques.
     Es tracta de separar el conjunt de dades en grups definits per
     la variable categòrica i comprovar la relació entre les dues variables
     numèriques a cada grup.
