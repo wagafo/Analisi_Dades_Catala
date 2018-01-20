@@ -97,11 +97,11 @@
   Output: A part dels cinc números resum, podem obtenir la mitjana i
     la desviació estàndard per a la variable de la taula de freqüències.
     Per obtenir la mitjana del valor dels pagament a la taula de
-    freqüèncis, l'ordre és «emm(gdental, order=1)». Entreu l'ordre ara
+    freqüèncis, l'ordre és «mean(gdental)». Entreu l'ordre ara
     per obtenir la mitjana d'aquest conjunt de dades.
-  CorrectAnswer: emm(gdental,order=1)
-  AnswerTests: omnitest(correctExpr='emm(gdental,order=1)')
-  Hint: Heu d'entrar «emm(gdental,order=1)» per obtenir la mitjana per
+  CorrectAnswer: mean(gdental)
+  AnswerTests: omnitest(correctExpr='mean(gdental)')
+  Hint: Heu d'entrar «mean(gdental)» per obtenir la mitjana per
     als pagaments de l'assegurança dental
 
 - Class: video
@@ -109,15 +109,15 @@
   VideoLink: https://youtu.be/rIFwiGVKXBc
 
 - Class: cmd_question
-  Output: Per a la desviació estàndard és més complicat, atèx que el
+  Output: Per a la desviació estàndard és més complicat, atès que el
     paquet actuar no té una funció directa per calcular-la. L'ordre és
-    «sqrt(emm(gdental,order=2) - emm(gdental,order=1)^2)". Entreu
+    «sqrt(emm(gdental,order=2) - mean(gdental)^2)". Entreu
     ara aquesta ordre per calcular la desviació estàndard del valor
     dels pagaments, o sigui una mesura de la variació al voltant de la
     mitjana.
-  CorrectAnswer: sqrt(emm(gdental,order=2) - emm(gdental,order=1)^2)
-  AnswerTests: omnitest(correctExpr='sqrt(emm(gdental,order=2)-emm(gdental,order=1)^2)')
-  Hint: Heu d'entrar «sqrt(emm(gdental,order=2) - emm(gdental,order=1)^2)» per
+  CorrectAnswer: sqrt(emm(gdental,order=2) - mean(gdental)^2)
+  AnswerTests: omnitest(correctExpr='sqrt(emm(gdental,order=2)-mean(gdental)^2)')
+  Hint: Heu d'entrar «sqrt(emm(gdental,order=2) - mean(gdental)^2)» per
     calcular la desviació estàndard dels pagaments.
 
 - Class: cmd_question
