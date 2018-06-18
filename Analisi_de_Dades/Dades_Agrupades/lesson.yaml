@@ -87,11 +87,13 @@
     També podem representar un diagrama de caixa amb aquests cinc
     números resum. Per fer això, hem de proveir el resultat de la
     funció quantile() a la funció boxplot(), i l'ordre és
-    «boxplot(quantile(gdental))». Entreu ara aquesta ordre per
-    obtenir un diagrama de caixa de l'objecte dades agrupades gdental.
-  CorrectAnswer: boxplot(quantile(gdental))
-  AnswerTests: omnitest(correctExpr='boxplot(quantile(gdental))')
-  Hint: Heu d'entrar «boxplot(quantile(gdental))».
+    «boxplot(quantile(gdental),range=0)». Afegim l'argument «range=0»
+    perquè els bigotis arribin al màxim i al mínim. Entreu ara aquesta
+    ordre per obtenir un diagrama de caixa de l'objecte dades agrupades
+    gdental.
+  CorrectAnswer: boxplot(quantile(gdental),range=0)
+  AnswerTests: omnitest(correctExpr='boxplot(quantile(gdental),range=0)')
+  Hint: Heu d'entrar «boxplot(quantile(gdental),range=0)».
 
 - Class: cmd_question
   Output: A part dels cinc números resum, podem obtenir la mitjana i
