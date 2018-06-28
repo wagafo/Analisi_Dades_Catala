@@ -37,7 +37,7 @@
 
 - Class: cmd_question
   Output: Per comprovar aquesta propietat, proveu d'avaluar
-    (FALSE == FALSE) == FALSE . 
+    (FALSE == TRUE) == FALSE . 
   CorrectAnswer: (FALSE == TRUE) == FALSE
   AnswerTests: omnitest(correctExpr='(FALSE == TRUE) == FALSE')
   Hint: "Proveu d'entrar: (FALSE == TRUE) == FALSE"
@@ -236,7 +236,6 @@
   
 - Class: mult_question
   Output: Quina de les expressions següents avalua a FALSE?
-    Which one of the following expressions evaluates to FALSE?
   CorrectAnswer: "FALSE && 6 >= 6 || 7 >= 8 || 50 <= 49.5"
   AnswerChoices: "FALSE && 6 >= 6 || 7 >= 8 || 50 <= 49.5; FALSE || TRUE && 6 != 4 || 9 > 4; !(8 > 4) ||  5 == 5.0 && 7.8 >= 7.79; 6 >= -9 && !(6 > 7) && !(!TRUE)"
   AnswerTests: omnitest(correctVal='FALSE && 6 >= 6 || 7 >= 8 || 50 <= 49.5')
@@ -244,7 +243,7 @@
   
 - Class : text
   Output: Ara que teniu familiaritat amb els operadors lògics de l'R, podeu
-    fer servir algunes funciones que proveeix l'R per tractar amb expressions
+    fer servir algunes funcions que proveeix l'R per tractar amb expressions
     lògiques.
     
 - Class : cmd_question
@@ -266,14 +265,14 @@
 - Class : cmd_question
   Output: La funció identical() retornarà TRUE si dos objectes R que se
     li passen com argument són idèntics. Proveu la funció identical() entrant
-    identical('twins','twins')
-  CorrectAnswer: "identical('twins', 'twins')"
-  AnswerTests: omnitest(correctExpr="identical('twins', 'twins')")
+    identical('bessons','bessons')
+  CorrectAnswer: "identical('bessons', 'bessons')"
+  AnswerTests: omnitest(correctExpr="identical('bessons', 'bessons')")
   Hint: Si voleu veure si dos objectes de R són idèntics, entreu
-    identical('twins','twins')
+    identical('bessons','bessons')
   
 - Class: mult_question
-  Output: Quina de les dues opcions següents avalua a TRUE?
+  Output: Quina de les opcions següents avalua a TRUE?
   CorrectAnswer: "identical(5 > 4, 3 < 3.1)"
   AnswerChoices: "identical(5 > 4, 3 < 3.1); identical(4, 3.1); identical('hello', 'Hello'); !identical(7, 7)"
   AnswerTests: omnitest(correctVal='identical(5 > 4, 3 < 3.1)')
@@ -333,7 +332,7 @@
 - Class : text
   Output: Podem usar el vector lògic resultant per preguntar-nos altres
     qüestions sobre ints. La funció which() agafa un vector lògic com a a
-    argument i retorna els índexs de lvector que són TRUE. Per exemple
+    argument i retorna els índexs del vector que són TRUE. Per exemple
     which(c(TRUE, FALSE, TRUE)) retorna el vector c(1, 3).
 
 - Class : cmd_question
