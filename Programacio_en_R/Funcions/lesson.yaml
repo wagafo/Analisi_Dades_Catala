@@ -26,7 +26,7 @@
 
 - Class: text
   Output: La major part de les funcions de R retornen un valor. Les funcions
-    com ara Sys.Data() retornen un valor basant-se en l'entorn de l'ordinador,
+    com ara Sys.Date() retornen un valor basant-se en l'entorn de l'ordinador,
     mentre que altres funcions manipulen dades d'entrada per calcular un valor
     a retornar.
 
@@ -43,7 +43,7 @@
   Hint: Calculeu la mitjana de 2, 4 i 5 entrant mean(c(2, 4, 5))
 
 - Class: text
-  Output: Les funcions en general prenen argument que són variables sobre
+  Output: Les funcions en general prenen arguments que són variables sobre
     les quals opera la funció. Per exemple, la funció mean() agafa un
     vector com a argument, com en el cas de mean(c(2, 6, 8)). La funció
     mean() aleshores suma tots els elements (nombres) del vector i els
@@ -63,8 +63,8 @@
     perquè x es retorni sense modificació. Assegureu-vos de desar el vostre
     script abans de entrar submit().
   AnswerTests: test_func1()
-  Hint: Assegureu-vos d'eliminar el símbol coixinet perquè l'última expressió
-    a la funció sigui sols x.
+  Hint: Assegureu-vos d'eliminar el símbol coixinet "#" perquè l'última
+    expressió a la funció sigui sols x.
   Script: boring_function.R
 
 - Class: cmd_question
@@ -206,10 +206,10 @@
 
 - Class: cmd_question
   Output: Anem a provar a vostra nova funció evaluate()! Useu evaluate
-    per trobar la desviació estàndard del vector c(1.4, 3.6, 7.9, 8.8).
-  CorrectAnswer: evaluate(sd, c(1.4, 3.6, 7.9, 8.8))
-  AnswerTests: omnitest(correctExpr='evaluate(sd, c(1.4, 3.6, 7.9, 8.8))')
-  Hint: La funció per a la desviació estàndard es diu sd(). Assegureu-vos
+    per trobar la mediana del vector c(1.4, 3.6, 7.9, 8.8).
+  CorrectAnswer: evaluate(median, c(1.4, 3.6, 7.9, 8.8))
+  AnswerTests: omnitest(correctExpr='evaluate(median, c(1.4, 3.6, 7.9, 8.8))')
+  Hint: La funció per a la desviació estàndard es diu median(). Assegureu-vos
     que passeu una funció com a argument passeu el nom de la funció sense
     parèntesis!
 
