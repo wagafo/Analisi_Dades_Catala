@@ -59,7 +59,7 @@
 - Class: script
   Output: L'última expressió de R a avaluar a una funció serà el valor
     que la funció retornarà. Volem que aquesta funció tingui un argument,
-    x, i que retorni x sense modificar-lo. Elimineu el símbol coixinet 
+    x, i que retorni x sense modificar-lo. Elimineu el símbol coixinet "#"
     perquè x es retorni sense modificació. Assegureu-vos de desar el vostre
     script abans de entrar submit().
   AnswerTests: test_func1()
