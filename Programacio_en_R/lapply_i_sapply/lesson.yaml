@@ -14,14 +14,14 @@
 - Class: text
   Output: Aquestes potents funcions, junt amb les seves parents properes
     (vapply() i tapply(), entre d'altres), ofereixen un mitjà concís i
-    convenient d'implementar l'estratègica Divideix-Aplica-Combina de
+    convenient d'implementar l'estratègia Divideix-Aplica-Combina de
     l'anàlisi de dades.
 
 - Class: text
   Output: Cadascuna de les funcions *apply DIVIDIRÀ algunes dades en peces
     més petites, APLICARÀ una funció a cada peça, i COMBINARÀ els resultats.
     Podeu trobar una discussió més detallada d'aquesta estratègia a l'article
-    del Hadley Wikcham amb títol «The Split-Apply-Combina Strategy for Data
+    del Hadley Wikcham amb títol «The Split-Apply-Combine Strategy for Data
     Analysis» al Journal of Statistical Software.
 
 - Class: text
@@ -145,7 +145,7 @@
     vector de caràcters.
 
 - Class: text
-  Output: En general, si el resultat és una llista un cada element és de
+  Output: En general, si el resultat és una llista on cada element és de
     longitud igual a 1, aleshores sapply() retorna un vector. Si el resultat
     és una llista con cada element és un vector de la mateixa longitud (> 1),
     sapply() retorna una matriu. Si sapply() no pot determinar com son les
@@ -153,12 +153,12 @@
     donaria lapply().
 
 - Class: text
-  Output: Anem a practicar una mica més ama lapply() i sapply()!
+  Output: Anem a practicar una mica més amb lapply() i sapply()!
 
 - Class: text
   Output: Les columnes 11 a 17 del nostre conjunt de dades són variables
     indicador, cada una d'elles representant un color diferent. El valor
-    de la variable indicador és 1 si el color està presenta a la bandera del
+    de la variable indicador és 1 si el color està present a la bandera del
     país, i 0 en cas contrari.
 
 - Class: cmd_question
@@ -175,7 +175,7 @@
     hi ha al conjunt de dades.
 
 - Class: cmd_question
-  Output: Primer, useu flag_colores <- flags[, 11:17] per extraure les columnes
+  Output: Primer, useu flag_colors <- flags[, 11:17] per extraure les columnes
     que contenen les dades de color i deseu-les a un nou marc de dades
     anomenat flag_colors. (Noteu la coma abans de 11:17. Aquesta ordre per
     crear subconjunts li diu a R que voleu totes les files, però sols
@@ -252,7 +252,7 @@
 
 - Class: text
   Output: Cada una d'aquestes columnes (i. e. variables) representa el
-    el nombre de cops que apareix una forma o disseny particular en la bandera
+    nombre de cops que apareix una forma o disseny particular en la bandera
     d'un país. Estem interessats en el nombre mínim i màxim de cops que
     apareix cada forma o disseny.
 
@@ -291,7 +291,7 @@
   Hint: class(shape_mat) retorna la classe de shape_mat.
 
 - Class: text
-  Output: Com ehem vist, sapply() sempre intenta simplificar el resultat
+  Output: Com hem vist, sapply() sempre intenta simplificar el resultat
     donat per lapply(). Ha pogut fer-ho amb èxit per a cadascú dels exemples
     que hem mirat fins ara. Mirem un exemple on sapply() no pot resoldre com
     simplificar el resultat i en conseqüència retorna una llista, igual a
@@ -335,13 +335,13 @@
     que esteu aplicant (o sigui length).
 
 - Class: text
-  Output: El fet que els elements de la llista unique_vals són tots vector
+  Output: El fet que els elements de la llista unique_vals són vectors
     de longitud *diferent* implica un problema per a sapply(), atès que no
     hi ha cap manera òbvia de simplificar el resultat.
 
 - Class: cmd_question
   Output: Useu sapply() per aplicar la funció unique() a cada element del
-    del conjunt de dades flags per veure que obteniu la mateixa llista sense
+    conjunt de dades flags per veure que obteniu la mateixa llista sense
     simplificació que obteniu quan apliqueu lapply().
   CorrectAnswer: sapply(flags, unique)
   AnswerTests: omnitest(correctExpr='sapply(flags, unique)')
@@ -365,7 +365,7 @@
   Output: lapply(unique_vals, function(elem) elem[2]) retornarà el segon
     element de la llista unique_vals. Noteu que la nostra funció sols té un
     argument, elem, que es simplement una «variable fictícia» que pren
-    el valor de cada element de unique_vals, a seu torn.
+    el valor de cada element de unique_vals al seu torn.
   CorrectAnswer: lapply(unique_vals, function(elem) elem[2])
   AnswerTests: calculates_same_value('lapply(unique_vals, function(elem) elem[2])')
   Hint: Useu lapply(unique_vals, function(elem) elem[2]) per retornar una
