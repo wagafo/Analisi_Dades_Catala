@@ -84,8 +84,9 @@
     per als preus del tres productes. La sintaxi de la funció
     priceIndex() és
     priceIndex( c( "p.A", "p.B", "p.C" ),c( "q.A", "q.B", "q.C" ), 1, Dades)*100
-    on el «1» indica quin any s'utilitza com a base per a l'índex. Proveu
-    aquesta funció ara, i assigneu el resultat a «pL».
+    on el «1» indica quin any s'utilitza com a base per a l'índex. Si no
+    s'especifica, l'R calcula un índex de Laspeyrs. Proveu aquesta funció ara,
+    per calcular un índex de preus de Laspeyres, i assigneu el resultat a «pL».
   CorrectAnswer: pL <- priceIndex( c( "p.A", "p.B", "p.C" ),c( "q.A", "q.B", "q.C" ), 1, Dades)*100
   AnswerTests: omnitest(correctExpr='pL <- priceIndex( c( "p.A", "p.B", "p.C" ),c( "q.A", "q.B", "q.C" ), 1, Dades)*100')
   Hint: Heu d'entrar «pL <- priceIndex( c( "p.A", "p.B", "p.C" ),c( "q.A", "q.B", "q.C" ), 1, Dades)*100» per calcular un índex de preus de Laspeyres i assignar el resultat a «pL».
