@@ -7,7 +7,7 @@
   Version: 1.0.0
 
 - Class: text
-  Output: Avui, aprendrem els elements bàsica de l'anàlisi de dades.
+  Output: Avui, aprendrem els elements bàsics de l'anàlisi de dades.
     Probablement té sentit començar per definir la paraula DADES.
 
 - Class: text
@@ -32,7 +32,7 @@
     1.80 metres?»
 
 - Class: text
-  Output: Aquí, la nostra població d'interès és tothom que viu a Catalunya. 
+  Output: Aquí, la nostra població d'interès és tothom que viu a Catalunya.
     Atès que no és pràctic mesurar l'alçada de més de 8 milions de persones,
     podríem en canvi escollir 100 persones a l'atzar i mesurar les seves
     alçades. La nostra esperança és que aquesta mostra de 10 persones és
@@ -50,7 +50,7 @@
   AnswerTests: omnitest(correctVal='Homes 18-25 a tot Catalunya')
   Hint: Atès que la vostra població objectiu és homes entre 18 i 25,
     heu d'escollir una mostra semblant.
-    
+
 - Class: video
   Output: Us agradaria veure un vídeo sobre aquests conceptes?
   VideoLink: https://youtu.be/S73EPLZrDgs
