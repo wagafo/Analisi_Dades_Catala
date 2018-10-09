@@ -12,7 +12,7 @@
 
 - Class: text
   Output: D'acord amb la Wikipedia, «Dades són valors de variable
-    qualitatives o quantitatives, que pertanyen a un conjunt d'elments.»
+    qualitatives o quantitatives, que pertanyen a un conjunt d'elements.»
 
 - Class: text
   Output: Sovint, el «conjunt d'elements» en els quals estem interessats
@@ -105,7 +105,7 @@
   AnswerTests: equivalent=cars
   Hint: Entreu «cars» i premeu Intro. No useu les cometes, espais o lletres
     majúscules.
-asfa
+
 - Class: text
   Output: 'Haureu notat que les files estan numerades de l''1 a la 54, cadascuna
     representant exactament un cotxe (car) al conjunt de dades. Per a cada
