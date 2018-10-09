@@ -105,9 +105,9 @@
   AnswerTests: equivalent=cars
   Hint: Entreu «cars» i premeu Intro. No useu les cometes, espais o lletres
     majúscules.
-
+asfa
 - Class: text
-  Output: 'Haureu notat que les files estan numerades de l''1 al 34, cadascuna
+  Output: 'Haureu notat que les files estan numerades de l''1 a la 54, cadascuna
     representant exactament un cotxe (car) al conjunt de dades. Per a cada
     cotxe, les següents VARIABLES, o característiques, es reporten:
     «type» (small, midize, large), és a dir el tipus, que pot ser petit,
