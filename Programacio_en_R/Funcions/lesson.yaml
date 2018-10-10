@@ -192,7 +192,7 @@
 
 - Class: text
   Output: Potser no us adoneu però us hem portat a fer quelcom força
-    interssant! args() és una funció, remainder() és també una funció,
+    interessant! args() és una funció, remainder() és també una funció,
     tot i així remainder ha estat un argument de args(). Sí, és veritat,
     podeu passar funcions com arguments! Això és un concepte molt poderós.
     Anem a escriure un script per veure com funciona.
@@ -214,7 +214,7 @@
     parèntesis!
 
 - Class: text
-  Output: La idea de passar funcions com a arguments a altres funcions çes
+  Output: La idea de passar funcions com a arguments a altres funcions és
     un concepte important i fonamental a la programació.
 
 - Class: text
@@ -226,7 +226,7 @@
   Output: Usem la funció evaluate per explorar com funcionen les funcions
     anònimes. Per al primer argument de la funció evaluate escriurem una
     funció petita que cap en una línia. Al segon argument passarem
-    per a la petita funció del primer argument.
+    algunes dades a la petita funció del primer argument.
 
 - Class: cmd_question
   Output: "Entreu l'ordre següent i després discutirem com funciona:
@@ -264,7 +264,7 @@
     de la funció length() a la vostra funció anònima us pot ajudar.
 
 - Class: cmd_question
-  Output: Per a la resta del cur farem servir sovint la funció paste().
+  Output: Per a la resta del curs farem servir sovint la funció paste().
     Entreu ?paste per mirar a la documentació sobre la funció paste.
   CorrectAnswer: ?paste
   AnswerTests: omnitest(correctExpr='?paste')
@@ -281,7 +281,7 @@
   Output: 'Simplement per veure com funciona paste(), entreu
     paste("Programar", "és", "divertit!")'
   CorrectAnswer: paste("Programar", "és", "divertit!")
-  AnswerTests: omnitest(correctExpr='paste("Programming", "is", "fun!")')
+  AnswerTests: omnitest(correctExpr='paste("Programar", "és", "divertit!")')
   Hint: 'Simplement entreu: paste("Programar", "és", "divertit!")'
 
 - Class: text
