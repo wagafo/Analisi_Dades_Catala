@@ -47,7 +47,7 @@
     dades complet, simplement sumeu les freqüències. Per fer això, podeu
     sumar la variable «nj» a l'objecte dades agrupades «gdental». Podeu
     fer la suma usant la funció sum(). Entreu l'ordre apropiada per obtenir
-    el nombre total de casos par al conjunt de dades de pagaments de
+    el nombre total de casos per al conjunt de dades de pagaments de
     l'assegurança dental.
   CorrectAnswer: sum(gdental$nj)
   AnswerTests: omnitest(correctExpr='sum(gdental$nj)')
