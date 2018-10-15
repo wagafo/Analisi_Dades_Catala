@@ -227,7 +227,7 @@
 - Class: cmd_question
   Output: S'usa un diagrama de caixa per representar el MÍNIM, PRIMER
     QUARTIL (Q1), MEDIANA, TERCER QUARTIL (Q3) i MÀXIM d'un conjunt de
-    dades. L'ordre de l'R «sumamry(cars%price)» us dóna els valors
+    dades. L'ordre de l'R «summary(cars%price)» us dóna els valors
     d'aquestes tres estadístiques descriptives. Proveu això ara.
   CorrectAnswer: summary(cars$price)
   AnswerTests: swirl1cmd=summary(cars$price)
