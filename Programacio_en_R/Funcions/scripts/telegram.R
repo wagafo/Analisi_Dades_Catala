@@ -37,5 +37,5 @@
 
 telegram <- function(...){
   # Escriviu aquí el vostre codi
-  # Recordeu: l'última expressió avaluada serà la que es retornarà  
+  # Recordeu: l'última expressió avaluada serà la que es retornarà
 }

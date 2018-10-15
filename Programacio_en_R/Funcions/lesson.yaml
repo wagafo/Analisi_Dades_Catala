@@ -312,7 +312,7 @@
   Output: Ara usarem la vostra funció mad_libs. Assegureu-vos d'anomenar
     els arguments de lloc, adjectiu i substantiu en ordre perquè funcioni
     la vostra funció.
-  CorrectAnswer: mad_libs(adjective = "", place = "", noun = "")
+  CorrectAnswer: mad_libs(adjectiu = "", lloc = "", substantiu = "")
   AnswerTests: expr_uses_func('mad_libs')
   Hint: Useu la funció mad_libs i assegureu-vos d'anomenar els arguments
      lloc, adjectiu i substantiu.
