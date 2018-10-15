@@ -36,5 +36,5 @@
 #  "INICI Bon dia STOP"
 
 telegram <- function(...){
-  paste("INICI", ..., "STOP")
+  paste("INICI",...,"STOP")
 }
