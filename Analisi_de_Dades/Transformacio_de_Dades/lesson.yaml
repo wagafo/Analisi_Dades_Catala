@@ -115,7 +115,7 @@
     del marc de dades que heu creat.
 
 - Class: cmd_question
-  Output: Com podeu veure, els valors de «lliures» mostres fins a 4
+  Output: Com podeu veure, els valors de «lliures» mostra fins a 4
     posicions decimals. Ens agradaria reduir-ho a dos posicions decimals,
     atès que estem treballant amb lliures mesurades fins als penics. Per
     això, podem usar la funció «round()», que pren dos arguments. El
@@ -124,9 +124,9 @@
     Entreu ara l'ordre per arrodonir la variable «lliures» a dos posicions
     decimals, i assigneu el resultat a la mateixa variable i el mateix
     marc de dades.
-  CorrectAnswer: viatge_nou$lliures <- round(lliures,2)
-  AnswerTests: omnitest(correctExpr='viatge_nou$lliures <- round(lliures,2)')
-  Hint: Heu d'entrar «viatge_nou$lliures <- round(lliures,2)» per
+  CorrectAnswer: viatge_nou$lliures <- round(viatge_nou$lliures,2)
+  AnswerTests: omnitest(correctExpr='viatge_nou$lliures <- round(viatge_nou$lliures,2)')
+  Hint: Heu d'entrar «viatge_nou$lliures <- round(viatge_nou$lliures,2)» per
     arrodonir les dades de lliures a dos punts decimals, i per desar
     els resultats al mateix marc de dades amb el mateix nom de variable.
 
