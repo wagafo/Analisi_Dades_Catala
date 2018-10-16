@@ -36,5 +36,5 @@ mad_libs <- function(...){
   # No modifiqueu cap codi a sota d'aquest comentari.
   # Noteu les variables que heu de crear perquè el codi de sota sigui
   # funcional.
-  paste("News from", lloc, "today where", adjectiu, "students took to the streets in protest of the new", substantiu, "being installed on campus.")
+  paste("Avui les notícies de", lloc, "van ser que estudiants", adjectiu, "van sortir al carrer en protesta pel nou", substantiu, "que s'està instal·lant al campus.")
 }

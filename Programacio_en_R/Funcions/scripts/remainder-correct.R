@@ -22,7 +22,7 @@
 # Escriureu una funció anomenada «remainder». remainder() prendrà dos
 # arguments: «num» i «divisor», on «num» es divideix per «divisor» i es
 # retorna la resta. Imagineu-vos que normalment voleu saber la resta
-# quan dividiu per 2, consegüentment establiu el valor predeterminar de
+# quan dividiu per 2, consegüentment establiu el valor predeterminat de
 # «divisor» igual a 2. Si us plau assegureu-vos que el primer argument
 # és «num» i el segon és «divisor».
 #
