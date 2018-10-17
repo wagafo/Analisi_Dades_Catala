@@ -7,7 +7,7 @@
 
 
 # Path to installed lesson
-.lessonpath <- file.path(.get_course_path(), "Programació_en_R",
+.lessonpath <- file.path(.get_course_path(), "Programacio_en_R",
                          "lapply_i_sapply")
 # Path to dataset
 .datapath <- file.path(.lessonpath, "flag.data.txt")
@@ -28,7 +28,7 @@ viewinfo <- function() {
   return(.infopath)
 }
 
-# Dummy function to advance user past question for which 
+# Dummy function to advance user past question for which
 # correct answer yields an error
 ok <- function() {
   invisible()
