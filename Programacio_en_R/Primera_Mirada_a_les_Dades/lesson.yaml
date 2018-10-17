@@ -177,7 +177,7 @@
   Output: La bellesa de str() és que combina moltes de les funcionalitats
     de les altres funcions que hem vist fins ara, tot en un format concís
     i llegible. A la part superior, es diu que la classe de plants és
-    «data.frame» i que té 5166 observacions i 16 variables. Després ens
+    «data.frame» i que té 5166 observacions i 10 variables. Després ens
     dóna el nom i la classe de cada variable, a més d'una previsualització
     dels seus continguts.
 
