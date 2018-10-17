@@ -36,7 +36,7 @@
 - Class: cmd_question
   Output: Com heu vist a l'última lliçó, la funció unique() retorna un
     vector de valors únics contingut a l'objecte que se li passa. En
-    conseqüència, sapply(flats, unique) retorna una llista contenint un
+    conseqüència, sapply(flags, unique) retorna una llista contenint un
     vector de valors únics per a cada columna del conjunt de dades flags.
     Proveu-ho ara un altre cop.
   CorrectAnswer: sapply(flags, unique)
