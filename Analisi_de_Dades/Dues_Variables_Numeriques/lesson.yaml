@@ -188,10 +188,10 @@
 - Class: mult_question
   Output: El pendent ens mostra
   AnswerChoices: que per cada punt que un estudiant obté al parcial, es
-    prediu que obtindrà 1.12 punts al final; que per cada punt que un
-    estudiant obté al final, es  prediu que obtindrà 1.12 punts al parcial
-  CorrectAnswer: que per cada punt que un estudiant obté al parcial, es prediu que obtindrà 1.12 punts al final
-  AnswerTests: omnitest(correctVal='que per cada punt que un estudiant obté al parcial, es prediu que obtindrà 1.12 punts al final')
+    prediu que obtindrà 1.127 punts al final; que per cada punt que un
+    estudiant obté al final, es  prediu que obtindrà 1.127 punts al parcial
+  CorrectAnswer: que per cada punt que un estudiant obté al parcial, es prediu que obtindrà 1.127 punts al final
+  AnswerTests: omnitest(correctVal='que per cada punt que un estudiant obté al parcial, es prediu que obtindrà 1.127 punts al final')
   Hint: La línia de regressió prediu l'efecte de la variable explicativa
     (nota al parcial) sobre la variable dependent (nota al final).
 
@@ -250,8 +250,8 @@
 - Class: text
   Output: Als resultats mostrats pel R podeu veure un altre cop els coeficients
     de la regressió sota «Estimate». També podeu obtenir el valor per al
-    coeficient de determinació (també anomenat R-quadrat, R-squared en
-    anglès), que és igual a 0.41, i algunes estadístics per als residus
+    coeficient de determinació (també anomenat R-quadrat, Multiple R-squared en
+    anglès), que és igual a 0.41, i alguns estadístics per als residus
     de la regressió.
 
 - Class: mult_question
@@ -372,7 +372,7 @@
 - Class: cmd_question
   Output: Per eliminar aquests casos, ho podem fer entrant l'ordre
     exam[-c(2,18),] i assignant el resultat a un nou marc de dades
-    anomenat exam_nou. Això i diu al R que no tingui en compte els casos 2
+    anomenat exam_nou. Això diu a l'R que no tingui en compte els casos 2
     i 18 (per això tenim el signe menys davant el primer argument), però
     deixar les columnes (variables) sense tocar (per això tenim la coma
     i res després de la coma). Proveu doncs «exam_nou <- exam[-c(2,18),]»
