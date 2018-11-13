@@ -159,8 +159,10 @@
 - Class: cmd_question
   Output: Atès que el component estacional és el mateix valor per a un trimestre
     donat, sols ens calen 4 valors. Els podem veure per als 4 trimestres
-    amb «decomp.ts$figure», en odre, trimestre 1, 2, 3 i 4. Entreu
-    aquesta ordre ara.
+    amb «decomp.ts$figure». Això mostra el primer trimestre, segon trimestre,
+    tercer trimestre i quart trimestre, on el primer trimestre
+    correspon al primer trimestre disponible a les dades. Entreu
+    aquesta ordre ara. 
   CorrectAnswer: decomp.ts$figure
   AnswerTests: omnitest(correctExpr='decomp.ts$figure')
   Hint: Entreu «decomp.ts$figure» per veure els quatre components estacionals.
