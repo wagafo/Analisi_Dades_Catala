@@ -35,7 +35,7 @@
     especials!
 
 - Class: cmd_question
-  Output: Hem desat el conjunt de dades a una variable anomenada flags.
+  Output: Hem desat el conjunt de dades a un marc de dades anomenat flags.
     Entreu head(flags) per veure les primeres sis línies (o sigui el «cap»,
     «head» en anglès) del conjunt de dades. 
   CorrectAnswer: head(flags)
@@ -43,7 +43,7 @@
   Hint: Entreu head(flags) per veure el «cap» («head») del conjunt de dades.
 
 - Class: cmd_question
-  Output: Possiblement heu de desplaçar-vos a a pantalla per veure tota
+  Output: Possiblement heu de desplaçar-vos a ldim(a pantalla per veure tota
     la sortida. Mirem ara la dimensió del conjunt de dades usant dim(flags).
   CorrectAnswer: dim(flags)
   AnswerTests: omnitest(correctExpr='dim(flags)')
@@ -99,7 +99,7 @@
   Hint: Entreu cls_list per veure el resultat.
 
 - Class: cmd_question
-  Output: La «l» a «lapply» vol dir «lista» («llista»). Entreu class(cls_list)
+  Output: La «l» a «lapply» vol dir «list» («llista»). Entreu class(cls_list)
     per confirmar que lapply() ha retornat una llista.
   CorrectAnswer: class(cls_list)
   AnswerTests: omnitest(correctExpr='class(cls_list)')
@@ -147,9 +147,9 @@
 - Class: text
   Output: En general, si el resultat és una llista on cada element és de
     longitud igual a 1, aleshores sapply() retorna un vector. Si el resultat
-    és una llista con cada element és un vector de la mateixa longitud (> 1),
-    sapply() retorna una matriu. Si sapply() no pot determinar com son les
-    dades, aleshores simplement retorna una llista, igual a la que us
+    és una llista on cada element és un vector de la mateixa longitud (> 1),
+    sapply() retorna una matriu. Si sapply() no pot determinar com són les
+    dades, aleshores simplement retorna una llista, igual a la què us
     donaria lapply().
 
 - Class: text
@@ -365,7 +365,8 @@
   Output: lapply(unique_vals, function(elem) elem[2]) retornarà el segon
     element de la llista unique_vals. Noteu que la nostra funció sols té un
     argument, elem, que es simplement una «variable fictícia» que pren
-    el valor de cada element de unique_vals al seu torn.
+    el valor de cada element de unique_vals al seu torn. Entreu
+    aquesta expressió ara.
   CorrectAnswer: lapply(unique_vals, function(elem) elem[2])
   AnswerTests: calculates_same_value('lapply(unique_vals, function(elem) elem[2])')
   Hint: Useu lapply(unique_vals, function(elem) elem[2]) per retornar una
