@@ -218,8 +218,8 @@
     anomenat «freq». Feu-ho ara.
   CorrectAnswer: freq <- c(4,2,0,1,5,1,0,1,6)
   AnswerTests: omnitest(correctExpr='freq <- c(4,2,0,1,5,1,0,1,6)')
-  Hint: Entreu «freq <- c(4,2,0,1,5,1,0,1,6)» per veure la taula de
-    contingència de les variables.
+  Hint: Entreu «freq <- c(4,2,0,1,5,1,0,1,6)» per entrar les freqüències
+    absolutes de la distribució conjunta.
 
 - Class: cmd_question
   Output: Ara creem una taula a partir de les freqüències que hem desat
