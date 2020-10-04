@@ -59,7 +59,7 @@
     feble, entre les dues variables. Ens podem preguntar si aquesta
     relació es manté dins de cada planta. Per això ens convé dibuixar
     el diagrama de dispersió distingint els punts d'acord amb la variable
-    categòrica «planta». Això ho podem fer amb les funcions del paquest
+    categòrica «planta». Això ho podem fer amb les funcions del paquet
     ggplot2, que és un paquet molt complet per fer gràfiques. Explicar-lo
     a fons donaria material per diversos tutorials. Aquí presentarem
     directament l'ordre que cal. Seria
