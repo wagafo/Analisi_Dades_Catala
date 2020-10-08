@@ -198,7 +198,7 @@
 
 - Class: figure
   Output: Hem creat un diagrama de troncs i fulles a dalt usant els
-    mateixos valors de la variable «mpgCity» com heu usat a l'histograma.
+    mateixos valors de la variable «mpg_city» com heu usat a l'histograma.
     Com podeu veure, el diagrama de troncs i fulles és un tipus útil
     d'histograma si voleu veure les freqüències de valors específics
     de les dades. Sovint, hi haurà únicament un interval per cada desena
