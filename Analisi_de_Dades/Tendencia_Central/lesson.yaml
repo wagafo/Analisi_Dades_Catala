@@ -111,31 +111,31 @@
     representant exactament un cotxe (car) al conjunt de dades. Per a cada
     cotxe, les següents VARIABLES, o característiques, es reporten:
     «type» (small, midize, large), és a dir el tipus, que pot ser petit,
-    mitjà o gran, «preu» en dòlars americans, «mpgCity» que és quantes milles
+    mitjà o gran, «price» en dòlars americans, «mpg_city» que és quantes milles
     per galó de combustible pot fer a la ciutat, «driveTrain» (4WD, front,
     rear) que és la tracció que pot ser de les quatres rodes (4WD), frontal
     (front) o posterior (rear), «passengers» que és la capacitat de passatgers
     que té i «weight», el pes en lliures.'
 
 - Class: text
-  Output: Ens enfocarem a la variable «mpgCity» en aquesta lliçó. Per
+  Output: Ens enfocarem a la variable «mpg_city» en aquesta lliçó. Per
     simplicitat, anem a extraure-la del nostre conjunt de dades i
     emmagatzemar-la en una nova variable.
 
 - Class: cmd_question
-  Output: Accediu la variable «mpgCity» del conjunt de dades «cars» usant
+  Output: Accediu la variable «mpg_city» del conjunt de dades «cars» usant
     «conjunt_de_dades$variable»
-  CorrectAnswer: cars$mpgCity
-  AnswerTests: equivalent=cars$mpgCity
+  CorrectAnswer: cars$mpg_city
+  AnswerTests: equivalent=cars$mpg_city
   Hint: Useu la notació 'conjunt_de_dades$variable'. Recordeu que el nom del
-    conjunt de dades és «cars», i la variable «mptCity».
+    conjunt de dades és «cars», i la variable «mpg_city».
 
 - Class: cmd_question
-  Output: Emmagatzemeu ara els continguts de «cars$mpgCity» en una nova
+  Output: Emmagatzemeu ara els continguts de «cars$mpg_city» en una nova
     variable anomenada «myMPG».
-  CorrectAnswer: myMPG <- cars$mpgCity
-  AnswerTests: newcmd=myMPG <- cars$mpgCity
-  Hint: Useu l'operador d'assignació per assignar «cars$mpgCity» a una nova
+  CorrectAnswer: myMPG <- cars$mpg_city
+  AnswerTests: newcmd=myMPG <- cars$mpg_city
+  Hint: Useu l'operador d'assignació per assignar «cars$mpg_city» a una nova
     variable anomenada «myMPG».
 
 - Class: text
