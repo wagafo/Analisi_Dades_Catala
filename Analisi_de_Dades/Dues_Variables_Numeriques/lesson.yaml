@@ -127,7 +127,7 @@
     possible relació entre les dues variables. En aquest cas, quina
     penseu que és la millor descripció?
   AnswerChoices: relació lineal positiva però no massa forta; relació
-    lineal molt forta; relació lineal negativa no massa fota; cap relació lineal
+    lineal molt forta; relació lineal negativa no massa forta; cap relació lineal
   CorrectAnswer: relació lineal positiva però no massa forta
   AnswerTests: omnitest(correctVal='relació lineal positiva però no massa forta')
   Hint: Mireu al patró dels núvol de punts i si hi té pendent positiu o
