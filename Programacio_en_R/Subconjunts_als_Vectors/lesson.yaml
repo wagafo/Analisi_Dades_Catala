@@ -42,7 +42,7 @@
     lógics, vectors d'enters positius, vectors d'enters negatius i vectors
     de cadenes caràcters -- cadascú dels quals cobrirem en aquesta lliçó.
 
-- Class: text 
+- Class: text
   Output: Comencem indexant amb vectors lògics. Un escenari comú quan treballem
     amb dades reals és que volem extraure tots els elements d'un vector que
     no és NA (o sigui que no siguin valors absents). Recordeu que is.na(x)
@@ -90,7 +90,7 @@
     que són més grans que zero i FALSE corresponen a valors de y que són més
     petits i iguals a zero. Què creieu que ens donarà y[y>0]?'
   AnswerChoices: Un vector de tots els elements positius de y; Un vector
-    de totes els elements negatius de y; Un vector de tots NA; Un vector
+    de tots els elements negatius de y; Un vector de tots NA; Un vector
     de longitud  0; Un vector de TRUE i FALSE
   CorrectAnswer: Un vector de tots els elements positius de y
   AnswerTests: omnitest(correctVal="Un vector de tots els elements positius de y")
@@ -230,7 +230,7 @@
   CorrectAnswer: vect2 <- c(11, 2, NA)
   AnswerTests: omnitest(correctExpr='vect2 <- c(11, 2, NA)')
   Hint: Creu un vector ordinari (no anomenat) amb el nom vect2 que contingui
-    c(11, 1, NA).
+    c(11, 2, NA).
 
 - Class: cmd_question
   Output: A continuació podem afegir l'atribut «names» a vect2 amb
@@ -277,7 +277,7 @@
   Output: Ara coneixeu els quatre mètodes d'obtenir subconjunts de vectors.
     Per a cada escenari hi ha un dels mètodes que li va millor, i quan
     tingueu dubtes, proveu-ho!
-  
+
 - Class: mult_question
   Output: "Voldríeu rebre crèdit per completar aquest curs a Coursera.org?"
   CorrectAnswer: NULL
