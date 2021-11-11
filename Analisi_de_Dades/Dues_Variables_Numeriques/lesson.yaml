@@ -555,7 +555,7 @@
   Output: Feu ara un diagrama de dispersió entre lvendes i lpub.
   CorrectAnswer: plot(lvendes~lpub)
   AnswerTests: omnitest(correctExpr='plot(lvendes~lpub)')
-  Hint: Heu d'entrar «plot(lvendes~ladv)» per fer un diagrama de dispersió
+  Hint: Heu d'entrar «plot(lvendes~lpub)» per fer un diagrama de dispersió
     entre lvendes i lpub.
 
 - Class: cmd_question
