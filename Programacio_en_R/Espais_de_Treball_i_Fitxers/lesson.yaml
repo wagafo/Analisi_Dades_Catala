@@ -69,7 +69,7 @@
 
 - Class: cmd_question
   Output: A mesura que recorrem aquesta lliçó, hauríeu d'examinar la
-    pàgina d'ajuda para cada funció nova. Mireu la pàgina d'ajuda per a
+    pàgina d'ajuda per a cada funció nova. Mireu la pàgina d'ajuda per a
     list.files amb l'ordre ?list.files.
   CorrectAnswer: ?list.files
   AnswerTests: any_of_exprs('?list.files', '?dir', 'help("list.files")', 'help("dir")')
