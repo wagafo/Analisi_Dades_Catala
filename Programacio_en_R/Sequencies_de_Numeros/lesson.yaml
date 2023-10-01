@@ -170,7 +170,7 @@
   AnswerTests: omnitest(correctExpr='rep(c(0, 1, 2), times = 10)')
   Hint: Proveu rep(c(0, 1, 2), times = 10) per a una altra variació del
     mateix tema. Assegureu-vos d'usar la funció c() per dir-li a l'R que
-    els números 0, 1, i 2 formen un vector. 
+    els números 0, 1, i 2 formen un vector.
 
 - Class: cmd_question
   Output: Finalment, suposem que en comptes de repetir el vector (0, 1, 2)
@@ -181,10 +181,3 @@
   AnswerTests: omnitest(correctExpr='rep(c(0, 1, 2), each = 10)')
   Hint: Entreu rep(c(0, 1, 2), each = 10) per veure com l'argument «each»
     altera el seu comportament lleugerament.
-
-- Class: mult_question
-  Output: "Voldríeu rebre crèdit per completar aquest curs Courera.org?"
-  CorrectAnswer: NULL
-  AnswerChoices: Yes;No
-  AnswerTests: coursera_on_demand()
-  Hint: ""

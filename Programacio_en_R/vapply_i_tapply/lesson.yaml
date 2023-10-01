@@ -176,9 +176,9 @@
   AnswerTests: omnitest(correctExpr="tapply(flags$population, flags$red, summary)")
   Hint: Podeu veure un resum de les poblacions per a països amb i sense el
     color vermell a les seves banderes amb
-    tapply(flags$population, flags$red, summary). 
+    tapply(flags$population, flags$red, summary).
 
-- Class: mult_question  
+- Class: mult_question
   Output: Quina és la mediana de la població (en milions) per a països *sense*
     el color vermell a les seves banderes?
   AnswerChoices: 9.0; 4.0; 27.6; 3.0; 22.1; 0.0
@@ -193,10 +193,10 @@
   CorrectAnswer: tapply(flags$population, flags$landmass, summary)
   AnswerTests: omnitest(correctExpr="tapply(flags$population, flags$landmass, summary)")
   Hint: "Podeu veure un resum de les poblacions de cada un dels grups
-    definits al variable landmass cridant tapply() amb tres arguments: 
+    definits al variable landmass cridant tapply() amb tres arguments:
     flags$population, flags$landmass, i summary."
 
-- Class: mult_question  
+- Class: mult_question
   Output: Quina és la població màxima (en milions) per al quart grup definit
     a la variable landmass (Africa)?
   AnswerChoices: 56.00; 1010.0; 119.0; 5.00; 157.00
@@ -204,17 +204,10 @@
   AnswerTests: omnitest(correctVal= '56.00')
   Hint: Useu el vostre resultat de l'última pregunta.
 
-- Class: text  
+- Class: text
   Output: En aquesta lliçó, heu après com usar vapply() com una alternativa
     més segura que sapply(), cosa que pot ser molt útil en escriure funcions
     pròpies. També heu après a usar tapply() per dividir les vostres dades
     en grups basats en el valor d'alguna variable, i després aplicar una
     funció a cada grup. Aquestes funcions seran útils en la vostra preparació
     per arribar a ser millor a l'anàlisi de dades.
-
-- Class: mult_question
-  Output: "Voldríeu rebre crèdit per completar aquest curs a Coursera.org?"
-  CorrectAnswer: NULL
-  AnswerChoices: Yes;No
-  AnswerTests: coursera_on_demand()
-  Hint: ""
